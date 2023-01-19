@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -8,7 +9,6 @@ import { Component, Input } from '@angular/core';
 export class SidebarMenuComponent {
   @Input() currentItem = SidebarItem.SHOP;
   sideBarItem: typeof SidebarItem = SidebarItem;
-
 }
 
 export enum SidebarItem {
