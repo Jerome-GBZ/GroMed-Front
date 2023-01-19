@@ -1,0 +1,35 @@
+<div class="container">
+    <img class="brand" src="../../../../assets/brand.svg"/>
+    <div class="line"></div>
+    <div class="profile">
+        <div class="profile-name">Dr. Michigan</div>
+        <div class="profile-rattachement">CHU GRENOBLE ALPES</div>
+    </div>
+    <div class="navbar">
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.SHOP}">
+            <img class="icon" src="../../../../assets/bag-2.svg"/>
+            <p class="label">Magasin</p>
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+        </div>
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE_TYPE}">
+            <img class="icon" src="../../../../assets/heart.svg"/>
+            <p class="label">Mes commandes types</p>
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+        </div>
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.PANIER}">
+            <img class="icon" src="../../../../assets/bag-happy.svg"/>
+            <p class="label">Panier</p>
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+        </div>
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.FACTURE}">
+            <img class="icon" src="../../../../assets/folder-open.svg"/>
+            <p class="label">Mes factures</p>
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+        </div>
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMPTE}">
+            <img class="icon" src="../../../../assets/user.svg"/>
+            <p class="label">Mon compte</p>
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+        </div>
+    </div>
+</div>

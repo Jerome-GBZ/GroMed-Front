@@ -1,0 +1,81 @@
+@import "../../../../styles.scss";
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brand{
+    width: 60%;
+    margin-top: 24px;
+}
+
+.line{
+    width: 90%;
+    height: 1px;
+    background-color: $line;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.profile{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.profile-rattachement{
+    color: $paragraph;
+    letter-spacing: 1px;
+}
+
+.navbar{
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-item{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 15px;
+    border-radius: 10px;
+    background-color: $secondBackground;
+    margin-top: 4px;
+    &:hover{
+        background-color: $line;
+        cursor: pointer;
+    }
+}
+
+.navbar-item-selected{
+    background-color: $line;
+}
+
+.label{
+    margin-left: 12px;
+    font-size: 18px;
+}
+
+.nav-icon{
+    margin-left: auto;
+    height: 14px;
+    text-align: right;
+    justify-content: end;
+    margin-right: 12px;
+}
