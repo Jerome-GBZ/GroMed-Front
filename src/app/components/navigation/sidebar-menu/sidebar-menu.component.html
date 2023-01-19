@@ -11,27 +11,27 @@
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.SHOP}" routerLink="/">
             <img class="icon" src="../../../../assets/bag-2.svg"/>
             <p class="label">Magasin</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.SHOP ? 'display' : 'hide'">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE_TYPE}" routerLink="/commande-type">
             <img class="icon" src="../../../../assets/heart.svg"/>
             <p class="label">Mes commandes types</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE_TYPE ? 'display' : 'hide'">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.PANIER}" routerLink="/panier">
             <img class="icon" src="../../../../assets/bag-happy.svg"/>
             <p class="label">Panier</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.PANIER ? 'display' : 'hide'">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.FACTURE}" routerLink="/facture">
             <img class="icon" src="../../../../assets/folder-open.svg"/>
             <p class="label">Mes factures</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.FACTURE ? 'display' : 'hide'">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMPTE}" routerLink="/compte">
             <img class="icon" src="../../../../assets/user.svg"/>
             <p class="label">Mon compte</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg">
+            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMPTE ? 'display' : 'hide'">
         </div>
     </div>
 </div>
