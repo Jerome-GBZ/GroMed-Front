@@ -5,13 +5,21 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { ShopComponent } from './pages/shop/shop.component';
 import { SidebarMenuComponent } from './components/navigation/sidebar-menu/sidebar-menu.component';
+import { CommandeTypeComponent } from './pages/commande-type/commande-type.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { AccountComponent } from './pages/account/account.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ShopComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    CommandeTypeComponent,
+    ShoppingCartComponent,
+    InvoiceComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
