@@ -3,6 +3,30 @@
         <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
     </div>
     <div class="content">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">         
+        </span>
+        <div class="card-grid">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <p-paginator [rows]="10" [totalRecords]="100"></p-paginator>
+
     </div>
 </div>
 
