@@ -1,6 +1,6 @@
 @import "colors.scss";
 
-p-button {
-    background-color: $primary;
-    color: $background;
+.p-button {
+    background-color: $primary !important;
+    color: $background !important;
 }

@@ -1,0 +1,36 @@
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Créer un compte</h1>
+			<span>Utilise ton email pour l'inscription</span>
+			<input #displayName type="text" placeholder="Dr. Michigan" />
+			<input #email type="email" placeholder="Email" />
+			<input #password type="password" placeholder="Mot de passe" />
+			<button>S'inscrire</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Se connecter</h1>
+			<span>Utilisez votre compte</span>
+			<input #email type="email" placeholder="Email" />
+			<input #password type="password" placeholder="Mot de passe" />
+			<a href="#">Mot de passe oublié?</a>
+			<button>Se connecter</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Vous revoilà!</h1>
+				<p>Pour se connecter utiliser vos informations personnels</p>
+				<button class="ghost" id="signIn">Se connecter</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Bienvenue !</h1>
+				<p>Entrez vos informations personnel et tenter l'experience sur Gromed</p>
+				<button class="ghost" id="signUp">S'inscrire</button>
+			</div>
+		</div>
+	</div>
+</div>

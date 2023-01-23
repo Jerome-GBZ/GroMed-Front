@@ -12,6 +12,9 @@ import { CommandeTypeComponent } from './pages/commande-type/commande-type.compo
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { AccountComponent } from './pages/account/account.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MatDialogModule } from '@angular/material/dialog'
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { AccountComponent } from './pages/account/account.component';
     CommandeTypeComponent,
     ShoppingCartComponent,
     InvoiceComponent,
-    AccountComponent
+    AccountComponent,
+    WelcomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { AccountComponent } from './pages/account/account.component';
     ButtonModule,
     InputTextModule,
     MatGridListModule,
-    PaginatorModule
+    PaginatorModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
