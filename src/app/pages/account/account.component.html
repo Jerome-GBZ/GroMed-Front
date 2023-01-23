@@ -1,7 +1,12 @@
 <div class="container">
-    <div class="sidebar">
-        <app-sidebar-menu [currentItem]="4"></app-sidebar-menu>
+    <div class="hamburger">
+        <app-hamburger-menu></app-hamburger-menu>
     </div>
+
+    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
+        <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
+    </div>
+
     <div class="content">
     </div>
 </div>
