@@ -1,11 +1,16 @@
 <div class="container">
-    <div class="sidebar">
+    <div class="hamburger">
+        <app-hamburger-menu></app-hamburger-menu>
+    </div>
+
+    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
         <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
     </div>
+
     <div class="content">
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">         
+            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">
         </span>
         <div class="card-grid">
             <div class="card"></div>
@@ -26,7 +31,6 @@
             <div class="card"></div>
         </div>
         <p-paginator [rows]="10" [totalRecords]="100"></p-paginator>
-
     </div>
 </div>
 

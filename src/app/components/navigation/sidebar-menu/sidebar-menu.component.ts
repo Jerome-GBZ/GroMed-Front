@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -9,6 +8,12 @@ import { Router } from '@angular/router';
 export class SidebarMenuComponent {
   @Input() currentItem = SidebarItem.SHOP;
   sideBarItem: typeof SidebarItem = SidebarItem;
+  width: number = window.innerWidth;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width = event.target.innerWidth;
+  }
 }
 
 export enum SidebarItem {

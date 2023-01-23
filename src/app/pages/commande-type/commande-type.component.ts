@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-commande-type',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./commande-type.component.scss']
 })
 export class CommandeTypeComponent {
+  width: number = window.innerWidth;
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width = event.target.innerWidth;
+  }
 }

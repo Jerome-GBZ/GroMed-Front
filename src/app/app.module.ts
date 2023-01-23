@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { ShopComponent } from './pages/shop/shop.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { SidebarMenuComponent } from './components/navigation/sidebar-menu/sidebar-menu.component';
+import { HamburgerMenuComponent } from './components/navigation/hamburger-menu/hamburger-menu.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PaginatorModule } from 'primeng/paginator';
 import { CommandeTypeComponent } from './pages/commande-type/commande-type.component';
@@ -27,7 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog'
     InvoiceComponent,
     AccountComponent,
     WelcomeComponent,
-    LoginComponent
+    LoginComponent,
+    HamburgerMenuComponent
   ],
   imports: [
     BrowserModule,

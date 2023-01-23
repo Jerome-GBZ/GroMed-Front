@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-invoice',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent {
+  width: number = window.innerWidth;
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width = event.target.innerWidth;
+  }
 }
