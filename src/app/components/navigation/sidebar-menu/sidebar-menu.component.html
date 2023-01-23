@@ -1,5 +1,5 @@
 <div class="container">
-    <img class="brand" src="../../../../assets/brand.svg"/>
+    <img class="brand" src="./assets/brand.svg" alt="Gromed Logo"/>
     <div class="line"></div>
 
     <div class="profile">
@@ -9,29 +9,29 @@
 
     <div class="navbar">
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.SHOP}" routerLink="/">
-            <img class="icon" src="../../../../assets/bag-2.svg"/>
+            <img class="icon" src="./assets/bag-2.svg" alt="Magasin icône"/>
             <p class="label">Magasin</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.SHOP ? 'display' : 'hide'">
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.SHOP ? 'display' : 'hide'" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE_TYPE}" routerLink="/commande-type">
-            <img class="icon" src="../../../../assets/heart.svg"/>
+            <img class="icon" src="./assets/heart.svg" alt="Coeur icône"/>
             <p class="label">Mes commandes types</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE_TYPE ? 'display' : 'hide'">
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE_TYPE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.PANIER}" routerLink="/panier">
-            <img class="icon" src="../../../../assets/bag-happy.svg"/>
+            <img class="icon" src="./assets/bag-happy.svg" alt="Panier icône"/>
             <p class="label">Panier</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.PANIER ? 'display' : 'hide'">
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.PANIER ? 'display' : 'hide'" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.FACTURE}" routerLink="/facture">
-            <img class="icon" src="../../../../assets/folder-open.svg"/>
+            <img class="icon" src="./assets/folder-open.svg" alt="Dossier icône"/>
             <p class="label">Mes factures</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.FACTURE ? 'display' : 'hide'">
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.FACTURE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMPTE}" routerLink="/compte">
-            <img class="icon" src="../../../../assets/user.svg"/>
+            <img class="icon" src="./assets/user.svg" alt="Utilisateur icône"/>
             <p class="label">Mon compte</p>
-            <img class="nav-icon" src="../../../../assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMPTE ? 'display' : 'hide'">
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMPTE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
     </div>
 </div>
