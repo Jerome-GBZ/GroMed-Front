@@ -5,13 +5,15 @@ import { CommandeTypeComponent } from './pages/commande-type/commande-type.compo
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { AccountComponent } from './pages/account/account.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
   { path: '', component: ShopComponent },
   { path: 'commande-type', component: CommandeTypeComponent },
   { path: 'panier', component: ShoppingCartComponent },
   { path: 'facture', component: InvoiceComponent },
-  { path: 'compte', component: AccountComponent }
+  { path: 'compte', component: AccountComponent },
+  { path: 'welcome', component: WelcomeComponent }
 ];
 
 @NgModule({
