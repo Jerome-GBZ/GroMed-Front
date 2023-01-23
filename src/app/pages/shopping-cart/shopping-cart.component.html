@@ -8,5 +8,29 @@
     </div>
 
     <div class="content">
+        <h1 class="title"> PASSER COMMANDE </h1>
+        <app-steps [step]="1"></app-steps>
+
+        <div class="container-medic">
+            <span class="subtitle"> 2 médicaments dans mon panier </span>
+
+            <app-line></app-line>
+            <app-line></app-line>
+
+            <div class="container-total">
+                <span> Total </span>
+                <span> 51.67€ </span>
+            </div>
+
+            <div class="container-button">
+                <button class="button">
+                    Ajouter une commande type
+                </button>
+
+                <button class="button">
+                    Confirmer mes achats
+                </button>
+            </div>
+        </div>
     </div>
 </div>

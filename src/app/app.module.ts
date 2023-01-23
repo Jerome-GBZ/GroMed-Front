@@ -15,7 +15,9 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { AccountComponent } from './pages/account/account.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { LoginComponent } from './pages/login/login.component';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { StepsComponent } from './components/shopping-cart/steps/steps.component';
+import { LineComponent } from './components/shopping-cart/line/line.component'
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { MatDialogModule } from '@angular/material/dialog'
     AccountComponent,
     WelcomeComponent,
     LoginComponent,
-    HamburgerMenuComponent
+    HamburgerMenuComponent,
+    StepsComponent,
+    LineComponent
   ],
   imports: [
     BrowserModule,
