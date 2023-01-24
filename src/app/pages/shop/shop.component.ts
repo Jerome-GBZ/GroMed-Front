@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
-import { PagePresentationCardModel, PresentationControllerService } from "../../../libs";
+import { PagePresentationCardModel, PresentationCardModel, PresentationControllerService } from "../../../libs";
 
 @Component({
   selector: 'app-shop',
@@ -8,6 +8,9 @@ import { PagePresentationCardModel, PresentationControllerService } from "../../
 })
 export class ShopComponent implements OnInit{
   width: number = window.innerWidth;
+  numberOfPages: number = 0;
+  isLoading = true;
+  medicamentCards : Array<PresentationCardModel> = new Array()
 
   constructor(private presentationService: PresentationControllerService) { }
   
@@ -19,7 +22,24 @@ export class ShopComponent implements OnInit{
   ngOnInit(): void {
     this.presentationService.getAllPresentations().subscribe(
       (data: PagePresentationCardModel)=>{
-        console.log("data ",data);
+        this.isLoading = false;
+        if(data !== undefined){
+          this.numberOfPages = data.totalPages!!;
+          this.medicamentCards = data.content!!;
+        }
+      }
+    )
+  }
+
+  paginate(page: number){
+    this.isLoading = true;
+    this.presentationService.getAllPresentations().subscribe(
+      (data: PagePresentationCardModel)=>{
+        this.isLoading = false;
+        if(data !== undefined){
+          this.numberOfPages = data.totalPages!!;
+          this.medicamentCards = data.content!!;
+        }
       }
     )
   }
