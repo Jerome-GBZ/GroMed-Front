@@ -8,6 +8,7 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 export class InvoiceComponent {
   width: number = window.innerWidth;
 
+  
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.width = event.target.innerWidth;
