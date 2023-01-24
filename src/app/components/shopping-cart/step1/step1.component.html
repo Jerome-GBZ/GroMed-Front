@@ -1,0 +1,21 @@
+<div class="container-medic">
+    <span class="subtitle"> 2 médicaments dans mon panier </span>
+
+    <app-line [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
+    <app-line [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
+
+    <div class="container-total">
+        <span> Total </span>
+        <span> 51.67€ </span>
+    </div>
+
+    <div class="container-button">
+        <button class="button">
+            Ajouter une commande type
+        </button>
+
+        <button class="button" (click)="nextStep(2)">
+            Confirmer mes achats
+        </button>
+    </div>
+</div>

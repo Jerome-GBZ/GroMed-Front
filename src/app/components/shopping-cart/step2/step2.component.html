@@ -1,0 +1,45 @@
+<div class="container-medic">
+    <span class="subtitle"> Récap </span>
+    <div class="list-recap mb30">
+        <div class="item-recap">
+            <span> 1x </span>
+            <span> domperidone 10mg </span>
+            <span class="price-recap"> 19.99€ </span>
+        </div>
+
+        <div>
+            <span> 1x </span>
+            <span> domperidone 10mg </span>
+            <span class="price-recap"> 19.99€ </span>
+        </div>
+    </div>
+
+    <span class="subtitle"> ARTICLES INDISPONIBLE TEMPORAIREMENT </span>
+    <app-line [variant]="1" (deleteItemEvent)="deleteItem($event)"></app-line>
+    <app-line [variant]="1" (deleteItemEvent)="deleteItem($event)"></app-line>
+
+    <div class="groupe-shipping mt30 mb30">
+        <span class="subtitle"> ARTICLES INDISPONIBLES </span>
+        <h2 class="ShippingDelay"> 24h </h2>
+    </div>
+
+    <span class="subtitle"> PREVENTION ACHATS </span>
+    <ul class="mb30">
+        <li> LE DOMPERIDONE COMPORTE DES RISQUES CHEZ LES ENFANTS </li>
+        <li> LE DOMPERIDONE COMPORTE DES RISQUES CHEZ LES FEMMES ENCEINTES </li>
+        <li> LE DOLIPRANE CONTIENT UNE SUBSTANCE À EFFET ENDORMANTE </li>
+    </ul>
+
+    <div class="group-radio">
+            <input type="radio" id="acceptCondition" name="radio" value="1" (change)="acceptCondition()">
+            <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
+    </div>
+
+    <div class="container-button step2">
+        <button class="button" style="display: none;"> </button>
+
+        <button class="button" (click)="nextStep(3)" [disabled]="disabledButton || [{}, {}].length > 0">
+            Passer commande
+        </button>
+    </div>
+</div>

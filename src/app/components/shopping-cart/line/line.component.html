@@ -4,11 +4,28 @@
     </div>
 
     <div class="group-action">
-        <img class="icon" src="./assets/trash.svg" alt="delete">
-        <div class="container-warning icon">
-            <img src="./assets/warning.svg" alt="delete">
+        <img class="icon" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(1)">
+
+        <div class="container-card validate icon" *ngIf="variant == VariantType.UNAVAILABLE" pTooltip="Accepter le delai de 7j" tooltipPosition="top">
+            <img src="./assets/validate.svg" alt="validate">
         </div>
-        <input class="quantity icon" type="number" [value]="1" [min]="0" [max]="100">
+
+        <div class="container-card delete icon" *ngIf="variant == VariantType.UNAVAILABLE" (click)="deleteMedicament(1)" pTooltip="Supprimer le médicament du panier" tooltipPosition="top">
+            <img src="./assets/delete.svg" alt="delete">
+        </div>
+
+        <div class="container-card warning icon" pTooltip="Ce produit contient certains risque pour la santé" tooltipPosition="top">
+            <img src="./assets/warning.svg" alt="warning">
+        </div>
+
+        <div class="container-button mt0 icon" *ngIf="variant == VariantType.UNAVAILABLE">
+            <button class="button substitution" (click)="deleteMedicament(1)" routerLink="/">
+                Substituer
+            </button>
+        </div>
+
+        <input class="quantity icon" *ngIf="variant == VariantType.EDIT" type="number" [value]="1" [min]="1" [max]="100">
+
         <span class="icon"> 109.99€ </span>
     </div>
 </div>

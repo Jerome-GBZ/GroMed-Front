@@ -1,7 +1,8 @@
 @import "../../../../styles.scss";
+@import "../steps/steps.component.scss";
 
 .line {
-    width: 600px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,15 +33,26 @@
     }
 }
 
-.container-warning {
+.container-card {
     width: 30px;
     height: 30px;
-    background-color: rgba($warning, 0.40);
     border-radius: 8px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.warning {
+        background-color: rgba($warning, 0.30);
+    }
+
+    &.validate {
+        background-color: rgba($success, 0.30);
+    }
+
+    &.delete {
+        background-color: rgba($error, 0.30);
+    }
 }
 
 .quantity {
@@ -50,4 +62,12 @@
     border-radius: 12px;
     border: 1px solid $line;
     background: $background;
+}
+
+.substitution {
+    padding: 10.5px 40px !important;
+}
+
+.mt0 {
+    margin-top: 0px !important;
 }

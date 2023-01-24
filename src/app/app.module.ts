@@ -16,9 +16,12 @@ import { AccountComponent } from './pages/account/account.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LineComponent } from './components/shopping-cart/line/line.component';
 import { StepsComponent } from './components/shopping-cart/steps/steps.component';
-import { LineComponent } from './components/shopping-cart/line/line.component'
-
+import { Step1Component } from './components/shopping-cart/step1/step1.component';
+import { Step2Component } from './components/shopping-cart/step2/step2.component';
+import { Step3Component } from './components/shopping-cart/step3/step3.component'
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { LineComponent } from './components/shopping-cart/line/line.component'
     LoginComponent,
     HamburgerMenuComponent,
     StepsComponent,
-    LineComponent
+    LineComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ import { LineComponent } from './components/shopping-cart/line/line.component'
     InputTextModule,
     MatGridListModule,
     PaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

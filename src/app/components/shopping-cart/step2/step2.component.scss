@@ -1,0 +1,54 @@
+
+@import "../steps/steps.component.scss";
+
+.step2 {
+    width: 100%;
+    margin-left: calc(100% - 186px);
+}
+
+.list-recap {
+    margin-top: 15px;
+
+    .item-recap {
+        margin-bottom: 5px;
+    }
+
+    .price-recap {
+        padding-left: 30px;
+    }
+}
+
+.container-medic {
+    ul li {
+        font-size: 16px;
+    }
+}
+
+.groupe-shipping {
+    .ShippingDelay {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0px;
+    }
+}
+
+.group-radio {
+    display: flex;
+
+    #acceptCondition {
+        width: 20px;
+        height: 20px;
+    }
+
+    label {
+        margin-left: 10px;
+        font-size: 15px;
+        color: $paragraph;
+    }
+}
+
+.button:disabled {
+    background-color: rgba($primary, 0.3) !important;
+    cursor: not-allowed !important;;
+}
+

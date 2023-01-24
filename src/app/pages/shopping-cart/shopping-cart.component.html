@@ -7,30 +7,15 @@
         <app-sidebar-menu [currentItem]="2"></app-sidebar-menu>
     </div>
 
-    <div class="content">
+    <div class="content" *ngIf="this.stepShop">
+        <img class="arrow-back" src="./assets/arrow-left.svg" alt="go back" *ngIf="this.stepShop > 1" (click)="onStepChange(this.stepShop - 1)" />
+
         <h1 class="title"> PASSER COMMANDE </h1>
-        <app-steps [step]="1"></app-steps>
 
-        <div class="container-medic">
-            <span class="subtitle"> 2 médicaments dans mon panier </span>
+        <app-steps [step]="this.stepShop"></app-steps>
 
-            <app-line></app-line>
-            <app-line></app-line>
-
-            <div class="container-total">
-                <span> Total </span>
-                <span> 51.67€ </span>
-            </div>
-
-            <div class="container-button">
-                <button class="button">
-                    Ajouter une commande type
-                </button>
-
-                <button class="button">
-                    Confirmer mes achats
-                </button>
-            </div>
-        </div>
+        <app-step1 *ngIf="this.stepShop == 1" (stepItemEvent)="this.onStepChange($event)"></app-step1>
+        <app-step2 *ngIf="this.stepShop == 2" (stepItemEvent)="this.onStepChange($event)"></app-step2>
+        <app-step3 *ngIf="this.stepShop == 3" (stepItemEvent)="this.onStepChange($event)"></app-step3>
     </div>
 </div>
