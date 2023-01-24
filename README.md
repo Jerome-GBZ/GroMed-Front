@@ -11,5 +11,22 @@
 
 # GroMed-Front
 
-https://www.figma.com/file/JeSp4Koz3kv3Y0GT6uIjUl/GroMed?node-id=0%3A1&t=gf09uMvMg9TCZEUD-1
+
+### Getting started 🚀
+
+Initialisez le projet en tout simplicité.
+
+**Lancez l'installation des modules**
+```
+npm install
+```
+
+```
+npm update
+```
+
+**Lancez le projet**
+```
+npm run
+```
 
