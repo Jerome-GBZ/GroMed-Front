@@ -16,6 +16,8 @@ import { AccountComponent } from './pages/account/account.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatDialogModule } from '@angular/material/dialog'
+import { BadgeModule } from 'primeng/badge';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { MatDialogModule } from '@angular/material/dialog'
     InputTextModule,
     MatGridListModule,
     PaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    BadgeModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
