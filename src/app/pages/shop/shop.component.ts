@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
-import {PagePresentationCardModel, PresentationControllerService} from "../../../libs";
+import { PagePresentationCardModel, PresentationControllerService } from "../../../libs";
 
 @Component({
   selector: 'app-shop',
@@ -9,8 +9,8 @@ import {PagePresentationCardModel, PresentationControllerService} from "../../..
 export class ShopComponent implements OnInit{
   width: number = window.innerWidth;
 
-  constructor(private presentationService: PresentationControllerService){
-  }
+  constructor(private presentationService: PresentationControllerService) { }
+  
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.width = event.target.innerWidth;
