@@ -4,7 +4,7 @@
     </div>
 
     <div class="group-action">
-        <img class="icon" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(1)">
+        <img class="icon trash" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(1)">
 
         <div class="container-card validate icon" *ngIf="variant == VariantType.UNAVAILABLE" pTooltip="Accepter le delai de 7j" tooltipPosition="top">
             <img src="./assets/validate.svg" alt="validate">

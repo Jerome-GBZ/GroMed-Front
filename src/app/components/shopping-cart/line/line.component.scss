@@ -48,11 +48,17 @@
 
     &.validate {
         background-color: rgba($success, 0.30);
+        cursor: pointer;
     }
 
     &.delete {
+        cursor: pointer;
         background-color: rgba($error, 0.30);
     }
+}
+
+.trash {
+    cursor: pointer;
 }
 
 .quantity {
