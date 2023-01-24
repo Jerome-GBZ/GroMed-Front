@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="hamburger">
+        <app-hamburger-menu></app-hamburger-menu>
+    </div>
+
+    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
+        <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
+    </div>
+
+    <div class="content">
+
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">
+        </span>
+
+        <div class="toolbar">
+            <img src="./assets/arrow-left.svg"/>
+            <p class="path">MAGASIN/</p>
+            <p class="current-product">DOMPERIDONE</p>
+        </div>
+
+        <div class="product-container">
+            <div class="product">
+                <h2 class="title">DOMPERIDONE</h2>
+                <h3>10mg</h3>
+                <p>
+                    Quis enim aut eum diligat quem metuat, aut eum a quo se metui putet? Coluntur tamen simulatione dumtaxat ad tempus. Quod si forte, ut fit plerumque, ceciderunt, tum intellegitur quam fuerint inopes amicorum. Quod Tarquinium dixisse ferunt, tum exsulantem se intellexisse quos fidos amicos habuisset, quos infidos, cum iam neutris gratiam referre posset.
+Haec ubi latius fama vulgasset missaeque relationes adsiduae Gallum Caesarem permovissent, quoniam magister equitum longius ea tempestate distinebatur, iussus comes orientis Nebridius contractis undique militaribus copiis ad eximendam periculo civitatem amplam et oportunam studio properabat ingenti, quo cognito abscessere latrones nulla re amplius memorabili gesta, dispersique ut solent avia montium petiere celsorum.
+                </p>
+            </div>
+            <div class="buy">
+                <h1>9.99$</h1>
+                <div class="input-container">
+                    <p>Quantité: </p>
+                    <input class="quantity icon" type="number" [value]="1" [min]="0" [max]="100">
+                </div>
+                <div class="line"></div>
+                <p>Sous total:</p>
+                <div class="input-container">
+                    <p class="soustot-name">1x DOMERIDONE 10mg Remboursement 1/3</p>
+                    <p>9.99$</p>
+                </div>
+                <div class="avertissement">
+                    <img src="./assets/warning-2.svg"/>
+                    <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci</p>
+                </div>
+                <p-button class="buy-button" label="Ajouter au panier"/>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,143 @@
+@import "../../../styles.scss";
+@import "../../../styles/default-layout.scss";
+
+
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.p-input-icon-left{
+    width: 95%;
+}
+
+.p-inputtext-lg{
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    border-color: $line;
+    &::placeholder{
+        color: $placeholder
+    }
+}
+
+.p-inputtext.p-inputtext-lg{
+    padding-left: 60px !important;
+}
+
+.pi-search{
+    padding-left: 20px;
+    color: $placeholder;
+}
+
+.pi{
+    color: $placeholder;
+}
+
+
+.toolbar{
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.path{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    color: #BAB9BF;
+}
+
+.current-product{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    color: $title;
+}
+
+.product-container{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+}
+
+.product{
+    width: 70%;
+    height: 80vh;
+    padding-right: 100px;
+}
+
+.quantity {
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid $line;
+    background: $background;
+}
+.input-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.buy{
+    width: 30%;
+    height: 80vh;
+    padding-right: 50px;
+}
+.line{
+    width: 100%;
+    margin-top: 20px;
+    height: 1px;
+    background-color: $line;
+}
+
+.soustot-name{
+    max-width: 70%;
+}
+
+::ng-deep .p-button {
+    margin-top: 30px;
+    width: 100% !important;
+    height: 50px !important;
+    border-radius: 12px !important;
+    background-color: $primary !important;
+
+}
+p{
+    color: $paragraph;
+    line-height: 140%;
+}
+
+.avertissement{
+    width: 100%;
+    background: rgba(254, 236, 189, 0.51);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.warning{
+    color: $warning;
+}
+@media screen and (max-width: 1050px){
+    .product-container{
+        flex-direction: column;
+    }
+    .product{
+        width: 100%;
+    }
+    .buy{
+        width: 100%;
+    }
+}

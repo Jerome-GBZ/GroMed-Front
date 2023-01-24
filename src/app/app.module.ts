@@ -18,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MatDialogModule } from '@angular/material/dialog'
 import { BadgeModule } from 'primeng/badge';
 import { TableModule } from 'primeng/table';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TableModule } from 'primeng/table';
     AccountComponent,
     WelcomeComponent,
     LoginComponent,
-    HamburgerMenuComponent
+    HamburgerMenuComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
