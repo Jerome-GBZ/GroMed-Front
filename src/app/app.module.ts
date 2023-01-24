@@ -30,6 +30,8 @@ import { BadgeModule } from 'primeng/badge';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import {ApiModule} from "../libs";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ProductDetailsComponent
   ],
   imports: [
+    ApiModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
