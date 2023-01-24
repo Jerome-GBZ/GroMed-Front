@@ -6,7 +6,6 @@
     flex-direction: column;
     align-items: center;
     padding-top: 12px;
-    height: 100vh;
     overflow-y: auto;
 }
 
@@ -35,6 +34,10 @@
 
 .pi{
     color: $placeholder;
+}
+
+.card-container{
+    width: 100%;
 }
 
 .card-grid{

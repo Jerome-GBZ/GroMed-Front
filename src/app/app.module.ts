@@ -33,6 +33,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { ApiModule } from "../libs";
+import { ShopCardComponent } from './components/shop-card/shop-card.component';
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { ApiModule } from "../libs";
     Step1Component,
     Step2Component,
     Step3Component,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ShopCardComponent
   ],
   imports: [
     ApiModule,
@@ -66,7 +69,8 @@ import { ApiModule } from "../libs";
     MatDialogModule,
     TooltipModule,
     BadgeModule,
-    TableModule
+    TableModule,
+    SkeletonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
