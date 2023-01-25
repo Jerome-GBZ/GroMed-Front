@@ -31,4 +31,21 @@ p{
 .p-button{
     margin-top: 50px;
     height: 60px !important;
+    cursor: pointer;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 10px !important;
+}
+
+:host ::ng-deep {
+    .p-toast-message-custom {
+        background-color: #E1CFE7;
+        border: solid #8A427A;
+        border-width: 0 0 0 6px;
+        color: #2c1e30;
+        .p-toast-icon-close {
+            color: #2c1e30;
+        }
+    }
 }
