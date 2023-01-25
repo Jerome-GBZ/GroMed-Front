@@ -176,6 +176,10 @@ p{
     font-weight: 500 !important;
 }
 
+.li-warning{
+    color: $warning;
+}
+
 .back{
     &:hover{
         cursor: pointer;

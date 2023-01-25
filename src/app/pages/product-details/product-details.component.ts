@@ -22,6 +22,7 @@ export class ProductDetailsComponent {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       this.presentationService.getDetailPresentation(id).subscribe( (data: PresentationDetailModel) => {
+        console.log(data)
           if(data !== undefined){
             this.medicamentDetails = data;
             this.subtotal = data.prix!!;
