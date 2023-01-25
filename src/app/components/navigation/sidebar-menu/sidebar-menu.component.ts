@@ -1,3 +1,5 @@
+import { UtilisateurModel } from './../../../../libs/model/utilisateurModel';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Component, Input, ElementRef, HostListener } from '@angular/core';
 
 @Component({
@@ -9,6 +11,9 @@ export class SidebarMenuComponent {
   @Input() currentItem = SidebarItem.SHOP;
   sideBarItem: typeof SidebarItem = SidebarItem;
   width: number = window.innerWidth;
+  utilisateur: UtilisateurModel = this.authService.getUtilisateur()!!;
+
+  constructor(public authService: AuthService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
