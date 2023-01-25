@@ -7,7 +7,7 @@
         <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
     </div>
 
-    <div class="content">
+    <div class="content" *ngIf="this.medicamentDetails">
 
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
@@ -15,31 +15,43 @@
         </span>
 
         <div class="toolbar">
-            <img src="./assets/arrow-left.svg"/>
+            <img src="./assets/arrow-left.svg" (click)="location.back()" class="back"/>
             <p class="path">MAGASIN/</p>
-            <p class="current-product">DOMPERIDONE</p>
+            <p class="current-product">{{this.medicamentDetails.titre}}</p>
         </div>
 
         <div class="product-container">
             <div class="product">
-                <h2 class="title">DOMPERIDONE</h2>
-                <h3>10mg</h3>
+                <h2 class="title">{{this.medicamentDetails.titre}}</h2>
+                <h3>{{this.medicamentDetails.titulaire}}</h3>
                 <p>
-                    Quis enim aut eum diligat quem metuat, aut eum a quo se metui putet? Coluntur tamen simulatione dumtaxat ad tempus. Quod si forte, ut fit plerumque, ceciderunt, tum intellegitur quam fuerint inopes amicorum. Quod Tarquinium dixisse ferunt, tum exsulantem se intellexisse quos fidos amicos habuisset, quos infidos, cum iam neutris gratiam referre posset.
-Haec ubi latius fama vulgasset missaeque relationes adsiduae Gallum Caesarem permovissent, quoniam magister equitum longius ea tempestate distinebatur, iussus comes orientis Nebridius contractis undique militaribus copiis ad eximendam periculo civitatem amplam et oportunam studio properabat ingenti, quo cognito abscessere latrones nulla re amplius memorabili gesta, dispersique ut solent avia montium petiere celsorum.
+                    {{this.medicamentDetails.description}}
                 </p>
+                <div class="label-row">
+                    <div class="label-container">
+                        <p class="label">
+                           {{medicamentDetails.estGenerique ? "Générique" : "Original"}}
+                        </p>
+                    </div>
+            
+                    <div class="label-container purple">
+                        <p class="label">
+                            {{medicamentDetails.formePharmaceutique}}
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="buy">
-                <h1>9.99$</h1>
+                <h1>{{this.medicamentDetails.prix}}</h1>
                 <div class="input-container">
                     <p>Quantité: </p>
-                    <input class="quantity icon" type="number" [value]="1" [min]="0" [max]="100">
+                    <input class="quantity icon" #quantity (change)="this.getSubtotal(quantity.value)" type="number" [value]="1" [min]="0" [max]="100">
                 </div>
                 <div class="line"></div>
                 <p>Sous total:</p>
                 <div class="input-container">
-                    <p class="soustot-name">1x DOMERIDONE 10mg Remboursement 1/3</p>
-                    <p>9.99$</p>
+                    <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  {{this.medicamentDetails.tauxRemboursement}}</p>
+                    <p>{{ this.subtotal }} </p>
                 </div>
                 <div class="avertissement">
                     <img src="./assets/warning-2.svg"/>
