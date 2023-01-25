@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageService } from 'primeng/api';
 import { LoginComponent } from '../login/login.component';
-import { SelectMultipleControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-welcome',
