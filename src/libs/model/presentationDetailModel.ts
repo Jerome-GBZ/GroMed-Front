@@ -9,16 +9,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { InfoImportanteModel } from './infoImportanteModel';
 
 
 /**
- * DTO représentant une présentation
+ * DTO représentant une présentation détaillée
  */
-export interface PresentationCardModel {
-    totalPages: number;
-    content: PresentationCardModel[]; 
+export interface PresentationDetailModel { 
     /**
-     * Code CIS du médicament
+     * Code CIS de la présentation
      */
     codeCIS?: string;
     /**
@@ -26,21 +25,21 @@ export interface PresentationCardModel {
      */
     codeCIP7?: string;
     /**
-     * Titre de la présent
+     * Titre de la présentation
      */
     titre?: string;
     /**
-     * Indique si le médicament contient des informations importante
+     * Description de la présentation
      */
-    contientInformation?: boolean;
+    description?: string;
     /**
      * Prix de la présentation
      */
     prix?: number;
     /**
-     * Description de la présentation
+     * Stock de la présentation
      */
-    description?: string;
+    stock?: number;
     /**
      * Indique si le médicament est générique
      */
@@ -48,6 +47,18 @@ export interface PresentationCardModel {
     /**
      * Indique la forme du médicament
      */
-    format?: string;
+    formePharmaceutique?: string;
+    /**
+     * Indique le titulaire du médicament
+     */
+    titulaire?: string;
+    /**
+     * Indique le taux de remboursement
+     */
+    tauxRemboursement?: number;
+    /**
+     * Indique la liste des informations importantes du médicament
+     */
+    informationsImportantes?: Array<InfoImportanteModel>;
 }
 

@@ -19,11 +19,7 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { Pagination } from '../model/pagination';
-// @ts-ignore
-import { PresentationCardModel } from '../model/presentationCardModel';
-// @ts-ignore
-import { PresentationDetailModel } from '../model/presentationDetailModel';
+import { UtilisateurModel } from '../model/utilisateurModel';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -34,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class PresentationControllerService {
+export class UtilisateurControllerService {
 
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
@@ -96,22 +92,30 @@ export class PresentationControllerService {
     }
 
     /**
-     * @param codeCIP7 
+     * @param email 
+     * @param motDePasse 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDetailPresentation(codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PresentationDetailModel>;
-    public getDetailPresentation(codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PresentationDetailModel>>;
-    public getDetailPresentation(codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PresentationDetailModel>>;
-    public getDetailPresentation(codeCIP7: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (codeCIP7 === null || codeCIP7 === undefined) {
-            throw new Error('Required parameter codeCIP7 was null or undefined when calling getDetailPresentation.');
+    public getConnection(email: string, motDePasse: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UtilisateurModel>;
+    public getConnection(email: string, motDePasse: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UtilisateurModel>>;
+    public getConnection(email: string, motDePasse: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UtilisateurModel>>;
+    public getConnection(email: string, motDePasse: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling getConnection.');
+        }
+        if (motDePasse === null || motDePasse === undefined) {
+            throw new Error('Required parameter motDePasse was null or undefined when calling getConnection.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (codeCIP7 !== undefined && codeCIP7 !== null) {
+        if (email !== undefined && email !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>codeCIP7, 'codeCIP7');
+            <any>email, 'email');
+        }
+        if (motDePasse !== undefined && motDePasse !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>motDePasse, 'motDePasse');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -145,72 +149,8 @@ export class PresentationControllerService {
             }
         }
 
-        let localVarPath = `/presentation/detail`;
-        return this.httpClient.request<PresentationDetailModel>('get', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                params: localVarQueryParameters,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * @param pagination 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getLesPresentations(pagination: Pagination, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PresentationCardModel>;
-    public getLesPresentations(pagination: Pagination, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PresentationCardModel>>;
-    public getLesPresentations(pagination: Pagination, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PresentationCardModel>>;
-    public getLesPresentations(pagination: Pagination, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (pagination === null || pagination === undefined) {
-            throw new Error('Required parameter pagination was null or undefined when calling getLesPresentations.');
-        }
-
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (pagination !== undefined && pagination !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pagination, 'pagination');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/presentation/all`;
-        return this.httpClient.request<PresentationCardModel>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/utilisateur/connection`;
+        return this.httpClient.request<UtilisateurModel>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
