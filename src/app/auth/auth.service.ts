@@ -1,8 +1,8 @@
-import { UtilisateurControllerService } from 'src/libs/api/utilisateurController.service';
-import { UtilisateurModel } from './../../libs/model/utilisateurModel';
+import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { UtilisateurControllerService } from '../../libs/api/utilisateurController.service';
+import { UtilisateurModel } from './../../libs/model/utilisateurModel';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +26,9 @@ export class AuthService implements CanActivate {
     return this.getUtilisateur() ? true : false;
   }
 
-  getUtilisateur(): UtilisateurModel | boolean {
+  getUtilisateur(): UtilisateurModel | undefined {
     const utilisateurString = localStorage.getItem('utilisateur');
-    return utilisateurString ? JSON.parse(utilisateurString) : false;
+    return utilisateurString ? JSON.parse(utilisateurString) : undefined;
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> | Observable<boolean> {
