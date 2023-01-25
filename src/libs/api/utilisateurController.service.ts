@@ -97,15 +97,15 @@ export class UtilisateurControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getConnection(email: string, motDePasse: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UtilisateurModel>;
-    public getConnection(email: string, motDePasse: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UtilisateurModel>>;
-    public getConnection(email: string, motDePasse: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UtilisateurModel>>;
-    public getConnection(email: string, motDePasse: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public authenticate(email: string, motDePasse: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UtilisateurModel>;
+    public authenticate(email: string, motDePasse: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UtilisateurModel>>;
+    public authenticate(email: string, motDePasse: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UtilisateurModel>>;
+    public authenticate(email: string, motDePasse: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (email === null || email === undefined) {
-            throw new Error('Required parameter email was null or undefined when calling getConnection.');
+            throw new Error('Required parameter email was null or undefined when calling authenticate.');
         }
         if (motDePasse === null || motDePasse === undefined) {
-            throw new Error('Required parameter motDePasse was null or undefined when calling getConnection.');
+            throw new Error('Required parameter motDePasse was null or undefined when calling authenticate.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -150,7 +150,7 @@ export class UtilisateurControllerService {
         }
 
         let localVarPath = `/utilisateur/connection`;
-        return this.httpClient.request<UtilisateurModel>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<UtilisateurModel>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,

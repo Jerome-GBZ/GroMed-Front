@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
+import { CommandeControllerService } from './api/commandeController.service';
 import { PresentationControllerService } from './api/presentationController.service';
 import { UtilisateurControllerService } from './api/utilisateurController.service';
 

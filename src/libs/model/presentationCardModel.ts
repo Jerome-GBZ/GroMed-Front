@@ -14,9 +14,7 @@
 /**
  * DTO représentant une présentation
  */
-export interface PresentationCardModel {
-    totalPages: number;
-    content: PresentationCardModel[]; 
+export interface PresentationCardModel { 
     /**
      * Code CIS du médicament
      */

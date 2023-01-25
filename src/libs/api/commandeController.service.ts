@@ -19,23 +19,18 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { Pagination } from '../model/pagination';
-// @ts-ignore
-import { PresentationCardModel } from '../model/presentationCardModel';
-// @ts-ignore
-import { PresentationDetailModel } from '../model/presentationDetailModel';
+import { PresentationPanierModel } from '../model/presentationPanierModel';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
-import { PagePresentationCardModel } from '../model/pagePresentationCardModel';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class PresentationControllerService {
+export class CommandeControllerService {
 
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
@@ -97,19 +92,107 @@ export class PresentationControllerService {
     }
 
     /**
+     * @param idUtilisateur 
+     * @param codeCIP7 
+     * @param quantite 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PresentationPanierModel>;
+    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PresentationPanierModel>>;
+    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PresentationPanierModel>>;
+    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (idUtilisateur === null || idUtilisateur === undefined) {
+            throw new Error('Required parameter idUtilisateur was null or undefined when calling addPresentationToCart.');
+        }
+        if (codeCIP7 === null || codeCIP7 === undefined) {
+            throw new Error('Required parameter codeCIP7 was null or undefined when calling addPresentationToCart.');
+        }
+        if (quantite === null || quantite === undefined) {
+            throw new Error('Required parameter quantite was null or undefined when calling addPresentationToCart.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (idUtilisateur !== undefined && idUtilisateur !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>idUtilisateur, 'idUtilisateur');
+        }
+        if (codeCIP7 !== undefined && codeCIP7 !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>codeCIP7, 'codeCIP7');
+        }
+        if (quantite !== undefined && quantite !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>quantite, 'quantite');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/commande/add`;
+        return this.httpClient.request<PresentationPanierModel>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param idUtilisateur 
      * @param codeCIP7 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDetailPresentation(codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PresentationDetailModel>;
-    public getDetailPresentation(codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PresentationDetailModel>>;
-    public getDetailPresentation(codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PresentationDetailModel>>;
-    public getDetailPresentation(codeCIP7: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PresentationPanierModel>;
+    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PresentationPanierModel>>;
+    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PresentationPanierModel>>;
+    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (idUtilisateur === null || idUtilisateur === undefined) {
+            throw new Error('Required parameter idUtilisateur was null or undefined when calling deletePresentationToCart.');
+        }
         if (codeCIP7 === null || codeCIP7 === undefined) {
-            throw new Error('Required parameter codeCIP7 was null or undefined when calling getDetailPresentation.');
+            throw new Error('Required parameter codeCIP7 was null or undefined when calling deletePresentationToCart.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (idUtilisateur !== undefined && idUtilisateur !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>idUtilisateur, 'idUtilisateur');
+        }
         if (codeCIP7 !== undefined && codeCIP7 !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>codeCIP7, 'codeCIP7');
@@ -146,8 +229,8 @@ export class PresentationControllerService {
             }
         }
 
-        let localVarPath = `/presentation/detail`;
-        return this.httpClient.request<PresentationDetailModel>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/commande/delete`;
+        return this.httpClient.request<PresentationPanierModel>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -161,22 +244,22 @@ export class PresentationControllerService {
     }
 
     /**
-     * @param pagination 
+     * @param idUtilisateur 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPresentations(pagination: Pagination, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PagePresentationCardModel>;
-    public getPresentations(pagination: Pagination, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PagePresentationCardModel>>;
-    public getPresentations(pagination: Pagination, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PagePresentationCardModel>>;
-    public getPresentations(pagination: Pagination, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (pagination === null || pagination === undefined) {
-            throw new Error('Required parameter pagination was null or undefined when calling getPresentations.');
+    public getUserCart(idUtilisateur: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PresentationPanierModel>;
+    public getUserCart(idUtilisateur: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PresentationPanierModel>>;
+    public getUserCart(idUtilisateur: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PresentationPanierModel>>;
+    public getUserCart(idUtilisateur: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (idUtilisateur === null || idUtilisateur === undefined) {
+            throw new Error('Required parameter idUtilisateur was null or undefined when calling getUserCart.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (pagination !== undefined && pagination !== null) {
+        if (idUtilisateur !== undefined && idUtilisateur !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pagination, 'pagination');
+            <any>idUtilisateur, 'idUtilisateur');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -210,8 +293,8 @@ export class PresentationControllerService {
             }
         }
 
-        let localVarPath = `/presentation/all`;
-        return this.httpClient.request<PresentationCardModel>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/commande/panier`;
+        return this.httpClient.request<PresentationPanierModel>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,

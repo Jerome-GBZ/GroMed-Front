@@ -12,20 +12,9 @@
 
 
 /**
- * Donnée utilisateur renvoyé a la connection
+ * liste des conditions de prescription de la présentation
  */
-export interface UtilisateurModel { 
-    /**
-     * Nom de l\'utilisateur
-     */
-    nom?: string;
-    /**
-     * Prénom de l\'utilisateur
-     */
-    prenom?: string;
-    /**
-     * Nom de l\'établissement de l\'utilisateur
-     */
-    nomEtablissement?: string;
+export interface ConditionPrescriptionDTO { 
+    condition?: string;
 }
 

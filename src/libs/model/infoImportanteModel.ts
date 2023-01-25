@@ -19,5 +19,9 @@ export interface InfoImportanteModel {
      * message de l\'information importante
      */
     message?: string;
+    /**
+     * lien de l\'information importante
+     */
+    lien?: string;
 }
 

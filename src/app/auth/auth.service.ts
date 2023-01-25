@@ -12,7 +12,7 @@ export class AuthService implements CanActivate {
   constructor(private router: Router, private utilisateurService: UtilisateurControllerService) { }
 
   login(email: string, password: string): Observable<{success: boolean, message: string}> {
-      return this.utilisateurService.getConnection(email, password).pipe(
+      return this.utilisateurService.authenticate(email, password).pipe(
         map((data: UtilisateurModel) => {
             localStorage.setItem('utilisateur', JSON.stringify(data));
 
