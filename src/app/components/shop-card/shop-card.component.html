@@ -1,6 +1,23 @@
-<div class="container" *ngIf="presentationCard">
-    <h3>{{presentationCard.titre}}</h3>
-    <h4>10mg</h4>
-    <p>{{presentationCard.description}}</p>
-    <h5>{{presentationCard.prix}}</h5>
+<div class="container" *ngIf="presentationCard" pRipple routerLink="/detail/{{presentationCard.codeCIP7}}" >
+    <div class="heading">
+        <h3>{{presentationCard.titre}}</h3>
+        <div *ngIf="presentationCard.contientInformation" class="container-card warning icon" pTooltip="Ce produit contient certains risque pour la santé" tooltipPosition="top">
+            <img src="./assets/warning.svg" alt="warning">
+        </div>
+    </div>
+    <div class="label-row">
+        <div class="label-container">
+            <p class="label">
+               {{presentationCard.estGenerique ? "Générique" : "Original"}}
+            </p>
+        </div>
+
+        <div class="label-container purple">
+            <p class="label">
+                {{presentationCard.format}}
+            </p>
+        </div>
+    </div>
+    <p class="description">{{presentationCard.description}}</p>
+    <h5>{{presentationCard.prix}} €</h5>
 </div>
