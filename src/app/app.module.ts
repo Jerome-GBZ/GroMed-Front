@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
@@ -35,6 +36,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ApiModule } from "../libs";
 import { ShopCardComponent } from './components/shop-card/shop-card.component';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -70,9 +73,11 @@ import { SkeletonModule } from 'primeng/skeleton';
     TooltipModule,
     BadgeModule,
     TableModule,
-    SkeletonModule
+    SkeletonModule,
+    ToastModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
