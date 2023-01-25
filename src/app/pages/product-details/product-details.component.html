@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="buy">
-                <h1>{{this.medicamentDetails.prix}}</h1>
+                <h1>{{this.medicamentDetails.prix}} €</h1>
                 <div class="input-container">
                     <p>Quantité: </p>
                     <input class="quantity icon" #quantity (change)="this.getSubtotal(quantity.value)" type="number" [value]="1" [min]="0" [max]="100">
@@ -50,12 +50,20 @@
                 <div class="line"></div>
                 <p>Sous total:</p>
                 <div class="input-container">
-                    <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  {{this.medicamentDetails.tauxRemboursement}}</p>
-                    <p>{{ this.subtotal }} </p>
+                    <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  <br>Remboursement: {{this.medicamentDetails.tauxRemboursement}}%</p>
+                    <p>{{ this.subtotal }} €</p>
                 </div>
-                <div class="avertissement">
+                <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
                     <img src="./assets/warning-2.svg"/>
-                    <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci</p>
+                    <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci:
+                    </p>
+                    <ul>
+                        <li class="li-warning" *ngFor="let infoImportante of this.medicamentDetails.informationsImportantes">
+                            <p class="warning"> 
+                            {{infoImportante.message}}
+                            </p>
+                        </li>
+                    </ul> 
                 </div>
                 <p-button class="buy-button" label="Ajouter au panier"/>
             </div>
