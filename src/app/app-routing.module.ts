@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'facture', component: InvoiceComponent },
   { path: 'compte', component: AccountComponent },
   { path: 'welcome', component: WelcomeComponent },
-  { path: 'detail', component: ProductDetailsComponent}
+  { path: 'detail/:id', component: ProductDetailsComponent}
 ];
 
 @NgModule({

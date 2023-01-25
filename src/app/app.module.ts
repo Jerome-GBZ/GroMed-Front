@@ -31,11 +31,10 @@ import { BadgeModule } from 'primeng/badge';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-
 import { ApiModule } from "../libs";
 import { ShopCardComponent } from './components/shop-card/shop-card.component';
 import { SkeletonModule } from 'primeng/skeleton';
-
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -70,7 +69,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     TooltipModule,
     BadgeModule,
     TableModule,
-    SkeletonModule
+    SkeletonModule,
+    RippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

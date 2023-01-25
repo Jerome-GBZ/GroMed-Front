@@ -21,10 +21,11 @@ export class ShopComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.presentationService.getLesPresentations({page: 0, size:12}).subscribe(
+    this.presentationService.getLesPresentations({page: 0, size:24}).subscribe(
       (data: PagePresentationCardModel)=>{
         this.isLoading = false;
         if(data !== undefined){
+          console.log(data)
           this.numberOfPages = data.totalPages!!;
           this.medicamentCards = data.content!!;
         }
@@ -38,6 +39,7 @@ export class ShopComponent implements OnInit{
       (data: PagePresentationCardModel)=>{
         this.isLoading = false;
         if(data !== undefined){    
+          console.log(data)
           this.numberOfPages = data.totalElements!!;
           this.medicamentCards = data.content!!;
         }
