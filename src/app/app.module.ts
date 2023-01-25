@@ -32,13 +32,12 @@ import { BadgeModule } from 'primeng/badge';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-
 import { ApiModule } from "../libs";
 import { ShopCardComponent } from './components/shop-card/shop-card.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -75,7 +74,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TableModule,
     SkeletonModule,
     ToastModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RippleModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -43,7 +43,7 @@
 .card-grid{
     width: 95%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
     grid-auto-rows: auto;
     gap: 15px;
     margin-top: 15px;
@@ -55,8 +55,12 @@
     background-color: red;
 }
 
+p-paginator{
+    margin-top: 12px;
+}
 @media (max-width: 1000px) {
     .card-grid{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        grid-auto-rows: auto;
     }
 }
