@@ -9,7 +9,7 @@ import { UtilisateurModel } from './../../libs/model/utilisateurModel';
 })
 export class AuthService implements CanActivate {
 
-  constructor(private router: Router, private utilisateurService: UtilisateurControllerService) { }
+  constructor(private router: Router, public utilisateurService: UtilisateurControllerService) { }
 
   login(email: string, password: string): Observable<{success: boolean, message: string}> {
       return this.utilisateurService.authenticate(email, password).pipe(

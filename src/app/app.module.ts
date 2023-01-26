@@ -38,6 +38,8 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RippleModule } from 'primeng/ripple';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { RippleModule } from 'primeng/ripple';
     SkeletonModule,
     ToastModule,
     BrowserAnimationsModule,
-    RippleModule
+    RippleModule,
+    AutoCompleteModule,
+    CheckboxModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

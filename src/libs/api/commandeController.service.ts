@@ -92,12 +92,14 @@ export class CommandeControllerService {
     }
 
     /**
+
      * @param email 
      * @param codeCIP7 
      * @param quantite 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
+
     public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
     public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
     public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
@@ -113,6 +115,7 @@ export class CommandeControllerService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+
         if (email !== undefined && email !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>email, 'email');
@@ -172,11 +175,13 @@ export class CommandeControllerService {
     }
 
     /**
+
      * @param email 
      * @param codeCIP7 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
+
     public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
     public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
     public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
@@ -189,6 +194,7 @@ export class CommandeControllerService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+
         if (email !== undefined && email !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>email, 'email');
@@ -244,6 +250,7 @@ export class CommandeControllerService {
     }
 
     /**
+
      * @param email 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.

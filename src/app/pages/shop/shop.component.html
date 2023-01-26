@@ -2,16 +2,49 @@
     <div class="hamburger">
         <app-hamburger-menu></app-hamburger-menu>
     </div>
-
     <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
         <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
     </div>
-
     <div class="content">
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">
+            <input type="text" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament">
         </span>
+        <div class="toolbar-container">
+            <div class="filter-container" *ngIf="!showFilters" (click)="showFilters = true">
+                <img src="./assets/filter-search.svg" class="filter-icon"/>
+                <p class="filter-label">Filtrer</p>
+            </div>
+            <div class="filter-container" *ngIf="showFilters" (click)="showFilters = false">
+                <img src="./assets/close.svg" class="filter-icon"/>
+                <p class="filter-label">Fermer</p>
+            </div>
+        </div>
+        <div class="filter-wrap" *ngIf="showFilters">
+            <div class="autocomplete-container">
+                <p>Principes actifs: </p>
+                <span class="p-fluid">
+                    <p-autoComplete [(ngModel)]="selectedComposition" [suggestions]="filteredComposition" (completeMethod)="filterComposition($event)" [multiple]="true">
+                    </p-autoComplete>
+                </span>
+            </div>
+            <div class="autocomplete-container">
+                <p>Fournisseur: </p>
+                <span class="p-fluid">
+                    <p-autoComplete [(ngModel)]="selectedTitulaire" [suggestions]="filteredTitulaire" (completeMethod)="filterTitulaire($event)" [multiple]="true">
+                    </p-autoComplete>
+                </span>
+            </div>
+            <div class="field-checkbox">
+                <p-checkbox [(ngModel)]="disponibleSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
+                <label >Disponible</label>
+            </div>
+            <div class="field-checkbox">
+                <p-checkbox [(ngModel)]="generiqueSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
+                <label >Générique</label>
+            </div>
+            <p-button label="Sauvegarder" [routerLink]="['/']" [queryParams]="{search: search.value, filterCompositon: selectedComposition, filterTitulaire: selectedTitulaire, disponible: disponibleSelected, generique: generiqueSelected}" ></p-button>
+        </div>
         <div class="card-grid" *ngIf="!isLoading" >
             <app-shop-card class="purple" *ngFor="let medCard of medicamentCards" [presentationCard]="medCard" ></app-shop-card>
         </div>

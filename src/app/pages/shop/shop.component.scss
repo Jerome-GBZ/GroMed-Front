@@ -64,3 +64,47 @@ p-paginator{
         grid-auto-rows: auto;
     }
 }
+
+.filter-container{
+    display: flex;
+    flex-direction: row;
+    border: solid 1px $line;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    border-radius: 12px;
+    gap: 5px;
+    &:hover{
+        cursor: pointer;
+        border: solid 1px rgba(0, 102, 255, 0.51);
+    }
+}
+
+.toolbar-container{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-wrap{
+    border: solid 1px $line;
+    width: 95%;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    row-gap: 10px;
+}
+
+label{
+    margin-left: 10px;
+}
+.autocomplete-container{
+    width: 95%;
+}
