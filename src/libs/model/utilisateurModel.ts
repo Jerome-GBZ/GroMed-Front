@@ -31,5 +31,9 @@ export interface UtilisateurModel {
      * Nom de l\'établissement de l\'utilisateur
      */
     nomEtablissement?: string;
+    /**
+     * Nombre de médicaments dans le panier
+     */
+    nbMedicamentsPanier?: number;
 }
 

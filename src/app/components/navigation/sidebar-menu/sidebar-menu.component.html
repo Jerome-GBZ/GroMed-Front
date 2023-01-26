@@ -21,7 +21,7 @@
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.PANIER}" routerLink="/panier">
             <img class="icon" src="./assets/bag-happy.svg" alt="Panier icône"/>
             <p class="label">Panier</p>
-            <p-badge value="2"  severity="info"></p-badge>
+            <p-badge value="{{ utilisateur.nbMedicamentsPanier }}"  severity="info"></p-badge>
             <img class="nav-icon arrow-shopping" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.PANIER ? 'display' : 'hide'" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.FACTURE}" routerLink="/facture">

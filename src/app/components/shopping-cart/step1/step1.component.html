@@ -1,12 +1,24 @@
 <div class="container-medic">
-    <span class="subtitle"> 2 médicaments dans mon panier </span>
+    <p-toast></p-toast>
 
-    <app-line [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
-    <app-line [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
+    <span class="subtitle" *ngIf="medicamentsLine.length > 0 && medicamentsLine.length <= 1"> {{ medicamentsLine.length }} médicament dans mon panier </span>
+    <span class="subtitle" *ngIf="medicamentsLine.length > 1"> {{ medicamentsLine.length }} médicaments dans mon panier </span>
+
+    <app-line *ngFor="let medLine of medicamentsLine" [presentationLine]="medLine" [variant]="0" (deleteItemEvent)="deleteItem(medLine.codeCIP7)"></app-line>
+
+    <div class="container-total">
+        <span> Sous-Total </span>
+        <span style="font-weight: normal !important;"> {{ subTotal.toFixed(2) }}€ </span>
+    </div>
+
+    <div class="container-total">
+        <span> Réduction </span>
+        <span style="font-weight: normal !important;"> {{ reducTotal.toFixed(2) }}€ </span>
+    </div>
 
     <div class="container-total">
         <span> Total </span>
-        <span> 51.67€ </span>
+        <span> {{ total.toFixed(2) }}€ </span>
     </div>
 
     <div class="container-button">

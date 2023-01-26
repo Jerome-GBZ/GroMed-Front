@@ -1,6 +1,6 @@
-import { UtilisateurModel } from './../../../../libs/model/utilisateurModel';
-import { AuthService } from 'src/app/auth/auth.service';
-import { Component, Input, ElementRef, HostListener } from '@angular/core';
+import { UtilisateurModel } from 'src/libs';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Component, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-menu',

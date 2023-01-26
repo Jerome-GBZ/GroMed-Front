@@ -11,17 +11,9 @@
  */
 
 
-/**
- * Pagination pour la recherche de présentation
- */
-export interface Pagination { 
-    /**
-     * Numéro de la page
-     */
+export interface Pageable { 
     page?: number;
-    /**
-     * Nombre d\'éléments par page
-     */
     size?: number;
+    sort?: Array<string>;
 }
 

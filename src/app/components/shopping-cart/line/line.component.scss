@@ -11,6 +11,11 @@
     .icon {
         margin-left: 15px;
     }
+
+    .prixU {
+        width: 90px;
+        text-align: end;
+    }
 }
 
 .group-name {
@@ -62,7 +67,7 @@
 }
 
 .quantity {
-    width: 80px;
+    width: 60px;
     height: 40px;
     text-align: center;
     border-radius: 12px;

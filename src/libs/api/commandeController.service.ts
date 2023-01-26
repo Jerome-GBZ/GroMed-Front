@@ -20,6 +20,8 @@ import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
 import { PresentationPanierModel } from '../model/presentationPanierModel';
+// @ts-ignore
+import { UtilisateurModel } from '../model/utilisateurModel';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -98,9 +100,9 @@ export class CommandeControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
-    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
-    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UtilisateurModel>;
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UtilisateurModel>>;
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UtilisateurModel>>;
     public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (email === null || email === undefined) {
             throw new Error('Required parameter email was null or undefined when calling addPresentationToCart.');
@@ -158,7 +160,7 @@ export class CommandeControllerService {
         }
 
         let localVarPath = `/commande/add`;
-        return this.httpClient.request<number>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<UtilisateurModel>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -177,9 +179,9 @@ export class CommandeControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
-    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
-    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
+    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UtilisateurModel>;
+    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UtilisateurModel>>;
+    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UtilisateurModel>>;
     public deletePresentationToCart(email: string, codeCIP7: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (email === null || email === undefined) {
             throw new Error('Required parameter email was null or undefined when calling deletePresentationToCart.');
@@ -230,7 +232,7 @@ export class CommandeControllerService {
         }
 
         let localVarPath = `/commande/delete`;
-        return this.httpClient.request<number>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<UtilisateurModel>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
