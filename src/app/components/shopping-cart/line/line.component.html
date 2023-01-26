@@ -1,6 +1,6 @@
-<div class="line">
+<div class="line" *ngIf="presentationLine">
     <div class="group-name">
-        <span> DOMPERIDONE 10mg </span>
+        <span> {{ presentationLine.denomination }} </span>
     </div>
 
     <div class="group-action">
@@ -24,8 +24,8 @@
             </button>
         </div>
 
-        <input class="quantity icon" *ngIf="variant == VariantType.EDIT" type="number" [value]="1" [min]="1" [max]="100">
+        <input class="quantity icon" *ngIf="variant == VariantType.EDIT" type="text" [value]="presentationLine.quantite" disabled>
 
-        <span class="icon"> 109.99€ </span>
+        <span class="icon prixU"> {{ presentationLine.prixUnitaire }}€ </span>
     </div>
 </div>

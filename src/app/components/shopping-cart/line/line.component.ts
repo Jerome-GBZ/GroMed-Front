@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PresentationPanierModel } from 'src/libs';
 
 @Component({
   selector: 'app-line',
@@ -7,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class LineComponent {
   VariantType: typeof VariantType = VariantType;
+  @Input() presentationLine: PresentationPanierModel | undefined;
   @Input() variant: VariantType;
   @Output() deleteItemEvent = new EventEmitter<number>();
 
