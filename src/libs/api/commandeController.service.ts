@@ -92,18 +92,18 @@ export class CommandeControllerService {
     }
 
     /**
-     * @param idUtilisateur 
+     * @param email 
      * @param codeCIP7 
      * @param quantite 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
-    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
-    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
-    public addPresentationToCart(idUtilisateur: number, codeCIP7: string, quantite: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (idUtilisateur === null || idUtilisateur === undefined) {
-            throw new Error('Required parameter idUtilisateur was null or undefined when calling addPresentationToCart.');
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
+    public addPresentationToCart(email: string, codeCIP7: string, quantite: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling addPresentationToCart.');
         }
         if (codeCIP7 === null || codeCIP7 === undefined) {
             throw new Error('Required parameter codeCIP7 was null or undefined when calling addPresentationToCart.');
@@ -113,9 +113,9 @@ export class CommandeControllerService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (idUtilisateur !== undefined && idUtilisateur !== null) {
+        if (email !== undefined && email !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>idUtilisateur, 'idUtilisateur');
+            <any>email, 'email');
         }
         if (codeCIP7 !== undefined && codeCIP7 !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
@@ -172,26 +172,26 @@ export class CommandeControllerService {
     }
 
     /**
-     * @param idUtilisateur 
+     * @param email 
      * @param codeCIP7 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
-    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
-    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
-    public deletePresentationToCart(idUtilisateur: number, codeCIP7: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (idUtilisateur === null || idUtilisateur === undefined) {
-            throw new Error('Required parameter idUtilisateur was null or undefined when calling deletePresentationToCart.');
+    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<number>;
+    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<number>>;
+    public deletePresentationToCart(email: string, codeCIP7: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<number>>;
+    public deletePresentationToCart(email: string, codeCIP7: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling deletePresentationToCart.');
         }
         if (codeCIP7 === null || codeCIP7 === undefined) {
             throw new Error('Required parameter codeCIP7 was null or undefined when calling deletePresentationToCart.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (idUtilisateur !== undefined && idUtilisateur !== null) {
+        if (email !== undefined && email !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>idUtilisateur, 'idUtilisateur');
+            <any>email, 'email');
         }
         if (codeCIP7 !== undefined && codeCIP7 !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
@@ -244,22 +244,22 @@ export class CommandeControllerService {
     }
 
     /**
-     * @param idUtilisateur 
+     * @param email 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getUserCart(idUtilisateur: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<PresentationPanierModel>>;
-    public getUserCart(idUtilisateur: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<PresentationPanierModel>>>;
-    public getUserCart(idUtilisateur: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<PresentationPanierModel>>>;
-    public getUserCart(idUtilisateur: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (idUtilisateur === null || idUtilisateur === undefined) {
-            throw new Error('Required parameter idUtilisateur was null or undefined when calling getUserCart.');
+    public getUserCart(email: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<PresentationPanierModel>>;
+    public getUserCart(email: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<PresentationPanierModel>>>;
+    public getUserCart(email: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<PresentationPanierModel>>>;
+    public getUserCart(email: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling getUserCart.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (idUtilisateur !== undefined && idUtilisateur !== null) {
+        if (email !== undefined && email !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>idUtilisateur, 'idUtilisateur');
+            <any>email, 'email');
         }
 
         let localVarHeaders = this.defaultHeaders;
