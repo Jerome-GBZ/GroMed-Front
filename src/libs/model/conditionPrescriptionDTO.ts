@@ -11,9 +11,10 @@
  */
 
 
-export interface SortObject { 
-    empty?: boolean;
-    unsorted?: boolean;
-    sorted?: boolean;
+/**
+ * liste des conditions de prescription de la présentation
+ */
+export interface ConditionPrescriptionDTO { 
+    condition?: string;
 }
 

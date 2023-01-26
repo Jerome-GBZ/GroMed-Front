@@ -11,9 +11,17 @@
  */
 
 
-export interface SortObject { 
-    empty?: boolean;
-    unsorted?: boolean;
-    sorted?: boolean;
+/**
+ * filtres pour la recherche de présentations
+ */
+export interface Filtres { 
+    /**
+     * Liste de tous les titulaires de médicaments
+     */
+    titulaires?: Array<string>;
+    /**
+     * Liste de toutes les dénomations de substances de médicaments
+     */
+    substancesDenomitations?: Array<string>;
 }
 

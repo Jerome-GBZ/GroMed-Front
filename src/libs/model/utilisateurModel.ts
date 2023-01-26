@@ -14,7 +14,7 @@
 /**
  * Donnée utilisateur renvoyé a la connection
  */
-export interface UtilisateurModel {
+export interface UtilisateurModel { 
     /**
      * Nom de l\'utilisateur
      */

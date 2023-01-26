@@ -19,7 +19,7 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { UtilisateurModel } from '../model/utilisateurModel';
+import { Filtres } from '../model/filtres';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class UtilisateurControllerService {
+export class FiltreControllerService {
 
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
@@ -92,31 +92,13 @@ export class UtilisateurControllerService {
     }
 
     /**
-     * @param email 
-     * @param motDePasse 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authenticate(email: string, motDePasse: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UtilisateurModel>;
-    public authenticate(email: string, motDePasse: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UtilisateurModel>>;
-    public authenticate(email: string, motDePasse: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UtilisateurModel>>;
-    public authenticate(email: string, motDePasse: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (email === null || email === undefined) {
-            throw new Error('Required parameter email was null or undefined when calling authenticate.');
-        }
-        if (motDePasse === null || motDePasse === undefined) {
-            throw new Error('Required parameter motDePasse was null or undefined when calling authenticate.');
-        }
-
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (email !== undefined && email !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>email, 'email');
-        }
-        if (motDePasse !== undefined && motDePasse !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>motDePasse, 'motDePasse');
-        }
+    public getFiltres(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Filtres>;
+    public getFiltres(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Filtres>>;
+    public getFiltres(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Filtres>>;
+    public getFiltres(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -149,11 +131,10 @@ export class UtilisateurControllerService {
             }
         }
 
-        let localVarPath = `/utilisateur/connection`;
-        return this.httpClient.request<UtilisateurModel>('post', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/filtre/all`;
+        return this.httpClient.request<Filtres>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
