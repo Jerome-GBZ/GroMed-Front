@@ -19,16 +19,15 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { Pagination } from '../model/pagination';
+import { PagePresentationCardModel } from '../model/pagePresentationCardModel';
 // @ts-ignore
-import { PresentationCardModel } from '../model/presentationCardModel';
+import { Pagination } from '../model/pagination';
 // @ts-ignore
 import { PresentationDetailModel } from '../model/presentationDetailModel';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
-import { PagePresentationCardModel } from '../model/pagePresentationCardModel';
 
 
 
@@ -211,7 +210,7 @@ export class PresentationControllerService {
         }
 
         let localVarPath = `/presentation/all`;
-        return this.httpClient.request<PresentationCardModel>('get', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<PagePresentationCardModel>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,

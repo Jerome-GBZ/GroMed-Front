@@ -1,9 +1,9 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
 api/commandeController.service.ts
+api/filtreController.service.ts
 api/presentationController.service.ts
 api/utilisateurController.service.ts
 configuration.ts
@@ -11,12 +11,16 @@ encoder.ts
 git_push.sh
 index.ts
 model/conditionPrescriptionDTO.ts
+model/filtres.ts
 model/infoImportanteModel.ts
 model/models.ts
+model/pagePresentationCardModel.ts
+model/pageableObject.ts
 model/pagination.ts
 model/presentationCardModel.ts
 model/presentationDetailModel.ts
 model/presentationPanierModel.ts
+model/sortObject.ts
 model/utilisateurModel.ts
 param.ts
 variables.ts
