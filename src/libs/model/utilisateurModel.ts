@@ -16,6 +16,10 @@
  */
 export interface UtilisateurModel { 
     /**
+     * Email de l\'utilisateur
+     */
+    email?: string;
+    /**
      * Nom de l\'utilisateur
      */
     nom?: string;

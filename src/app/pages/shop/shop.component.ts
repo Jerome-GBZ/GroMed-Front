@@ -83,7 +83,7 @@ export class ShopComponent implements OnInit{
   paginate(page: number){
     this.isLoading = true;
     this.presentationService.getPresentations({page: page, size:24}).subscribe(
-      (data: PagePresentationCardModel)=>{
+      (data: PagePresentationCardModel) => {
         this.isLoading = false;
         if(data !== undefined){    
           console.log(data)
