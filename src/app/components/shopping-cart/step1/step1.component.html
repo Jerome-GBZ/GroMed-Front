@@ -6,7 +6,7 @@
 
     <app-line *ngFor="let medLine of medicamentsLine" [presentationLine]="medLine" [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
 
-    <div>
+    <div *ngIf="medicamentsLine.length <= 0">
         <h2 class="noMedicament"> Il n'y a aucun médicament dans votre panier. </h2>
     </div>
 
