@@ -73,6 +73,6 @@ export class Step2Component implements OnInit {
   }
 
   acceptCondition() {
-    this.disabledButton = false;
+    this.disabledButton = !this.disabledButton;
   }
 }
