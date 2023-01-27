@@ -4,13 +4,13 @@
     </div>
 
     <div class="group-action">
-        <img class="icon trash" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(1)">
+        <img class="icon trash" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(presentationLine.codeCIP7!!)">
 
-        <div class="container-card validate icon" *ngIf="variant == VariantType.UNAVAILABLE" pTooltip="Accepter le delai de 7j" tooltipPosition="top">
+        <div class="container-card validate icon" *ngIf="variant == VariantType.UNAVAILABLE" (click)="acceptPresentation(presentationLine.codeCIP7!!)" pTooltip="Accepter le delai de 7j" tooltipPosition="top">
             <img src="./assets/validate.svg" alt="validate">
         </div>
 
-        <div class="container-card delete icon" *ngIf="variant == VariantType.UNAVAILABLE" (click)="deleteMedicament(1)" pTooltip="Supprimer le médicament du panier" tooltipPosition="top">
+        <div class="container-card delete icon" *ngIf="variant == VariantType.UNAVAILABLE" (click)="deleteMedicament(presentationLine.codeCIP7!!)" pTooltip="Supprimer le médicament du panier" tooltipPosition="top">
             <img src="./assets/delete.svg" alt="delete">
         </div>
 
@@ -19,7 +19,7 @@
         </div>
 
         <div class="container-button mt0 icon" *ngIf="variant == VariantType.UNAVAILABLE">
-            <button class="button substitution" (click)="deleteMedicament(1)" routerLink="/">
+            <button class="button substitution" (click)="deleteMedicament(presentationLine.codeCIP7!!)" routerLink="/">
                 Substituer
             </button>
         </div>

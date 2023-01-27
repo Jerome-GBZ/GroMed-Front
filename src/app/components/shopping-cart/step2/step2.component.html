@@ -11,13 +11,12 @@
     </div>
 
     <span class="subtitle" *ngIf="notInStock.length > 0"> ARTICLES INDISPONIBLE TEMPORAIREMENT </span>
-    <app-line *ngFor="let medLine of notInStock" [presentationLine]="medLine" [variant]="1" (deleteItemEvent)="deleteItem(medLine.codeCIP7)"></app-line>
-
+    <app-line *ngFor="let medLine of notInStock" [presentationLine]="medLine" [variant]="1" (deleteItemEvent)="deleteItem($event)" (acceptItemEvent)="acceptItem($event)"></app-line>
 
     <div class="groupe-shipping mt30 mb30">
         <span class="subtitle"> ARTICLES INDISPONIBLES </span>
-        <h2 class="ShippingDelay" *ngIf="notInStock.length == 0"> 24h </h2>
-        <h2 class="ShippingDelay" *ngIf="notInStock.length > 0"> 7jours </h2>
+        <h2 class="ShippingDelay" *ngIf="notInStock.length == 0 && productNotInStockAccept == 0"> 24h </h2>
+        <h2 class="ShippingDelay" *ngIf="notInStock.length > 0 || productNotInStockAccept > 0"> 7jours </h2>
     </div>
 
     <span class="subtitle" *ngIf="getPreventions().length > 0"> PREVENTION ACHATS </span>
@@ -33,7 +32,7 @@
     <div class="container-button step2">
         <button class="button" style="display: none;"> </button>
 
-        <button class="button" (click)="nextStep(3)" [disabled]="disabledButton || [{}, {}].length > 0">
+        <button class="button" (click)="nextStep(3)" [disabled]="disabledButton || notInStock.length > 0">
             Passer commande
         </button>
     </div>
