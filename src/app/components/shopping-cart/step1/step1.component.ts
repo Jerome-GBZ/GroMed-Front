@@ -9,7 +9,7 @@ import { CommandeControllerService, PresentationPanierModel, UtilisateurModel } 
   styleUrls: ['./step1.component.scss'],
   providers: [MessageService]
 })
-export class Step1Component implements OnInit {
+export class Step1Component {
   @Input() subTotal: number = 0;
   @Input() reducTotal: number = 0;
   @Input() total: number = 0;
@@ -19,8 +19,6 @@ export class Step1Component implements OnInit {
   @Output() deleteItemEvent = new EventEmitter<string>();
 
   constructor() { }
-
-  ngOnInit(): void { }
 
   nextStep(value: number) {
     this.stepItemEvent.emit(value);

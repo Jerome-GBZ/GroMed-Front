@@ -11,9 +11,7 @@
  */
 
 
-export interface SortObject { 
-    empty?: boolean;
-    unsorted?: boolean;
-    sorted?: boolean;
+export interface AlerteIndisponibilitePresentationDTO { 
+    alertesIndisponibilites?: { [key: string]: number; };
 }
 

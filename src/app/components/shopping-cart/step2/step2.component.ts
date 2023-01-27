@@ -23,11 +23,12 @@ export class Step2Component implements OnInit {
   @Output() stepItemEvent = new EventEmitter<number>();
   @Output() deleteItemEvent = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private commandeService: CommandeControllerService,
+    private messageService: MessageService,
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.medicamentsLine);
-
     this.notInStock = this.medicamentsLine.filter((medicament) => medicament.stock!! < medicament.quantite!!);
     this.inStock = this.medicamentsLine.filter((medicament) => medicament.stock!! >= medicament.quantite!!);
   }

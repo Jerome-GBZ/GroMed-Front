@@ -42,6 +42,10 @@ export class AuthService implements CanActivate {
     return this.utilisateurSubject.asObservable();
   }
 
+  removeUtilisateur(): void {
+    localStorage.removeItem('utilisateur');
+  }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> | Observable<boolean> {
     if (this.isAuthenticated()) {
       return true;

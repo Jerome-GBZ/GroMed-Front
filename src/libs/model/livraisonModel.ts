@@ -11,9 +11,17 @@
  */
 
 
-export interface SortObject { 
-    empty?: boolean;
-    unsorted?: boolean;
-    sorted?: boolean;
+/**
+ * DTO de la livraison
+ */
+export interface LivraisonModel { 
+    /**
+     * Date d\'envoie de la livraison
+     */
+    dateLivraison?: string;
+    /**
+     * Indique si la livraison est livrée en une fois
+     */
+    delivered?: boolean;
 }
 

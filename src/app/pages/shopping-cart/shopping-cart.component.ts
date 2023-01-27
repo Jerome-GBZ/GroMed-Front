@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { CommandeControllerService, PresentationPanierModel, UtilisateurModel } from 'src/libs';
+import { CommandeControllerService, PresentationPanierModel, UtilisateurModel, LivraisonModel } from 'src/libs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,6 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   public stepShop: number = 1;
   public width: number = window.innerWidth;
   public medicamentsLine: Array<PresentationPanierModel> = new Array();
+  public livraison: LivraisonModel | undefined;
 
   constructor(private authService: AuthService,
     private commandeService: CommandeControllerService,
@@ -27,6 +28,7 @@ export class ShoppingCartComponent implements OnInit {
     const email = this.authService.getUtilisateur()?.email;
     if(email === undefined){
       this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification ou d'identifiant produit"});
+      this.authService.removeUtilisateur();
       return;
     }
 
@@ -47,6 +49,7 @@ export class ShoppingCartComponent implements OnInit {
 
     if(email === undefined || codeCIP7 === undefined){
       this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification ou d'identifiant produit"});
+      this.authService.removeUtilisateur();
       return;
     }
 
@@ -61,6 +64,25 @@ export class ShoppingCartComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de suppression du produit"});
       }
     )
+  }
+
+  validateCommand() {
+    let email = this.authService.getUtilisateur()?.email;
+
+    if(email === undefined) {
+      this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
+      this.authService.removeUtilisateur();
+      return;
+    }
+
+    this.commandeService.validateCart(email).subscribe(
+      (livraison: LivraisonModel) => {
+        this.livraison = livraison;
+        this.messageService.add({severity:'success', summary: 'Success', detail: "Commande validée"});
+      }, (error: Error) => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de validation de la commande"});
+      }
+    );
   }
 
   resetTotals() {
@@ -82,5 +104,9 @@ export class ShoppingCartComponent implements OnInit {
 
   onStepChange(value: number) {
     this.stepShop = value;
+
+    if(this.stepShop === 3) {
+      this.validateCommand();
+    }
   }
 }

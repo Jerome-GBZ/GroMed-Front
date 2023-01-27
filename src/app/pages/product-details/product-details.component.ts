@@ -61,6 +61,7 @@ export class ProductDetailsComponent {
 
     if(email === undefined || codeCIP7 === undefined) {
       this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification ou d'identifiant produit"});
+      this.authService.removeUtilisateur();
       return;
     }
 
