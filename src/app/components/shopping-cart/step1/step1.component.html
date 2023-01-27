@@ -7,18 +7,18 @@
     <app-line *ngFor="let medLine of medicamentsLine" [presentationLine]="medLine" [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
 
     <div class="container-total">
-        <span> Sous-Total </span>
-        <span style="font-weight: normal !important;"> {{ subTotal.toFixed(2) }}€ </span>
+        <span class="subtotal"> Sous-Total </span>
+        <span class="subtotal"> {{ subTotal.toFixed(2) }}€ </span>
     </div>
 
     <div class="container-total mt0">
-        <span> Réduction </span>
-        <span style="font-weight: normal !important;"> {{ reducTotal.toFixed(2) }}€ </span>
+        <span class="subtotal"> Réduction </span>
+        <span class="subtotal"> {{ reducTotal.toFixed(2) }}€ </span>
     </div>
 
     <div class="container-total mt0">
-        <span> Total </span>
-        <span> {{ total.toFixed(2) }}€ </span>
+        <span class="total-text"> Total </span>
+        <span class="total"> {{ total.toFixed(2) }}€ </span>
     </div>
 
     <div class="container-button">
