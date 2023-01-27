@@ -87,7 +87,12 @@
 
 p-badge{
     margin-left: auto;
+    border-radius: 50%;
 }
+
+::ng-deep .p-badge.p-badge-info{
+    border-radius: 50px !important;
+}  
 
 .navbar-item {
     .hide {
