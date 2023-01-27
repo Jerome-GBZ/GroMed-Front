@@ -1,11 +1,11 @@
 
-<div class="animation">
+<div class="animation" *ngIf="livraison">
     <ng-lottie class="lottie" [options]="options">
     </ng-lottie>
 
     <h1>Votre commande a bien été validée</h1>
     <h2>Date de livraison estimée à </h2>
-    <h2>22 mars 2022</h2>
+    <h2> {{ livraison.dateLivraison }} </h2>
 
     <p-button routerLink="/" label="Retourner au magasin"></p-button>
 </div>

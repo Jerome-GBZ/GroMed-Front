@@ -6,7 +6,7 @@
 			<input (keyup)="updateEmail($event)" type="email" placeholder="Email" />
 			<input (keyup)="updatePassword($event)" type="password" placeholder="Mot de passe" />
 			<a href="#">Mot de passe oublié?</a>
-			<button class="loginBtn" (click)="login()" [disabled]="this.email.length < 10 || this.password.length < 8">Se connecter</button>
+			<button class="loginBtn" (click)="login()" [disabled]="this.email.length < 1 || this.password.length < 1">Se connecter</button>
 		</form>
 	</div>
 
