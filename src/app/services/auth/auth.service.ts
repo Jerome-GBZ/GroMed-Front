@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, Subject } from 'rxjs';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { UtilisateurControllerService } from 'src/libs';
 import { UtilisateurModel } from 'src/libs';
@@ -8,6 +8,7 @@ import { UtilisateurModel } from 'src/libs';
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
+  private utilisateurSubject = new Subject<UtilisateurModel>();
 
   constructor(private router: Router, public utilisateurService: UtilisateurControllerService) { }
 
@@ -33,6 +34,12 @@ export class AuthService implements CanActivate {
 
   updatePanier(utilisateur: UtilisateurModel): void {
     localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+
+    this.utilisateurSubject.next(utilisateur);
+  }
+
+  get utilisateurObservable() {
+    return this.utilisateurSubject.asObservable();
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> | Observable<boolean> {

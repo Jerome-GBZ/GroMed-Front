@@ -11,9 +11,16 @@ export class SidebarMenuComponent {
   @Input() currentItem = SidebarItem.SHOP;
   sideBarItem: typeof SidebarItem = SidebarItem;
   width: number = window.innerWidth;
-  utilisateur: UtilisateurModel = this.authService.getUtilisateur()!!;
+  utilisateur: UtilisateurModel;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+    this.utilisateur = this.authService.getUtilisateur()!!;
+    this.authService.utilisateurObservable.subscribe(
+      (value: UtilisateurModel) => {
+        this.utilisateur = value;
+      }
+    );
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
