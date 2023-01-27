@@ -1,6 +1,6 @@
 <div class="container-medic">
     <div *ngIf="inStock.length > 0">
-        <span class="subtitle"> Récap </span>
+        <span class="subtitle"> Récapitulatif des médicaments commandé </span>
         <div class="list-recap mb30">
             <div class="item-recap" *ngFor="let medLine of inStock">
                 <span> {{ medLine.quantite }}x </span>
