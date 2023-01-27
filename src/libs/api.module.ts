@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommandeControllerService } from './api/commandeController.service';
 import { FiltreControllerService } from './api/filtreController.service';
 import { PresentationControllerService } from './api/presentationController.service';
+import { TestControllerService } from './api/testController.service';
 import { UtilisateurControllerService } from './api/utilisateurController.service';
 
 @NgModule({

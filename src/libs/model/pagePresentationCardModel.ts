@@ -23,7 +23,6 @@ export interface PagePresentationCardModel {
     sort?: SortObject;
     pageable?: PageableObject;
     numberOfElements?: number;
-    pageable?: PageableObject;
     first?: boolean;
     last?: boolean;
     empty?: boolean;

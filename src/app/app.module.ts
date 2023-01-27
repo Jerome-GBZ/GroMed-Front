@@ -40,7 +40,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RippleModule } from 'primeng/ripple';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import {CheckboxModule} from 'primeng/checkbox';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
+export function playerFactory(): any {  
+  return player;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +84,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     BrowserAnimationsModule,
     RippleModule,
     AutoCompleteModule,
-    CheckboxModule
+    CheckboxModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
