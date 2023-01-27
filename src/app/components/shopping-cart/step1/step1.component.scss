@@ -20,3 +20,8 @@
     font-size: 24px !important;
     font-weight: 600 !important;
 }
+
+.button:disabled {
+    background-color: rgba($primary, 0.3) !important;
+    cursor: not-allowed !important;
+}

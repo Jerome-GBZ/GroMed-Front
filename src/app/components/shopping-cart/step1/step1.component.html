@@ -26,7 +26,7 @@
             Ajouter une commande type
         </button>
 
-        <button class="button" (click)="nextStep(2)">
+        <button class="button" (click)="nextStep(2)" [disabled]="medicamentsLine.length == 0">
             Confirmer mes achats
         </button>
     </div>
