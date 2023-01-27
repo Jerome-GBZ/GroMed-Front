@@ -37,5 +37,6 @@ export enum SidebarItem {
   COMMANDE_TYPE = 1,
   PANIER = 2,
   FACTURE = 3,
-  COMPTE = 4
+  COMPTE = 4,
+  DECONECTE = 5
 }
