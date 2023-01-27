@@ -120,17 +120,26 @@ p{
     line-height: 140%;
 }
 
+.container-avertissement {
+    display: flex;
+}
+
 .avertissement{
     width: 100%;
     background: rgba(254, 236, 189, 0.51);
     padding: 15px;
+    margin-top: 15px;
     border-radius: 10px;
 }
 
 .warning{
     color: $warning;
+    padding-left: 15px;
 }
 @media screen and (max-width: 1050px){
+    .product{
+        height: auto;
+    }
     .product-container{
         flex-direction: column;
     }
@@ -154,18 +163,17 @@ p{
     align-items: center;
     justify-content: center;
     background-color: rgba(255, 129, 129, 0.6);
-    border-radius: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .label{
     font-weight: 500;
     font-size: 13px;
     color: $title;
-
+    margin: 0px !important;
     -webkit-line-clamp: 1; /* number of lines to show */
-            line-clamp: 1;
+    width: fit-content !important;
 }
 
 .purple{

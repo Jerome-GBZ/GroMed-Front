@@ -42,6 +42,19 @@
                         </p>
                     </div>
                 </div>
+                <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
+                    <div class="container-avertissement">
+                        <img src="./assets/warning-2.svg"/>
+                        <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci: </p>
+                    </div>
+                    <ul>
+                        <li class="li-warning" *ngFor="let infoImportante of this.medicamentDetails.informationsImportantes">
+                            <p class="warning">
+                            {{infoImportante.message}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="buy">
                 <h1>{{this.medicamentDetails.prix}} €</h1>
@@ -54,18 +67,6 @@
                 <div class="input-container">
                     <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  <br>Remboursement: {{this.medicamentDetails.tauxRemboursement}}%</p>
                     <p>{{ this.subtotal }} €</p>
-                </div>
-                <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
-                    <img src="./assets/warning-2.svg"/>
-                    <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci:
-                    </p>
-                    <ul>
-                        <li class="li-warning" *ngFor="let infoImportante of this.medicamentDetails.informationsImportantes">
-                            <p class="warning">
-                            {{infoImportante.message}}
-                            </p>
-                        </li>
-                    </ul>
                 </div>
                 <p-button class="buy-button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="loading"/>
             </div>
