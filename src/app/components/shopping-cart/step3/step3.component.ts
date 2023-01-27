@@ -9,7 +9,7 @@ import { AnimationOptions } from 'ngx-lottie';
   styleUrls: ['./step3.component.scss']
 })
 export class Step3Component implements OnInit {
-  @Input() total: number = 0;
+  public nbLivraison: number = 1;
   @Input() medicamentsLine: Array<PresentationPanierModel> = new Array();
   @Input() livraison: LivraisonModel | undefined;
 
@@ -18,6 +18,7 @@ export class Step3Component implements OnInit {
   constructor(private authService: AuthService) { }
   ngOnInit(): void {
     this.authService.resetPanier();
+    this.nbLivraison = this.livraison?.delivered ? 1 : 2;
   }
 
   options: AnimationOptions = {
