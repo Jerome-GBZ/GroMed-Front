@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="hamburger">
+        <app-hamburger-menu></app-hamburger-menu>
+    </div>
+
+    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
+        <app-sidebar-menu [currentItem]="2"></app-sidebar-menu>
+    </div>
+
+    <div class="content" *ngIf="this.stepShop">
+        <img class="arrow-back" src="./assets/arrow-left.svg" alt="go back" *ngIf="this.stepShop > 1" (click)="onStepChange(this.stepShop - 1)" />
+
+        <h1 class="title"> PASSER COMMANDE </h1>
+
+        <app-steps [step]="this.stepShop"></app-steps>
+
+        <app-step1 *ngIf="this.stepShop == 1" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [subTotal]="subTotal" [reducTotal]="reducTotal" [total]="total"></app-step1>
+        <app-step2 *ngIf="this.stepShop == 2" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [subTotal]="subTotal" [reducTotal]="reducTotal" [total]="total"></app-step2>
+        <app-step3 *ngIf="this.stepShop == 3" (stepItemEvent)="onStepChange($event)" [livraison]="livraison"  [total]="total"></app-step3>
+    </div>
+</div>

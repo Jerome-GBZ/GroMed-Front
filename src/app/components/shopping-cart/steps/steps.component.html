@@ -1,0 +1,29 @@
+<div class="container-steps">
+    <div class="group-step">
+        <div class="step" [ngClass]="{'active': step == 1 }">
+            <h2> 1 </h2>
+        </div>
+
+        <span> Revue achats </span>
+    </div>
+
+    <hr class="separation-line">
+
+    <div class="group-step">
+        <div class="step" [ngClass]="{'active': step == 2 }">
+            <h2> 2 </h2>
+        </div>
+
+        <span> Récapitulatif </span>
+    </div>
+
+    <hr class="separation-line">
+
+    <div class="group-step">
+        <div class="step" [ngClass]="{'active': step == 3 }">
+            <h2> 3 </h2>
+        </div>
+
+        <span> Confirmation </span>
+    </div>
+</div>

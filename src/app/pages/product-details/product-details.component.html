@@ -1,0 +1,74 @@
+<p-toast></p-toast>
+
+<div class="container">
+    <div class="hamburger">
+        <app-hamburger-menu></app-hamburger-menu>
+    </div>
+
+    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
+        <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
+    </div>
+
+    <div class="content" *ngIf="this.medicamentDetails">
+
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">
+        </span>
+
+        <div class="toolbar">
+            <img src="./assets/arrow-left.svg" (click)="location.back()" class="back"/>
+            <p class="path">MAGASIN/</p>
+            <p class="current-product">{{this.medicamentDetails.titre}}</p>
+        </div>
+
+        <div class="product-container">
+            <div class="product">
+                <h2 class="title">{{this.medicamentDetails.titre}}</h2>
+                <h3>{{this.medicamentDetails.titulaire}}</h3>
+                <p>
+                    {{this.medicamentDetails.description}}
+                </p>
+                <div class="label-row">
+                    <div class="label-container">
+                        <p class="label">
+                           {{medicamentDetails.estGenerique ? "Générique" : "Original"}}
+                        </p>
+                    </div>
+
+                    <div class="label-container purple">
+                        <p class="label">
+                            {{medicamentDetails.formePharmaceutique}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="buy">
+                <h1>{{this.medicamentDetails.prix}} €</h1>
+                <div class="input-container">
+                    <p>Quantité: </p>
+                    <input class="quantity icon" #quantity (change)="this.getSubtotal(quantity.value)" type="number" [value]="1" [min]="0" [max]="100">
+                </div>
+                <div class="line"></div>
+                <p>Sous total:</p>
+                <div class="input-container">
+                    <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  <br>Remboursement: {{this.medicamentDetails.tauxRemboursement}}%</p>
+                    <p>{{ this.subtotal }} €</p>
+                </div>
+                <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
+                    <img src="./assets/warning-2.svg"/>
+                    <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci:
+                    </p>
+                    <ul>
+                        <li class="li-warning" *ngFor="let infoImportante of this.medicamentDetails.informationsImportantes">
+                            <p class="warning">
+                            {{infoImportante.message}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <p-button class="buy-button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="loading"/>
+            </div>
+        </div>
+    </div>
+</div>

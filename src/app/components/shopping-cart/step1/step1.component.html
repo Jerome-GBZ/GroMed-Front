@@ -1,0 +1,33 @@
+<div class="container-medic">
+    <p-toast></p-toast>
+
+    <span class="subtitle" *ngIf="medicamentsLine.length > 0 && medicamentsLine.length <= 1"> {{ medicamentsLine.length }} médicament dans mon panier </span>
+    <span class="subtitle" *ngIf="medicamentsLine.length > 1"> {{ medicamentsLine.length }} médicaments dans mon panier </span>
+
+    <app-line *ngFor="let medLine of medicamentsLine" [presentationLine]="medLine" [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
+
+    <div class="container-total">
+        <span class="subtotal"> Sous-Total </span>
+        <span class="subtotal"> {{ subTotal.toFixed(2) }}€ </span>
+    </div>
+
+    <div class="container-total mt0">
+        <span class="subtotal"> Réduction </span>
+        <span class="subtotal"> {{ reducTotal.toFixed(2) }}€ </span>
+    </div>
+
+    <div class="container-total mt0">
+        <span class="total-text"> Total </span>
+        <span class="total"> {{ total.toFixed(2) }}€ </span>
+    </div>
+
+    <div class="container-button">
+        <button class="button">
+            Ajouter une commande type
+        </button>
+
+        <button class="button" (click)="nextStep(2)">
+            Confirmer mes achats
+        </button>
+    </div>
+</div>

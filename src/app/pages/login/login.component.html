@@ -1,0 +1,21 @@
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Se connecter</h1>
+			<span>Utilisez votre compte</span>
+			<input (keyup)="updateEmail($event)" type="email" placeholder="Email" />
+			<input (keyup)="updatePassword($event)" type="password" placeholder="Mot de passe" />
+			<a href="#">Mot de passe oublié?</a>
+			<button class="loginBtn" (click)="login()" [disabled]="this.email.length < 1 || this.password.length < 1">Se connecter</button>
+		</form>
+	</div>
+
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>Vous revoilà!</h1>
+				<p>Pour se connecter utiliser vos informations personnels</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+@import "styles/colors.scss";
+@import "styles/widgets.scss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/saga-blue/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    color: $title;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.mt0 {
+    margin-top: 0 !important;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.mb30 {
+    margin-bottom: 30px;
+}
+
+// @media for mobile devices 1000px
+@media only screen and (max-width: 1000px) {
+    .content {
+        width: 100% !important;
+    }
+
+    .sidebar.show ~ .content {
+        filter: blur(5px);
+    }
+
+    .sidebar.show {
+        z-index: 1;
+        position: absolute;
+        width: 300px !important;
+    }
+
+    .content {
+        margin-left: 70px;
+    }
+}

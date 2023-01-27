@@ -1,0 +1,21 @@
+.container-hamburger {
+    display: none;
+}
+
+.hamburger-icon {
+    width: 0px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container-hamburger {
+        position: absolute;
+        display: block;
+        padding: 20px;
+        z-index: 2;
+    }
+
+    .hamburger-icon {
+        width: 30px;
+    }
+}

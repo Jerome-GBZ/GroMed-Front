@@ -1,0 +1,22 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: $secondBackground;
+    display: flex;
+    flex-direction: row;
+}
+@import "colors.scss";
+
+.sidebar{
+    width: 20%;
+    height: 100vh;
+    background-color: $secondBackground;
+}
+
+.content{
+    width: 80%;
+    height: 100vh;
+    background-color: $background;
+    box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 24px 0px 0px 24px;
+}
