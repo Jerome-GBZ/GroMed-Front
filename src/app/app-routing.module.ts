@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CommandeTypeComponent } from './pages/commande-type/commande-type.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';

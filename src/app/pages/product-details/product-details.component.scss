@@ -185,3 +185,12 @@ p{
         cursor: pointer;
     }
 }
+
+.buy-button {
+
+    &:disabled {
+        background-color: rgba($primary, 0.3) !important;
+        border: 1px solid rgba($primary, 0.3) !important;
+        cursor: not-allowed !important;
+    }
+}

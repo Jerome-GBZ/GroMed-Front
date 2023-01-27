@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MessageService } from 'primeng/api';
 import { LoginComponent } from '../login/login.component';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-welcome',
