@@ -10,12 +10,18 @@ export class LineComponent {
   VariantType: typeof VariantType = VariantType;
   @Input() presentationLine: PresentationPanierModel | undefined;
   @Input() variant: VariantType;
-  @Output() deleteItemEvent = new EventEmitter<number>();
+
+  @Output() deleteItemEvent = new EventEmitter<string>();
+  @Output() acceptItemEvent = new EventEmitter<string>();
 
   constructor() { this.variant = VariantType.EDIT; }
 
-  deleteMedicament(value: number) {
+  deleteMedicament(value: string) {
     this.deleteItemEvent.emit(value);
+  }
+
+  acceptPresentation(value: string) {
+    this.acceptItemEvent.emit(value);
   }
 }
 

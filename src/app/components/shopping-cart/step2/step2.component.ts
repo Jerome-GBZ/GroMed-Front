@@ -13,7 +13,7 @@ export class Step2Component implements OnInit {
   public disabledButton = true;
   public notInStock: Array<PresentationPanierModel> = new Array();
   public inStock: Array<PresentationPanierModel> = new Array();
-
+  public productNotInStockAccept: number = 0;
 
   @Input() subTotal: number = 0;
   @Input() reducTotal: number = 0;
@@ -25,7 +25,7 @@ export class Step2Component implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     console.log(this.medicamentsLine);
 
     this.notInStock = this.medicamentsLine.filter((medicament) => medicament.stock!! < medicament.quantite!!);
@@ -38,7 +38,20 @@ export class Step2Component implements OnInit {
 
   deleteItem(codeCIP7: string | undefined) {
     if(codeCIP7 !== undefined) {
+      this.notInStock = this.notInStock.filter((medicament) => medicament.codeCIP7 !== codeCIP7);
+
       this.deleteItemEvent.emit(codeCIP7);
+    }
+  }
+
+  acceptItem(codeCIP7: string | undefined) {
+    if(codeCIP7 !== undefined) {
+      // delete item from notInStock
+      this.notInStock = this.notInStock.filter((medicament) => medicament.codeCIP7 !== codeCIP7);
+      // add item to inStock
+      this.inStock.push(this.medicamentsLine.find((medicament) => medicament.codeCIP7 === codeCIP7)!!);
+
+      this.productNotInStockAccept++;
     }
   }
 
