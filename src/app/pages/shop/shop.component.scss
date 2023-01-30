@@ -58,7 +58,15 @@
 p-paginator{
     margin-top: 12px;
 }
-@media (max-width: 1000px) {
+
+@media (max-width: 1387px) {
+    .card-grid{
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        grid-auto-rows: auto;
+    }
+}
+
+@media (max-width: 1120px) {
     .card-grid{
         grid-template-columns: repeat(2, minmax(250px, 1fr));
         grid-auto-rows: auto;
