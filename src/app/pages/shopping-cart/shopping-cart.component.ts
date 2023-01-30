@@ -75,7 +75,7 @@ export class ShoppingCartComponent implements OnInit {
       return;
     }
 
-    this.commandeService.validateCart(email).subscribe(
+    this.commandeService.validateCart(email,"").subscribe(
       (livraison: LivraisonModel) => {
         this.livraison = livraison;
         this.messageService.add({severity:'success', summary: 'Success', detail: "Commande validée"});
