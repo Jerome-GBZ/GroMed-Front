@@ -34,8 +34,6 @@ export class ShoppingCartComponent implements OnInit {
    this.commandeService.getUserCart(email).subscribe(
      (data: Array<PresentationPanierModel>) => {
         this.medicamentsLine = data;
-        console.log(data);
-
         this.resetTotals();
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération du panier"});
