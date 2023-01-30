@@ -40,4 +40,11 @@ export class InvoiceComponent implements OnInit {
   onResize(event: any) {
     this.width = event.target.innerWidth;
   }
+
+  parseDate(date: string): string{
+    let dateFormat = moment.utc(date).local();
+    return dateFormat.format('DD/MM/YYYY HH:mm:ss')
+  }
 }
+declare const moment: any;
+

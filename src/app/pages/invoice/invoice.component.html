@@ -41,7 +41,7 @@
                         </td>
                         <td>
                             <span class="p-column-title"> Date </span>
-                            {{commande.dateCommande}}
+                            {{parseDate(commande.dateCommande)}} 
                         </td>
                         <td>
                             <span class="p-column-title"> Facture </span>
@@ -49,7 +49,7 @@
                         </td>
                         <td>
                             <span class="p-column-title"> Status </span>
-                            <span [class]="'customer-badge status-' + commande.status">{{commande.status}}</span>
+                            <p-button label="{{commande.status}}" icon="pi pi-box" styleClass="p-button-info" badgeClass="p-badge-danger"></p-button>
                         </td>
                     </tr>
                 </ng-template>
