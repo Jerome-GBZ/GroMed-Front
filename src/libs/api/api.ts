@@ -1,5 +1,7 @@
 export * from './commandeController.service';
 import { CommandeControllerService } from './commandeController.service';
+export * from './commandeTypeController.service';
+import { CommandeTypeControllerService } from './commandeTypeController.service';
 export * from './filtreController.service';
 import { FiltreControllerService } from './filtreController.service';
 export * from './presentationController.service';
@@ -8,4 +10,4 @@ export * from './testController.service';
 import { TestControllerService } from './testController.service';
 export * from './utilisateurController.service';
 import { UtilisateurControllerService } from './utilisateurController.service';
-export const APIS = [CommandeControllerService, FiltreControllerService, PresentationControllerService, TestControllerService, UtilisateurControllerService];
+export const APIS = [CommandeControllerService, CommandeTypeControllerService, FiltreControllerService, PresentationControllerService, TestControllerService, UtilisateurControllerService];

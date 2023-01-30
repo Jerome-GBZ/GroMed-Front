@@ -15,8 +15,8 @@ import { PresentationCardModel } from './presentationCardModel';
 
 
 export interface PagePresentationCardModel { 
-    totalPages?: number;
     totalElements?: number;
+    totalPages?: number;
     size?: number;
     content?: Array<PresentationCardModel>;
     number?: number;

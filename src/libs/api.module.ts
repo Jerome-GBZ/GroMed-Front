@@ -3,6 +3,7 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 import { CommandeControllerService } from './api/commandeController.service';
+import { CommandeTypeControllerService } from './api/commandeTypeController.service';
 import { FiltreControllerService } from './api/filtreController.service';
 import { PresentationControllerService } from './api/presentationController.service';
 import { TestControllerService } from './api/testController.service';
