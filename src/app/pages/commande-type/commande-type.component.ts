@@ -1,5 +1,5 @@
 import { CommandeTypeControllerService, CommandeTypeInfoModel, PresentationRecapCommandeDTO, UtilisateurModel } from 'src/libs';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MessageService } from 'primeng/api';
 
@@ -12,8 +12,10 @@ import { MessageService } from 'primeng/api';
 export class CommandeTypeComponent implements OnInit {
   public width: number = window.innerWidth;
   public loadingButton: boolean = false;
+  public email: string = '';
   public commandeSelected: string = '';
   public prestations: Array<PresentationRecapCommandeDTO> = [];
+  public filteredCommandeTypes: Array<CommandeTypeInfoModel> = [];
   public commandeTypes : Array<CommandeTypeInfoModel> = [];
 
   constructor(
@@ -22,21 +24,8 @@ export class CommandeTypeComponent implements OnInit {
     private commandeTypeService: CommandeTypeControllerService
   ) { }
   ngOnInit(): void {
-    const email = this.authService.getUtilisateur()?.email;
-
-    if(email === undefined) {
-      this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
-      this.authService.removeUtilisateur();
-      return;
-    }
-
-    this.commandeTypeService.getCommandeTypes(email, '').subscribe(
-      (commandeTypes: Array<CommandeTypeInfoModel>) => {
-        this.commandeTypes = commandeTypes;
-      }, (error: Error) => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des commandes types"});
-      }
-    );
+    this.checkConnected();
+    this.getCommandeTypes();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -44,17 +33,44 @@ export class CommandeTypeComponent implements OnInit {
     this.width = event.target.innerWidth;
   }
 
-  addToCart(name: string) {
-    this.loadingButton = true;
-    const email = this.authService.getUtilisateur()?.email;
+  checkConnected() {
+    let potentialEmail = this.authService.getUtilisateur()?.email;
 
-    if(email === undefined) {
+    if(potentialEmail === undefined || potentialEmail === '') {
       this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
       this.authService.removeUtilisateur();
       return;
+    } else {
+      this.email = potentialEmail;
     }
+  }
 
-    this.commandeTypeService.addCommandeTypeToUserCart(email, name).subscribe(
+  getCommandeTypes() {
+    this.commandeTypeService.getCommandeTypes(this.email, '').subscribe(
+      (commandeTypes: Array<CommandeTypeInfoModel>) => {
+        this.commandeTypes = commandeTypes;
+        this.filteredCommandeTypes = commandeTypes;
+      }, (error: Error) => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des commandes types"});
+      }
+    );
+  }
+
+  searchCommandType(event: any) {
+    let value = event.target.value.toLowerCase();
+
+    this.filteredCommandeTypes = this.commandeTypes.filter(
+      (commandeType: CommandeTypeInfoModel) => {
+        return commandeType.name!!.toLowerCase().includes(value);
+      }
+    );
+  }
+
+  addToCart(name: string) {
+    this.loadingButton = true;
+    this.checkConnected();
+
+    this.commandeTypeService.addCommandeTypeToUserCart(this.email, name).subscribe(
       (utilisateur: UtilisateurModel) => {
         this.loadingButton = false;
         this.authService.updatePanier(utilisateur);
@@ -76,15 +92,9 @@ export class CommandeTypeComponent implements OnInit {
   }
 
   getPresentation(name: string): void {
-    const email = this.authService.getUtilisateur()?.email;
+    this.checkConnected();
 
-    if(email === undefined) {
-      this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
-      this.authService.removeUtilisateur();
-      return;
-    }
-
-    this.commandeTypeService.getCommandeTypeDetail(email, name).subscribe(
+    this.commandeTypeService.getCommandeTypeDetail(this.email, name).subscribe(
       (prestations: Array<PresentationRecapCommandeDTO>) => {
         this.prestations = prestations;
         console.log(this.prestations);
