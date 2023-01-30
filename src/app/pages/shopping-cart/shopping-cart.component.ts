@@ -16,6 +16,7 @@ export class ShoppingCartComponent implements OnInit {
   public width: number = window.innerWidth;
   public medicamentsLine: Array<PresentationPanierModel> = new Array();
   public livraison: LivraisonModel | undefined;
+  public commandeName= '';
 
   constructor(private authService: AuthService,
     private commandeService: CommandeControllerService,
@@ -73,7 +74,7 @@ export class ShoppingCartComponent implements OnInit {
       return;
     }
 
-    this.commandeService.validateCart(email,"").subscribe(
+    this.commandeService.validateCart(email,this.commandeName).subscribe(
       (livraison: LivraisonModel) => {
         this.livraison = livraison;
         this.messageService.add({severity:'success', summary: 'Success', detail: "Commande validée"});

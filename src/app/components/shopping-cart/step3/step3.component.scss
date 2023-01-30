@@ -21,6 +21,10 @@ p-button {
     border-radius: 12px;
 }
 
-::ng-deep .p-button-label {
+::ng-deep .p-button {
     font-weight: 500 !important;
+}
+
+p{
+    margin-top: 15px;
 }

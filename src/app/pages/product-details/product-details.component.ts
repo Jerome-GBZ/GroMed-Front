@@ -16,7 +16,7 @@ export class ProductDetailsComponent {
   width: number = window.innerWidth;
   subtotal: number = 0;
   loading: boolean = false;
-  public disabledButton = true;
+  public disabledButton = false;
 
   medicamentDetails? : PresentationDetailModel
 

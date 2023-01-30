@@ -69,10 +69,10 @@
                     <p>{{ this.subtotal }} €</p>
                 </div>
                 <div class="group-radio">
-                    <input type="checkbox" id="acceptCondition" name="radio" value="1" (change)="acceptCondition()">
+                    <p-checkbox type="checkbox" id="acceptCondition" name="radio" value="1" [(ngModel)]="disabledButton" [binary]="true"></p-checkbox>
                     <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
                 </div>
-                <p-button class="button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="disabledButton || loading"/>
+                <p-button class="button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="!disabledButton || loading"/>
             </div>
         </div>
     </div>

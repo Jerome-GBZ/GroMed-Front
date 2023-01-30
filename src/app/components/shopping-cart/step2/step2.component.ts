@@ -15,6 +15,9 @@ export class Step2Component implements OnInit {
   public inStock: Array<PresentationPanierModel> = new Array();
   public productNotInStockAccept: number = 0;
   private alertesIndisponibilites: { [key: string]: number; } = {};
+  public isCommandType = false;
+  public commandeName = '';
+  @Output() commandTypeName = new EventEmitter<string>;
 
   @Input() total: number = 0;
   @Input() medicamentsLine: Array<PresentationPanierModel> = new Array();
@@ -91,9 +94,5 @@ export class Step2Component implements OnInit {
 
   getTotal(quantite: number | undefined, prixU: number | undefined) {
     return quantite!! * prixU!!;
-  }
-
-  acceptCondition() {
-    this.disabledButton = !this.disabledButton;
   }
 }
