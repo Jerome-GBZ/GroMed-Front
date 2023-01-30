@@ -19,10 +19,10 @@ export class ShopComponent implements OnInit{
   compositions = Array();
   titulaireFilter = Array();
   filteredComposition = Array();
-  selectedComposition = Array<String>();
+  selectedComposition: string[] = [] ;
   filteredTitulaire = Array();
   titulaires = Array();
-  selectedTitulaire = Array<String>();
+  selectedTitulaire: string[] = []  ;
   disponibleSelected = false;
   generiqueSelected = false;
   originalSelected = false;
@@ -46,7 +46,7 @@ export class ShopComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.presentationService.getPresentations({page: 0, size:24}).subscribe(
+    /**this.presentationService.getPresentations({page: 0, size:24}, {presentationName: ''}).subscribe(
       (data: PagePresentationCardModel)=>{
         this.isLoading = false;
         if(data !== undefined){
@@ -55,13 +55,33 @@ export class ShopComponent implements OnInit{
           this.medicamentCards = data.content!!;
         }
       }
-    )
+    )**/
 
     this.filterService.getFiltres().subscribe(
       (data: Filtres) => {
         if(data !== undefined){
           this.compositions = data.substancesDenomitations!!
           this.titulaires = data.titulaires !!
+        }
+      }
+    )
+  }
+
+  searchFiltres(): void{
+    this.presentationService.getPresentations(
+      {page: 0, size:24}, { 
+      presentationName: this.searchText,
+      titulaires: this.selectedTitulaire,
+      substancesDenomitations: this.selectedComposition,
+      original: this.originalSelected,
+      generique: this.generiqueSelected,
+      available: this.disponibleSelected
+    }).subscribe(
+      (data: PagePresentationCardModel)=>{
+        this.isLoading = false;
+        if(data !== undefined){
+          this.numberOfPages = data.totalPages!!;
+          this.medicamentCards = data.content!!;
         }
       }
     )
@@ -94,19 +114,23 @@ export class ShopComponent implements OnInit{
 
   paginate(page: number){
     this.isLoading = true;
-    this.presentationService.getPresentations({page: page, size:24}).subscribe(
-      (data: PagePresentationCardModel) => {
+    this.presentationService.getPresentations(
+      {page: page, size:24}, { 
+      presentationName: this.searchText,
+      titulaires: this.selectedTitulaire,
+      substancesDenomitations: this.selectedComposition,
+      original: this.originalSelected,
+      generique: this.generiqueSelected,
+      available: this.disponibleSelected
+    }).subscribe(
+      (data: PagePresentationCardModel)=>{
         this.isLoading = false;
-        if(data !== undefined){    
-          console.log(data)
-          this.numberOfPages = data.totalElements!!;
+        if(data !== undefined){
+          this.numberOfPages = data.totalPages!!;
           this.medicamentCards = data.content!!;
         }
       }
     )
   }
 
-  onSearchInputTextChangedListener(value: string){
-
-  }
 }

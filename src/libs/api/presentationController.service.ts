@@ -19,6 +19,8 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
+import { Filtres } from '../model/filtres';
+// @ts-ignore
 import { PagePresentationCardModel } from '../model/pagePresentationCardModel';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
@@ -161,21 +163,29 @@ export class PresentationControllerService {
 
     /**
      * @param pagination 
+     * @param filtreDTO 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPresentations(pagination: Pageable, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PagePresentationCardModel>;
-    public getPresentations(pagination: Pageable, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PagePresentationCardModel>>;
-    public getPresentations(pagination: Pageable, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PagePresentationCardModel>>;
-    public getPresentations(pagination: Pageable, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public getPresentations(pagination: Pageable, filtreDTO: Filtres, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<PagePresentationCardModel>;
+    public getPresentations(pagination: Pageable, filtreDTO: Filtres, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<PagePresentationCardModel>>;
+    public getPresentations(pagination: Pageable, filtreDTO: Filtres, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<PagePresentationCardModel>>;
+    public getPresentations(pagination: Pageable, filtreDTO: Filtres, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (pagination === null || pagination === undefined) {
             throw new Error('Required parameter pagination was null or undefined when calling getPresentations.');
+        }
+        if (filtreDTO === null || filtreDTO === undefined) {
+            throw new Error('Required parameter filtreDTO was null or undefined when calling getPresentations.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (pagination !== undefined && pagination !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>pagination, 'pagination');
+        }
+        if (filtreDTO !== undefined && filtreDTO !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>filtreDTO, 'filtreDTO');
         }
 
         let localVarHeaders = this.defaultHeaders;

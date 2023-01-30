@@ -11,7 +11,7 @@
         </ng-lottie>
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input type="text" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" [(ngModel)]="searchText">
+            <input type="text" (ngModelChange)="this.searchFiltres()" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" [(ngModel)]="searchText">
         </span>
         <div class="toolbar-container">
             <div class="filter-container" *ngIf="!showFilters" (click)="showFilters = true">
@@ -50,7 +50,9 @@
                 <p-checkbox [(ngModel)]="originalSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
                 <label >Original</label>
             </div>
-            <p-button label="Sauvegarder" [routerLink]="['/']" [queryParams]="{search: search.value, filterCompositon: selectedComposition, filterTitulaire: selectedTitulaire, disponible: disponibleSelected, generique: generiqueSelected}" ></p-button>
+            <!-- <p-button label="Sauvegarder" [routerLink]="['/']" [queryParams]="{search: search.value, filterCompositon: selectedComposition, filterTitulaire: selectedTitulaire, disponible: disponibleSelected, generique: generiqueSelected}" ></p-button>-->
+            <p-button label="Sauvegarder" (onClick)="this.searchFiltres()"></p-button>
+
         </div>
         <div class="card-grid" *ngIf="!isLoading && searchText!=''" >
             <app-shop-card class="purple" *ngFor="let medCard of medicamentCards" [presentationCard]="medCard" ></app-shop-card>

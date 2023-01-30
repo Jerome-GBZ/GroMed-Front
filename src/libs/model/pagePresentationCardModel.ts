@@ -15,14 +15,14 @@ import { PresentationCardModel } from './presentationCardModel';
 
 
 export interface PagePresentationCardModel { 
-    totalElements?: number;
     totalPages?: number;
+    totalElements?: number;
     size?: number;
     content?: Array<PresentationCardModel>;
     number?: number;
     sort?: SortObject;
-    numberOfElements?: number;
     pageable?: PageableObject;
+    numberOfElements?: number;
     first?: boolean;
     last?: boolean;
     empty?: boolean;
