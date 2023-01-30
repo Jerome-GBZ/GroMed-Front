@@ -17,7 +17,7 @@
         </span>
 
         <div class="toolbar">
-            <img src="./assets/arrow-left.svg" (click)="location.back()" class="back"/>
+            <img src="./assets/arrow-left.svg" alt="retour image.png" (click)="location.back()" class="back"/>
             <p class="path">MAGASIN/</p>
             <p class="current-product">{{this.medicamentDetails.titre}}</p>
         </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
                     <div class="container-avertissement">
-                        <img src="./assets/warning-2.svg"/>
+                        <img alt="danger icone" src="./assets/warning-2.svg"/>
                         <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci: </p>
                     </div>
                     <ul>
