@@ -46,6 +46,10 @@
                 <p-checkbox [(ngModel)]="generiqueSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
                 <label >Générique</label>
             </div>
+            <div class="field-checkbox">
+                <p-checkbox [(ngModel)]="originalSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
+                <label >Original</label>
+            </div>
             <p-button label="Sauvegarder" [routerLink]="['/']" [queryParams]="{search: search.value, filterCompositon: selectedComposition, filterTitulaire: selectedTitulaire, disponible: disponibleSelected, generique: generiqueSelected}" ></p-button>
         </div>
         <div class="card-grid" *ngIf="!isLoading && searchText!=''" >

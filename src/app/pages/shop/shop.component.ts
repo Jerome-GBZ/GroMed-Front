@@ -25,6 +25,7 @@ export class ShopComponent implements OnInit{
   selectedTitulaire = Array<String>();
   disponibleSelected = false;
   generiqueSelected = false;
+  originalSelected = false;
   searchState = false;
   searchText = "";
 

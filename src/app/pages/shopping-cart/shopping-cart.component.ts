@@ -12,8 +12,6 @@ import { CommandeControllerService, PresentationPanierModel, UtilisateurModel, L
 })
 export class ShoppingCartComponent implements OnInit {
   public total: number = 0;
-  public subTotal: number = 0;
-  public reducTotal: number = 0;
   public stepShop: number = 1;
   public width: number = window.innerWidth;
   public medicamentsLine: Array<PresentationPanierModel> = new Array();
@@ -86,15 +84,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   resetTotals() {
-    this.subTotal = 0;
-    this.reducTotal = 0;
-
+    this.total = 0;
     this.medicamentsLine.forEach((medicament) => {
-      this.subTotal += medicament.prixUnitaire!!;
-      this.reducTotal += medicament.prixUnitaire!! * (medicament.tauxRemboursement!! / 100);
+      this.total += medicament.prixUnitaire!!;
     });
-
-    this.total = this.subTotal - this.reducTotal;
   }
 
   @HostListener('window:resize', ['$event'])

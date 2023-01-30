@@ -10,8 +10,6 @@ import { CommandeControllerService, PresentationPanierModel, UtilisateurModel } 
   providers: [MessageService]
 })
 export class Step1Component {
-  @Input() subTotal: number = 0;
-  @Input() reducTotal: number = 0;
   @Input() total: number = 0;
   @Input() medicamentsLine: Array<PresentationPanierModel> = new Array();
 

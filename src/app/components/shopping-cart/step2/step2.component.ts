@@ -16,8 +16,6 @@ export class Step2Component implements OnInit {
   public productNotInStockAccept: number = 0;
   private alertesIndisponibilites: { [key: string]: number; } = {};
 
-  @Input() subTotal: number = 0;
-  @Input() reducTotal: number = 0;
   @Input() total: number = 0;
   @Input() medicamentsLine: Array<PresentationPanierModel> = new Array();
 
