@@ -16,6 +16,7 @@ export class ProductDetailsComponent {
   width: number = window.innerWidth;
   subtotal: number = 0;
   loading: boolean = false;
+  public disabledButton = true;
 
   medicamentDetails? : PresentationDetailModel
 
@@ -53,6 +54,11 @@ export class ProductDetailsComponent {
     this.subtotal = Number((Number(quantity) * this.medicamentDetails!!.prix!).toFixed(2))
   }
 
+
+  acceptCondition() {
+    this.disabledButton = !this.disabledButton;
+  }
+
   addToCart(quantity: string) {
     this.loading = true;
 
@@ -76,4 +82,5 @@ export class ProductDetailsComponent {
       }
     );
   }
+  
 }

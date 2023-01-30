@@ -202,3 +202,23 @@ p{
         cursor: not-allowed !important;
     }
 }
+
+.group-radio {
+    display: flex;
+
+    #acceptCondition {
+        width: 20px;
+        height: 20px;
+    }
+
+    label {
+        margin-left: 10px;
+        font-size: 15px;
+        color: $paragraph;
+    }
+}
+
+.button:disabled {
+    background-color: rgba($primary, 0.3) !important;
+    cursor: not-allowed !important;
+}

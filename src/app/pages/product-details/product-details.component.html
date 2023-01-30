@@ -68,7 +68,11 @@
                     <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  <br>Remboursement: {{this.medicamentDetails.tauxRemboursement}}%</p>
                     <p>{{ this.subtotal }} €</p>
                 </div>
-                <p-button class="buy-button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="loading"/>
+                <div class="group-radio">
+                    <input type="checkbox" id="acceptCondition" name="radio" value="1" (change)="acceptCondition()">
+                    <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
+                </div>
+                <p-button class="button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="disabledButton || loading"/>
             </div>
         </div>
     </div>

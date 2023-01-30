@@ -14,6 +14,10 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
+::ng-deep .p-toast {
+    opacity: 1 !important;
+}
+
 body {
     margin: 0;
     padding: 0;
