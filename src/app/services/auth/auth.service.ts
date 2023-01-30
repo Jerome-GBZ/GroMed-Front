@@ -46,6 +46,20 @@ export class AuthService implements CanActivate {
     localStorage.removeItem('utilisateur');
   }
 
+  resetPanier(): void {
+    let utilisateur = this.getUtilisateur();
+
+    if(utilisateur) {
+      utilisateur.nbMedicamentsPanier = 0;
+      this.updatePanier(utilisateur);
+    }
+  }
+
+  logout(): void {
+    this.removeUtilisateur();
+    this.router.navigate(['/welcome']);
+  }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> | Observable<boolean> {
     if (this.isAuthenticated()) {
       return true;

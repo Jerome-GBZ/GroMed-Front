@@ -26,6 +26,10 @@ export class SidebarMenuComponent {
   onResize(event: any) {
     this.width = event.target.innerWidth;
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }
 
 export enum SidebarItem {
@@ -33,5 +37,6 @@ export enum SidebarItem {
   COMMANDE_TYPE = 1,
   PANIER = 2,
   FACTURE = 3,
-  COMPTE = 4
+  COMPTE = 4,
+  DECONECTE = 5
 }

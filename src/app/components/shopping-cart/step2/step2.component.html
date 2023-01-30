@@ -1,11 +1,11 @@
 <div class="container-medic">
     <div *ngIf="inStock.length > 0">
-        <span class="subtitle"> Récap </span>
+        <span class="subtitle"> Récapitulatif des médicaments commandé </span>
         <div class="list-recap mb30">
             <div class="item-recap" *ngFor="let medLine of inStock">
                 <span> {{ medLine.quantite }}x </span>
                 <span> {{ medLine.denomination }} </span>
-                <span class="price-recap"> {{ getTotal(medLine.quantite, medLine.prixUnitaire) }}€ </span>
+                <span class="price-recap"> {{ getTotal(medLine.quantite, medLine.prixUnitaire).toFixed(2) }}€ </span>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <app-line *ngFor="let medLine of notInStock" [presentationLine]="medLine" [variant]="1" (deleteItemEvent)="deleteItem($event)" (acceptItemEvent)="acceptItem($event)"></app-line>
 
     <div class="groupe-shipping mt30 mb30">
-        <span class="subtitle"> ARTICLES INDISPONIBLES </span>
+        <span class="subtitle"> DELAI DE LIVRAISON </span>
         <h2 class="ShippingDelay" *ngIf="notInStock.length == 0 && productNotInStockAccept == 0"> 24h </h2>
         <h2 class="ShippingDelay" *ngIf="notInStock.length > 0 || productNotInStockAccept > 0"> 7jours </h2>
     </div>
@@ -25,7 +25,7 @@
     </ul>
 
     <div class="group-radio">
-        <input type="radio" id="acceptCondition" name="radio" value="1" (change)="acceptCondition()">
+        <input type="checkbox" id="acceptCondition" name="radio" value="1" (change)="acceptCondition()">
         <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
     </div>
 

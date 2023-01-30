@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { CommandeControllerService, InfoImportanteModel, PresentationPanierModel, UtilisateurModel } from 'src/libs';
+import { AlerteIndisponibilitePresentationDTO, CommandeControllerService, InfoImportanteModel, PresentationPanierModel } from 'src/libs';
 
 @Component({
   selector: 'app-step2',
@@ -14,6 +14,7 @@ export class Step2Component implements OnInit {
   public notInStock: Array<PresentationPanierModel> = new Array();
   public inStock: Array<PresentationPanierModel> = new Array();
   public productNotInStockAccept: number = 0;
+  private alertesIndisponibilites: { [key: string]: number; } = {};
 
   @Input() subTotal: number = 0;
   @Input() reducTotal: number = 0;
@@ -29,8 +30,30 @@ export class Step2Component implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.notInStock = this.medicamentsLine.filter((medicament) => medicament.stock!! < medicament.quantite!!);
-    this.inStock = this.medicamentsLine.filter((medicament) => medicament.stock!! >= medicament.quantite!!);
+    const email = this.authService.getUtilisateur()?.email;
+
+    if(email === undefined) {
+      this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
+      this.authService.removeUtilisateur();
+      return;
+    }
+
+    this.commandeService.checkStockAvailability(email).subscribe(
+      (indisponibiliteList: AlerteIndisponibilitePresentationDTO) => {
+        this.alertesIndisponibilites = indisponibiliteList.alertesIndisponibilites!!;
+
+        this.notInStock = this.medicamentsLine.filter( (medicament) => {
+          return Object.keys(this.alertesIndisponibilites).includes(medicament.codeCIP7!!);
+        });
+
+        this.inStock = this.medicamentsLine.filter( (medicament) => {
+          return !Object.keys(this.alertesIndisponibilites).includes(medicament.codeCIP7!!);
+        });
+      }
+    );
+
+    // this.notInStock = this.medicamentsLine.filter((medicament) => medicament.stock!! < medicament.quantite!!);
+    // this.inStock = this.medicamentsLine.filter((medicament) => medicament.stock!! >= medicament.quantite!!);
   }
 
   nextStep(value: number) {
@@ -73,6 +96,6 @@ export class Step2Component implements OnInit {
   }
 
   acceptCondition() {
-    this.disabledButton = false;
+    this.disabledButton = !this.disabledButton;
   }
 }

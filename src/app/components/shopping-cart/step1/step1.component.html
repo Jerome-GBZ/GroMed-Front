@@ -6,17 +6,21 @@
 
     <app-line *ngFor="let medLine of medicamentsLine" [presentationLine]="medLine" [variant]="0" (deleteItemEvent)="deleteItem($event)"></app-line>
 
-    <div class="container-total">
+    <div *ngIf="medicamentsLine.length <= 0">
+        <h2 class="noMedicament"> Il n'y a aucun médicament dans votre panier. </h2>
+    </div>
+
+    <div class="container-total"  *ngIf="medicamentsLine.length > 0">
         <span class="subtotal"> Sous-Total </span>
         <span class="subtotal"> {{ subTotal.toFixed(2) }}€ </span>
     </div>
 
-    <div class="container-total mt0">
+    <div class="container-total mt0"  *ngIf="medicamentsLine.length > 0">
         <span class="subtotal"> Réduction </span>
         <span class="subtotal"> {{ reducTotal.toFixed(2) }}€ </span>
     </div>
 
-    <div class="container-total mt0">
+    <div class="container-total mt0"  *ngIf="medicamentsLine.length > 0">
         <span class="total-text"> Total </span>
         <span class="total"> {{ total.toFixed(2) }}€ </span>
     </div>
@@ -26,7 +30,7 @@
             Ajouter une commande type
         </button>
 
-        <button class="button" (click)="nextStep(2)">
+        <button class="button" (click)="nextStep(2)" [disabled]="medicamentsLine.length == 0">
             Confirmer mes achats
         </button>
     </div>
