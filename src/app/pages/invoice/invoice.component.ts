@@ -1,4 +1,3 @@
-import { DataFormat } from './../../../libs/param';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommandeControllerService, CommandeDetailDTO, CommandeModel } from 'src/libs';
@@ -44,7 +43,7 @@ export class InvoiceComponent implements OnInit {
 
   parseDate(date: string): string{
     let dateFormat = moment.utc(date).local();
-    return dateFormat.format('DD/MM/YYYY HH:mm:ss')
+    return dateFormat.format('DD/MM/YYYY HH:mm')
   }
 
   checkConnected() {
