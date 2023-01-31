@@ -81,7 +81,7 @@
 
         <div class="commande-container" *ngFor="let commande of filteredCommande">
             <div class="commande-line">
-                <h1> {{ commande.numeroCommande }} </h1>
+                <h1> {{ parseDate(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
                 <div class="button-line">
                     <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>
                     <button *ngIf="isPossibleToCancel(commande)" class="cancel"> Annuler la commande </button>
@@ -91,7 +91,7 @@
 
             <div class="commande-detail" [ngClass]="commande.numeroCommande == commandeSelected ? 'display' : 'hide'">
                 <div>
-                    <p> Récapitulatif de la commande : {{ parseDate(commandeDetails?.dateCommande!!) }} </p>
+                    <p> Récapitulatif de la commande : </p>
                     <ul>
                         <li class="" *ngFor="let presentation of commandeDetails?.recapCommande">
                             <p class="quantity"> {{ presentation.quantite }}x </p>
