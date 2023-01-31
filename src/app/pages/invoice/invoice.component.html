@@ -91,7 +91,7 @@
 
             <div class="commande-detail" [ngClass]="commande.numeroCommande == commandeSelected ? 'display' : 'hide'">
                 <div>
-                    <p> Récapitulatif de la commande </p>
+                    <p> Récapitulatif de la commande : {{ parseDate(commandeDetails?.dateCommande!!) }} </p>
                     <ul>
                         <li class="" *ngFor="let presentation of commandeDetails?.recapCommande">
                             <p class="quantity"> {{ presentation.quantite }}x </p>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div *ngFor="let livraison of commandeDetails?.livraisons">
-                    <p> Date de livraison : {{ livraison.dateLivraison }} </p>
+                    <p> Date de livraison : {{ parseDate(livraison?.dateLivraison!!) }} </p>
                     <ul>
                         <li class="" *ngFor="let presentation of livraison?.recapLivraison">
                             <p class="quantity"> {{ presentation.quantite }}x </p>
