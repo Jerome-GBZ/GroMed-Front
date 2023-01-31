@@ -27,8 +27,8 @@ export interface Filtres {
      * Liste de toutes les dénominations de substances de médicaments
      */
     substancesDenomitations?: Array<string>;
-    original?: boolean;
     generique?: boolean;
     available?: boolean;
+    original?: boolean;
 }
 

@@ -2,6 +2,7 @@ export * from './alerteIndisponibilitePresentationDTO';
 export * from './commandeDetailDTO';
 export * from './commandeModel';
 export * from './commandeTypeInfoModel';
+export * from './compositionDTOModel';
 export * from './conditionPrescriptionDTO';
 export * from './filtres';
 export * from './infoImportanteModel';

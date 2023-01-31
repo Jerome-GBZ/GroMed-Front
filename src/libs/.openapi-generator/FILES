@@ -17,6 +17,7 @@ model/alerteIndisponibilitePresentationDTO.ts
 model/commandeDetailDTO.ts
 model/commandeModel.ts
 model/commandeTypeInfoModel.ts
+model/compositionDTOModel.ts
 model/conditionPrescriptionDTO.ts
 model/filtres.ts
 model/infoImportanteModel.ts

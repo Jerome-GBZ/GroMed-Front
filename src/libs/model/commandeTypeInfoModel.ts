@@ -18,7 +18,7 @@ export interface CommandeTypeInfoModel {
     /**
      * Le nom de la commande type
      */
-    name?: string;
+    nom?: string;
     /**
      * le nombre de presentation dans la commande type
      */
