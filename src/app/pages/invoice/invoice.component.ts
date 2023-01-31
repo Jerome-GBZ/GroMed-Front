@@ -1,6 +1,7 @@
+import { DataFormat } from './../../../libs/param';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { CommandeControllerService, CommandeModel } from 'src/libs';
+import { CommandeControllerService, CommandeDetailDTO, CommandeModel } from 'src/libs';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -10,8 +11,13 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class InvoiceComponent implements OnInit {
+
   public width: number = window.innerWidth;
   public commandes: Array<CommandeModel> = [];
+  public filteredCommande: Array<CommandeModel> = [];
+  public commandeSelected: number = -1;
+  public email: string = '';
+  public commandeDetails: CommandeDetailDTO | undefined;
 
   constructor(private authService: AuthService,
     private messageService: MessageService,
@@ -19,17 +25,12 @@ export class InvoiceComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const email = this.authService.getUtilisateur()?.email;
+    this.checkConnected();
 
-    if(email === undefined) {
-      this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
-      this.authService.removeUtilisateur();
-      return;
-    }
-
-    this.commandeService.getAllCommande(email).subscribe(
+    this.commandeService.getAllCommande(this.email).subscribe(
       (commandes: Array<CommandeModel>) => {
         this.commandes = commandes;
+        this.filteredCommande = commandes;
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des commandes"});
       }
@@ -45,6 +46,59 @@ export class InvoiceComponent implements OnInit {
     let dateFormat = moment.utc(date).local();
     return dateFormat.format('DD/MM/YYYY HH:mm:ss')
   }
+
+  checkConnected() {
+    let potentialEmail = this.authService.getUtilisateur()?.email;
+
+    if(potentialEmail === undefined || potentialEmail === '') {
+      this.messageService.add({severity:'error', summary: 'Error', detail: "Problème d'authentification"});
+      this.authService.removeUtilisateur();
+      return;
+    } else {
+      this.email = potentialEmail;
+    }
+  }
+
+  seeDetailCommande(numeroCommande: number) {
+    if(this.commandeSelected === numeroCommande) {
+      this.commandeSelected = -1;
+    } else {
+      this.commandeSelected = numeroCommande;
+      this.getDetails(numeroCommande);
+    }
+  }
+
+  searchCommand(event: any) {
+    let value = event.target.value.toLowerCase();
+
+    this.filteredCommande = this.commandes.filter(
+      (commande: CommandeModel) => {
+        return commande.numeroCommande!!.toString().includes(value);
+      }
+    );
+  }
+
+  getDetails(numeroCommande: number): void {
+    this.checkConnected();
+
+    this.commandeService.getDetailCommande(this.email, numeroCommande).subscribe(
+      (details: CommandeDetailDTO) => {
+        this.commandeDetails = details;
+        console.log(this.commandeDetails);
+      }, (error: Error) => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des détails d'une commande"});
+      }
+    );
+  }
+
+  isPossibleToCancel(commande: CommandeModel): boolean {
+    let dateFormat = moment.utc(commande.dateCommande).local();
+    let now = moment();
+    let difference = moment.duration(now.diff(dateFormat));
+
+    return commande.status === 'EN_COURS' &&  difference.asMinutes() < 30;
+  }
 }
+
 declare const moment: any;
 

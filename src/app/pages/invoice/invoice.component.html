@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="hamburger">
         <app-hamburger-menu></app-hamburger-menu>
     </div>
@@ -62,4 +62,54 @@
         </div>
     </div>
 </div>
+ -->
 
+ <div class="container">
+    <div class="hamburger">
+        <app-hamburger-menu></app-hamburger-menu>
+    </div>
+
+    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
+        <app-sidebar-menu [currentItem]="1"></app-sidebar-menu>
+    </div>
+
+    <div class="content">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input (keyup)="searchCommand($event)" type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher une commande type">
+        </span>
+
+        <div class="commande-container" *ngFor="let commande of filteredCommande">
+            <div class="commande-line">
+                <h1> {{ commande.numeroCommande }} </h1>
+                <div class="button-line">
+                    <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>
+                    <button *ngIf="isPossibleToCancel(commande)" class="cancel"> Annuler la commande </button>
+                    <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommande(commande.numeroCommande!!)">
+                </div>
+            </div>
+
+            <div class="commande-detail" [ngClass]="commande.numeroCommande == commandeSelected ? 'display' : 'hide'">
+                <div>
+                    <p> Récapitulatif de la commande </p>
+                    <ul>
+                        <li class="" *ngFor="let presentation of commandeDetails?.recapCommande">
+                            <p class="quantity"> {{ presentation.quantite }}x </p>
+                            <p> {{ presentation.nomPresentation }} </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div *ngFor="let livraison of commandeDetails?.livraisons">
+                    <p> Date de livraison : {{ livraison.dateLivraison }} </p>
+                    <ul>
+                        <li class="" *ngFor="let presentation of livraison?.recapLivraison">
+                            <p class="quantity"> {{ presentation.quantite }}x </p>
+                            <p> {{ presentation.nomPresentation }} </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

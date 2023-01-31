@@ -3,24 +3,135 @@
 
 .content{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.card{
+
+.p-input-icon-left{
     width: 95%;
-    border-radius: 10px;
-    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.p-inputtext-lg{
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    border-color: $line;
+    &::placeholder{
+        color: $placeholder
+    }
+}
+
+.p-inputtext.p-inputtext-lg{
+    padding-left: 60px !important;
+}
+
+.pi-search{
+    padding-left: 20px;
+    color: $placeholder;
+}
+
+.pi{
+    color: $placeholder;
 }
 
 
-.status-status-LIVREE {
-    
+.status {
+    border-radius: 5px;
+    padding: 5px;
+
+    .label {
+        font-weight: 500;
+        font-size: 13px;
+        color: #232627;
+        margin: 0px !important;
+        width: fit-content !important;
+    }
 }
 
-.status-status-EN_COURS {
-
+.LIVREE {
+    background-color: rgba($success, 0.4) !important;
 }
 
-.status-status-ANNULEE {
-    
+.EN_COURS {
+    background-color: rgba($warning, 0.4) !important;
 }
+
+.ANNULEE {
+    background-color: rgba($error, 0.4) !important;
+}
+
+.commande-container {
+    width: 95%;
+    margin-bottom: 10px;
+
+    .display {
+        display: block;
+    }
+    .hide {
+        display: none;
+    }
+}
+.commande-line {
+    width: 100%;
+    padding: 0px 15px;
+    border-bottom: 1px solid $line;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .button-line {
+        display: flex;
+
+        .buttonAddCart {
+            background-color: #266AF6 !important;
+            border: 1px solid #266AF6 !important;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px !important;
+            padding: 10px 20px !important;
+            cursor: pointer;
+
+            &:disabled {
+                background-color: rgba($primary, 0.3) !important;
+                border: 1px solid rgba($primary, 0.3) !important;
+                cursor: not-allowed !important;
+            }
+        }
+
+        .buttonDetail {
+            cursor: pointer;
+            padding-left: 45px;
+        }
+    }
+}
+
+.commande-detail {
+    display: flex;
+}
+
+
+li {
+    display: flex;
+
+    .quantity {
+        width: 40px;
+    }
+
+    p {
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
