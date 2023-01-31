@@ -119,6 +119,17 @@
 
 .commande-detail {
     display: flex;
+    padding-left: 40px;
+
+    .title {
+        font: 500;
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+
+    .ulRecap {
+        margin-top: 0px;
+    }
 }
 
 
