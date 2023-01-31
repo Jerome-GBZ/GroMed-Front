@@ -15,14 +15,14 @@
 
         <div class="commande-container" *ngFor="let commande of filteredCommandeTypes">
             <div class="commande-line">
-                <h1> {{ commande.name }} </h1>
+                <h1> {{ commande.nom }} </h1>
                 <div class="button-line">
-                    <button class="buttonAddCart" (click)="addToCart(commande.name!!)" [disabled]="loadingButton">Ajouter au panier</button>
-                    <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommandeType(commande.name!!)">
+                    <button class="buttonAddCart" (click)="addToCart(commande.nom!!)" [disabled]="loadingButton">Ajouter au panier</button>
+                    <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommandeType(commande.nom!!)">
                 </div>
             </div>
 
-            <div [ngClass]="commande.name == commandeSelected ? 'display' : 'hide'">
+            <div [ngClass]="commande.nom == commandeSelected ? 'display' : 'hide'">
                 <ul>
                     <li class="" *ngFor="let presentation of prestations">
                         <p class="quantity"> {{ presentation.quantite }}x </p>

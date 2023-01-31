@@ -61,7 +61,7 @@ export class CommandeTypeComponent implements OnInit {
 
     this.filteredCommandeTypes = this.commandeTypes.filter(
       (commandeType: CommandeTypeInfoModel) => {
-        return commandeType.name!!.toLowerCase().includes(value);
+        return commandeType.nom!!.toLowerCase().includes(value);
       }
     );
   }

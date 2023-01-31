@@ -29,6 +29,18 @@
                 <p>
                     {{this.medicamentDetails.description}}
                 </p>
+                <div class="composition" *ngFor="let compo of this.medicamentDetails.compositions">
+                    <p style="font-weight: 500;">Contient du {{compo.denominationSubstance}}:</p>
+                    <ul>
+                        <li>code substance: {{compo.codeSubstance}}</li>
+                        <li>Element pharmaceutique: {{compo.designationElementPharmaceutique}}</li>
+                        <li>dosage: {{compo.dosage}}</li>
+                        <li>referenceDosage: {{compo.referenceDosage}}</li>
+                        <li>natureComposant: {{compo.natureComposant}}</li>
+                    </ul>
+
+                    <br/>
+                </div>
                 <div class="label-row">
                     <div class="label-container">
                         <p class="label">
