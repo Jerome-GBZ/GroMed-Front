@@ -71,6 +71,7 @@
 
     .display {
         display: block;
+        border-bottom: 1px solid $line;
     }
     .hide {
         display: none;
@@ -117,6 +118,9 @@
     }
 }
 
+.line-selected{
+    border-bottom: 0px;
+}
 .commande-detail {
     display: flex;
     padding-left: 40px;

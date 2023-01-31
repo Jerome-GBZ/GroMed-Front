@@ -25,7 +25,7 @@
             <img class="nav-icon arrow-shopping" src="./assets/arrow-right.svg" [ngClass]="{'ml50p': utilisateur.nbMedicamentsPanier!! <= 0} && (currentItem === sideBarItem.PANIER ? 'display' : 'hide')" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE}" routerLink="/facture">
-            <img class="icon" src="./assets/folder-open.svg" alt="Dossier icône"/>
+            <img class="icon" src="./assets/box.svg" alt="Dossier icône"/>
             <p class="label">Mes commandes</p>
             <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
