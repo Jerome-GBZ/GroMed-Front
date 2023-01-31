@@ -177,7 +177,7 @@ p{
 
 .label{
     font-weight: 500;
-    font-size: 13px;
+    font-size: 15px;
     color: $title;
     margin: 0px !important;
     -webkit-line-clamp: 1; /* number of lines to show */
@@ -186,6 +186,10 @@ p{
 
 .purple{
     background-color:  rgba(129, 141, 255, 0.4);
+}
+
+.orange{
+    background-color: rgba(255, 182, 129, 0.4);
 }
 
 ::ng-deep .p-button-label{

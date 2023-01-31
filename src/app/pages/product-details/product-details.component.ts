@@ -17,8 +17,9 @@ export class ProductDetailsComponent {
   subtotal: number = 0;
   loading: boolean = false;
   public disabledButton = false;
-
   medicamentDetails? : PresentationDetailModel
+  voiesAdministration: string[] = [] 
+
 
   public constructor(
     private authService: AuthService,
@@ -35,6 +36,7 @@ export class ProductDetailsComponent {
           if(data !== undefined){
             this.medicamentDetails = data;
             this.subtotal = data.prix!!;
+            this.voiesAdministration = data.voiesAdministration!!.split(";")
             if(data.informationsImportantes?.length! === 0)
               this.disabledButton = true;
           }

@@ -53,6 +53,12 @@
                             {{medicamentDetails.formePharmaceutique}}
                         </p>
                     </div>
+
+                    <div class="label-container orange" *ngFor="let voiesAdmin of this.voiesAdministration">
+                        <p class="label">
+                            {{voiesAdmin}}
+                        </p>
+                    </div>
                 </div>
                 <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
                     <div class="container-avertissement">
