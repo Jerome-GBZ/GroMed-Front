@@ -36,7 +36,7 @@ export enum SidebarItem {
   SHOP = 0,
   COMMANDE_TYPE = 1,
   PANIER = 2,
-  FACTURE = 3,
+  COMMANDE = 3,
   COMPTE = 4,
   DECONECTE = 5
 }

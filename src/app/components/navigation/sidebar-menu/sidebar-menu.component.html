@@ -24,10 +24,10 @@
             <p-badge *ngIf="utilisateur.nbMedicamentsPanier! > 0" value="{{ utilisateur.nbMedicamentsPanier }}"  severity="info"></p-badge>
             <img class="nav-icon arrow-shopping" src="./assets/arrow-right.svg" [ngClass]="{'ml50p': utilisateur.nbMedicamentsPanier!! <= 0} && (currentItem === sideBarItem.PANIER ? 'display' : 'hide')" alt="Flèche droite">
         </div>
-        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.FACTURE}" routerLink="/facture">
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE}" routerLink="/facture">
             <img class="icon" src="./assets/folder-open.svg" alt="Dossier icône"/>
-            <p class="label">Mes factures</p>
-            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.FACTURE ? 'display' : 'hide'" alt="Flèche droite">
+            <p class="label">Mes commandes</p>
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMPTE}" routerLink="/compte">
             <img class="icon" src="./assets/user.svg" alt="Utilisateur icône"/>

@@ -70,7 +70,7 @@
     </div>
 
     <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
-        <app-sidebar-menu [currentItem]="1"></app-sidebar-menu>
+        <app-sidebar-menu [currentItem]="3"></app-sidebar-menu>
     </div>
 
     <div class="content">
@@ -81,7 +81,7 @@
 
         <div class="commande-container" *ngFor="let commande of filteredCommande">
             <div class="commande-line">
-                <h1> {{ parseDate(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
+                <h1> {{ parseDateShort(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
                 <div class="button-line">
                     <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>
                     <button *ngIf="isPossibleToCancel(commande)" class="cancel"> Annuler la commande </button>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div *ngFor="let livraison of commandeDetails?.livraisons">
-                    <p class="title"> Date de livraison : {{ parseDate(livraison?.dateLivraison!!) }} </p>
+                    <p class="title"> Date de livraison : {{ parseDateLong(livraison?.dateLivraison!!) }} </p>
                     <ul class="ulRecap">
                         <li class="" *ngFor="let presentation of livraison?.recapLivraison">
                             <p class="quantity"> {{ presentation.quantite }}x </p>

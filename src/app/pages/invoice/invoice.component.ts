@@ -41,9 +41,17 @@ export class InvoiceComponent implements OnInit {
     this.width = event.target.innerWidth;
   }
 
-  parseDate(date: string): string{
+  parseDateLong(date: string): string {
+    return this.parseDate(date, 'DD/MM/YYYY HH:mm:ss');
+  }
+
+  parseDateShort(date: string): string {
+    return this.parseDate(date, 'DD/MM/YYYY');
+  }
+
+  parseDate(date: string, format: string): string{
     let dateFormat = moment.utc(date).local();
-    return dateFormat.format('DD/MM/YYYY HH:mm')
+    return dateFormat.format(format)
   }
 
   checkConnected() {
