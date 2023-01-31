@@ -66,7 +66,7 @@
 }
 
 .commande-container {
-    width: 95%;
+    width: 100%;
     margin-bottom: 10px;
 
     .display {
@@ -146,3 +146,15 @@ li {
     }
 }
 
+
+.skeleton-container {
+    width: 95%;
+
+    .skeleton-group {
+        margin-bottom: 15px !important;
+
+        .skeleton {
+            margin-bottom: 7px !important;
+        }
+    }
+}

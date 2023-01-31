@@ -79,36 +79,82 @@
             <input (keyup)="searchCommand($event)" type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher une commande type">
         </span>
 
-        <div class="commande-container" *ngFor="let commande of filteredCommande">
-            <div class="commande-line">
-                <h1> {{ parseDateShort(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
-                <div class="button-line">
-                    <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>
-                    <button *ngIf="isPossibleToCancel(commande)" class="cancel"> Annuler la commande </button>
-                    <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommande(commande.numeroCommande!!)">
+        <div *ngIf="!isLoading" style="width: 95%;">
+            <div class="commande-container" *ngFor="let commande of filteredCommande">
+                <div class="commande-line">
+                    <h1> {{ parseDateShort(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
+                    <div class="button-line">
+                        <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>
+                        <button *ngIf="isPossibleToCancel(commande)" class="cancel"> Annuler la commande </button>
+                        <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommande(commande.numeroCommande!!)">
+                    </div>
+                </div>
+
+                <div class="commande-detail" [ngClass]="commande.numeroCommande == commandeSelected ? 'display' : 'hide'">
+                    <div>
+                        <p class="title"> Récapitulatif de la commande : </p>
+                        <ul class="ulRecap">
+                            <li class="" *ngFor="let presentation of commandeDetails?.recapCommande">
+                                <p class="quantity"> {{ presentation.quantite }}x </p>
+                                <p> {{ presentation.nomPresentation }} </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div *ngFor="let livraison of commandeDetails?.livraisons">
+                        <p class="title"> Date de livraison : {{ parseDateLong(livraison?.dateLivraison!!) }} </p>
+                        <ul class="ulRecap">
+                            <li class="" *ngFor="let presentation of livraison?.recapLivraison">
+                                <p class="quantity"> {{ presentation.quantite }}x </p>
+                                <p> {{ presentation.nomPresentation }} </p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="commande-detail" [ngClass]="commande.numeroCommande == commandeSelected ? 'display' : 'hide'">
-                <div>
-                    <p class="title"> Récapitulatif de la commande : </p>
-                    <ul class="ulRecap">
-                        <li class="" *ngFor="let presentation of commandeDetails?.recapCommande">
-                            <p class="quantity"> {{ presentation.quantite }}x </p>
-                            <p> {{ presentation.nomPresentation }} </p>
-                        </li>
-                    </ul>
-                </div>
+        <div class="skeleton-container" *ngIf="isLoading">
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
 
-                <div *ngFor="let livraison of commandeDetails?.livraisons">
-                    <p class="title"> Date de livraison : {{ parseDateLong(livraison?.dateLivraison!!) }} </p>
-                    <ul class="ulRecap">
-                        <li class="" *ngFor="let presentation of livraison?.recapLivraison">
-                            <p class="quantity"> {{ presentation.quantite }}x </p>
-                            <p> {{ presentation.nomPresentation }} </p>
-                        </li>
-                    </ul>
-                </div>
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
             </div>
         </div>
     </div>

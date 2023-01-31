@@ -1,9 +1,7 @@
-import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PagePresentationCardModel } from 'src/libs/model/pagePresentationCardModel';
 import { FiltreControllerService, Filtres, PresentationCardModel, PresentationControllerService } from "../../../libs";
 import { AnimationOptions } from "ngx-lottie";
-import { FormControl, NgModel } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shop',

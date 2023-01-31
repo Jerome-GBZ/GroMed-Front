@@ -17,6 +17,7 @@ export class InvoiceComponent implements OnInit {
   public commandeSelected: number = -1;
   public email: string = '';
   public commandeDetails: CommandeDetailDTO | undefined;
+  public isLoading: boolean = true;
 
   constructor(private authService: AuthService,
     private messageService: MessageService,
@@ -28,6 +29,7 @@ export class InvoiceComponent implements OnInit {
 
     this.commandeService.getAllCommande(this.email).subscribe(
       (commandes: Array<CommandeModel>) => {
+        this.isLoading = false;
         this.commandes = commandes;
         this.filteredCommande = commandes;
       }, (error: Error) => {
