@@ -35,6 +35,8 @@ export class ProductDetailsComponent {
           if(data !== undefined){
             this.medicamentDetails = data;
             this.subtotal = data.prix!!;
+            if(data.informationsImportantes?.length! === 0)
+              this.disabledButton = true;
           }
         }
       )

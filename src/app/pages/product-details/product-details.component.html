@@ -68,7 +68,7 @@
                     <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  <br>Remboursement: {{this.medicamentDetails.tauxRemboursement}}%</p>
                     <p>{{ this.subtotal }} €</p>
                 </div>
-                <div class="group-radio">
+                <div class="group-radio" *ngIf="this.medicamentDetails.informationsImportantes?.length! > 0">
                     <p-checkbox type="checkbox" id="acceptCondition" name="radio" value="1" [(ngModel)]="disabledButton" [binary]="true"></p-checkbox>
                     <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
                 </div>
