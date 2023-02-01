@@ -51,8 +51,7 @@ export class CommandeTypeComponent implements OnInit {
       (commandeTypes: Array<CommandeTypeInfoModel>) => {
         this.commandeTypes = commandeTypes;
         this.filteredCommandeTypes = commandeTypes;
-        console.log(commandeTypes);
-        
+
         this.isLoading = false;
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des commandes types"});
@@ -78,10 +77,10 @@ export class CommandeTypeComponent implements OnInit {
       (utilisateur: UtilisateurModel) => {
         this.loadingButton = false;
         this.authService.updatePanier(utilisateur);
-        this.messageService.add({severity:'success', summary: 'Success', detail: "Le produit a été ajouté au panier"});
+        this.messageService.add({severity:'success', summary: 'Success', detail: "La commande type a été ajouté au panier"});
       }, (error: any) => {
         this.loadingButton = false;
-        this.messageService.add({severity:'error', summary: 'Error', detail: "Le produit n'a pas pu être ajouté au panier"});
+        this.messageService.add({severity:'error', summary: 'Error', detail: "La commande type n'a pas pu être ajouté au panier"});
       }
     );
   }
@@ -101,7 +100,6 @@ export class CommandeTypeComponent implements OnInit {
     this.commandeTypeService.getCommandeTypeDetail(this.email, name).subscribe(
       (prestations: Array<PresentationRecapCommandeDTO>) => {
         this.prestations = prestations;
-        console.log(this.prestations);
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des détails d'une commande type"});
       }

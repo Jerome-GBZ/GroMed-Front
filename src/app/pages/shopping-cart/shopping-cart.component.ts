@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
 import { MessageService } from 'primeng/api';
 import { Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -16,7 +17,8 @@ export class ShoppingCartComponent implements OnInit {
   public width: number = window.innerWidth;
   public medicamentsLine: Array<PresentationPanierModel> = new Array();
   public livraison: LivraisonModel | undefined;
-  public commandeName= '';
+  public commandeName: string = '';
+  public loadingValidation: boolean = false;
 
   constructor(private authService: AuthService,
     private commandeService: CommandeControllerService,
@@ -72,9 +74,13 @@ export class ShoppingCartComponent implements OnInit {
       return;
     }
 
+    this.loadingValidation = true;
+
     this.commandeService.validateCart(email,this.commandeName).subscribe(
       (livraison: LivraisonModel) => {
         this.livraison = livraison;
+        this.loadingValidation = false;
+
         this.messageService.add({severity:'success', summary: 'Success', detail: "Commande validée"});
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de validation de la commande"});
@@ -101,4 +107,8 @@ export class ShoppingCartComponent implements OnInit {
       this.validateCommand();
     }
   }
+
+  options: AnimationOptions = {
+    path: '/assets/lottie/green-spinner.json'
+  };
 }

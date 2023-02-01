@@ -17,5 +17,9 @@
         <app-step1 *ngIf="this.stepShop == 1" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [total]="total"></app-step1>
         <app-step2 *ngIf="this.stepShop == 2" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [total]="total" (commandTypeName)="commandeName = $event"></app-step2>
         <app-step3 *ngIf="this.stepShop == 3" (stepItemEvent)="onStepChange($event)" [livraison]="livraison"></app-step3>
+
+        <div class="lottie-container">
+            <ng-lottie class="lottie" [options]="options" *ngIf="loadingValidation"></ng-lottie>
+        </div>
     </div>
 </div>

@@ -20,3 +20,16 @@
     left: 40px;
     cursor: pointer;
 }
+
+.lottie-container {
+    width: 80%;
+    margin: auto;
+
+    ::ng-deep .lottie {
+        width: 50%;
+
+        svg {
+            margin-top: -100px;
+        }
+    }
+}

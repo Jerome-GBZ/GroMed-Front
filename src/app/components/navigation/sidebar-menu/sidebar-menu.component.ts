@@ -15,6 +15,7 @@ export class SidebarMenuComponent {
 
   constructor(public authService: AuthService) {
     this.utilisateur = this.authService.getUtilisateur()!!;
+
     this.authService.utilisateurObservable.subscribe(
       (value: UtilisateurModel) => {
         this.utilisateur = value;
