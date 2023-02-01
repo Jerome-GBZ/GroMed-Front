@@ -13,22 +13,67 @@
             <input (keyup)="searchCommandType($event)" type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher une commande type">
         </span>
 
-        <div class="commande-container" *ngFor="let commande of filteredCommandeTypes">
-            <div class="commande-line">
-                <h1> {{ commande.nom }} </h1>
-                <div class="button-line">
-                    <button class="buttonAddCart" (click)="addToCart(commande.nom!!)" [disabled]="loadingButton">Ajouter au panier</button>
-                    <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommandeType(commande.nom!!)">
+        <div *ngIf="!isLoading" style="width: 95%;">
+            <div class="commande-container" *ngFor="let commande of filteredCommandeTypes">
+                <div class="commande-line" [ngClass]="{'line-selected': commande.nom == commandeSelected}">
+                    <h1> {{ commande.nom }} </h1>
+                    <div class="button-line">
+                        <button class="buttonAddCart" (click)="addToCart(commande.nom!!)" [disabled]="loadingButton">Ajouter au panier</button>
+                        <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommandeType(commande.nom!!)">
+                    </div>
+                </div>
+
+                <div [ngClass]="commande.nom == commandeSelected ? 'display' : 'hide'">
+                    <ul>
+                        <li class="" *ngFor="let presentation of prestations">
+                            <p class="quantity"> {{ presentation.quantite }}x </p>
+                            <p> {{ presentation.nomPresentation }} </p>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <div class="skeleton-container" *ngIf="isLoading">
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
 
-            <div [ngClass]="commande.nom == commandeSelected ? 'display' : 'hide'">
-                <ul>
-                    <li class="" *ngFor="let presentation of prestations">
-                        <p class="quantity"> {{ presentation.quantite }}x </p>
-                        <p> {{ presentation.nomPresentation }} </p>
-                    </li>
-                </ul>
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
+            </div>
+
+            <div class="skeleton-group">
+                <div class="skeleton"> <p-skeleton styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton> </div>
+                <div class="skeleton"> <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton> </div>
             </div>
         </div>
     </div>

@@ -17,6 +17,7 @@ export class CommandeTypeComponent implements OnInit {
   public prestations: Array<PresentationRecapCommandeDTO> = [];
   public filteredCommandeTypes: Array<CommandeTypeInfoModel> = [];
   public commandeTypes : Array<CommandeTypeInfoModel> = [];
+  public isLoading: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -50,6 +51,9 @@ export class CommandeTypeComponent implements OnInit {
       (commandeTypes: Array<CommandeTypeInfoModel>) => {
         this.commandeTypes = commandeTypes;
         this.filteredCommandeTypes = commandeTypes;
+        console.log(commandeTypes);
+        
+        this.isLoading = false;
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des commandes types"});
       }

@@ -11,10 +11,10 @@
 
     <div class="content" *ngIf="this.medicamentDetails">
 
-        <span class="p-input-icon-left">
+        <!-- <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
             <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">
-        </span>
+        </span> -->
 
         <div class="toolbar">
             <img src="./assets/arrow-left.svg" alt="retour image.png" (click)="location.back()" class="back"/>
@@ -87,7 +87,7 @@
                     <p>{{ this.subtotal }} €</p>
                 </div>
                 <div class="group-radio" *ngIf="this.medicamentDetails.informationsImportantes?.length! > 0">
-                    <p-checkbox type="checkbox" id="acceptCondition" name="radio" value="1" [(ngModel)]="disabledButton" [binary]="true"></p-checkbox>
+                    <p-checkbox type="checkbox" inputId="acceptCondition" id="acceptCondition" name="radio" value="1" [(ngModel)]="disabledButton" [binary]="true"></p-checkbox>
                     <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
                 </div>
                 <p-button class="button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="!disabledButton || loading"/>

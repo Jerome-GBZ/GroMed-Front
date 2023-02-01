@@ -81,7 +81,7 @@
 
         <div *ngIf="!isLoading" style="width: 95%;">
             <div class="commande-container" *ngFor="let commande of filteredCommande">
-                <div class="commande-line" [ngClass]="commande.numeroCommande == commandeSelected ? 'line-selected' : ''">
+                <div class="commande-line" [ngClass]="{'line-selected': commande.numeroCommande == commandeSelected}">
                     <h1> {{ parseDateShort(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
                     <div class="button-line">
                         <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>

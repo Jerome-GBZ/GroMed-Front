@@ -25,19 +25,19 @@
     </ul>
 
     <div class="group-radio">
-        <p-checkbox type="checkbox" id="acceptCondition" name="radio" value="1" [(ngModel)]="isCommandType" [binary]="true"></p-checkbox>
+        <p-checkbox type="checkbox" inputId="acceptCondition" id="acceptCondition" name="radio" value="1" [(ngModel)]="isCommandType" [binary]="true"></p-checkbox>
         <label for="acceptCondition"> Je souhaite faire de cette commande une commande type </label>
     </div>
 
     <span class="p-input-icon-left" *ngIf="isCommandType">
-        <i class="pi pi-heart"></i>
+        <!-- <i class="pi pi-heart"></i> -->
         <input type="text" pInputText #search class="p-inputtext-lg"  placeholder="Nom de ma commande type" [(ngModel)]="commandeName" (ngModelChange)="commandTypeName.emit(commandeName)">
     </span>
 
     <div class="container-button step2">
         <button class="button" style="display: none;"> </button>
 
-        <button class="button" (click)="nextStep(3)" [disabled]="notInStock.length > 0">
+        <button class="button" (click)="nextStep(3)" [disabled]="notInStock.length > 0 || ( isCommandType && commandeName.length == 0)">
             Passer commande
         </button>
     </div>

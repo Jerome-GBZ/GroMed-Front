@@ -51,7 +51,6 @@
     width: 100%;
     min-height: 200px;
     background-color: red;
-
 }
 
 .commande-container {
@@ -60,6 +59,7 @@
 
     .display {
         display: block;
+        border-bottom: 1px solid $line;
     }
     .hide {
         display: none;
@@ -81,6 +81,7 @@
 
     .button-line {
         display: flex;
+        padding-bottom: 10px;
 
         .buttonAddCart {
             background-color: #266AF6 !important;
@@ -106,6 +107,9 @@
     }
 }
 
+.line-selected{
+    border-bottom: 0px;
+}
 
 li {
     display: flex;
@@ -120,3 +124,16 @@ li {
     }
 }
 
+
+
+.skeleton-container {
+    width: 95%;
+
+    .skeleton-group {
+        margin-bottom: 15px !important;
+
+        .skeleton {
+            margin-bottom: 7px !important;
+        }
+    }
+}
