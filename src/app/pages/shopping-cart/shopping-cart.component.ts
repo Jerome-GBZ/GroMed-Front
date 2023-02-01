@@ -109,6 +109,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   options: AnimationOptions = {
-    path: '/assets/lottie/green-spinner.json'
+    path: '/assets/lottie/loading.json'
   };
 }

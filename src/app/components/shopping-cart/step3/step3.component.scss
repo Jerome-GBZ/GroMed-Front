@@ -25,10 +25,14 @@ h1 {
     }
 }
 
-::ng-deep .p-button {
-    font-weight: 500 !important;
+::ng-deep .p-button{
+    font-weight: 400 !important;
 }
 
 p {
     margin-top: 15px;
+}
+
+h2{
+    font-weight: 500;
 }

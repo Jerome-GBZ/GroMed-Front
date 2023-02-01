@@ -12,7 +12,7 @@ import { Observable, Subject } from 'rxjs';
 export class ShopComponent implements OnInit{
   width: number = window.innerWidth;
   numberOfPages: number = 0;
-  isLoading = true;
+  isLoading = false;
   medicamentCards : Subject<Array<PresentationCardModel>> = new Subject();
   showFilters = false;
   compositions = Array();
@@ -34,7 +34,7 @@ export class ShopComponent implements OnInit{
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-shop.json'  
   };  
-  
+
   optionsNotFound: AnimationOptions = {
     path: '/assets/lottie/search-not-found.json'
   };
