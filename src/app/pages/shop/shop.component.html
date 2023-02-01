@@ -65,7 +65,7 @@
                 <h3 style="font-weight: 500;">Pas de résultats pour cette recherche "{{this.searchText}}"</h3>
             </div>
         </div>
-        <div class="card-grid" *ngIf="isLoading && searchText!=''">
+        <div class="card-grid" *ngIf="isLoading">
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
