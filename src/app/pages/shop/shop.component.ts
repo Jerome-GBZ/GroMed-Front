@@ -34,6 +34,10 @@ export class ShopComponent implements OnInit{
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-shop.json'  
   };  
+  
+  optionsNotFound: AnimationOptions = {
+    path: '/assets/lottie/search-not-found.json'
+  };
 
   constructor(
     private presentationService: PresentationControllerService,
