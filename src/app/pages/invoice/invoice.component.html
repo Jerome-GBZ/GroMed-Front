@@ -85,7 +85,6 @@
                     <h1> {{ parseDateShort(commande?.dateCommande!!) }} - N°{{ commande.numeroCommande }} </h1>
                     <div class="button-line">
                         <div class="status" [ngClass]="commande.status"> <p class="label"> {{ commande.status }} </p> </div>
-                        <button *ngIf="isPossibleToCancel(commande)" class="cancel"> Annuler la commande </button>
                         <img class="buttonDetail" src="assets/arrow-down.svg" alt="Plus de details" (click)="seeDetailCommande(commande.numeroCommande!!)">
                     </div>
                 </div>
