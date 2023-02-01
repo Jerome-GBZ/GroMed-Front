@@ -57,7 +57,7 @@
 
         </div>
         <div *ngIf=" this.medicamentCards| async as medicaments" class="card-container">
-            <div class="card-grid" *ngIf="!isLoading && searchText!='' && medicaments.length > 0" >
+            <div class="card-grid" *ngIf="!isLoading && medicaments.length > 0" >
                 <app-shop-card class="purple" *ngFor="let medCard of medicaments" [presentationCard]="medCard" ></app-shop-card>
             </div>
             <div *ngIf="medicaments.length === 0 && !isLoading" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
@@ -79,7 +79,7 @@
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
         </div>
-        <p-paginator *ngIf="this.totalNumberOfPage | async as total" [rows]="24" [totalRecords]="total*24" (onPageChange)="searchFiltres($event.page)"></p-paginator> 
+        <p-paginator *ngIf="this.totalNumberOfPage | async as total" [ngClass]="this.searchText !== '' ? 'display': 'hide'" [rows]="24" [totalRecords]="total*24" (onPageChange)="searchFiltres($event.page)"></p-paginator> 
     </div>
 </div>
 
