@@ -6,9 +6,6 @@
         <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
     </div>
     <div class="content">
-        <ng-lottie class="animation"
-            [options]="options" *ngIf="searchText==''">
-        </ng-lottie>
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
             <input type="text" [(ngModel)]="searchText" (keydown.enter)="this.searchFiltres(0)" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" >
