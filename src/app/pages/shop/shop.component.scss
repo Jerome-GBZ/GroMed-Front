@@ -92,6 +92,7 @@ p-paginator{
     width: 95%;
     display: flex;
     flex-direction: row;
+    gap: 12px;
 }
 
 .filter-wrap{
@@ -124,4 +125,8 @@ label{
     border-radius: 28px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.filter-selected {
+    border-color: $primary;
 }

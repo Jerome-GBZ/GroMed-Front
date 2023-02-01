@@ -164,6 +164,8 @@ p{
     display: flex;
     flex-direction: row;
     gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
 }
 
 .label-container{
@@ -229,7 +231,9 @@ p{
         color: $paragraph;
     }
 }
-
+ul{
+    margin-bottom: 0px;
+}
 .button:disabled {
     background-color: rgba($primary, 0.3) !important;
     cursor: not-allowed !important;

@@ -11,16 +11,22 @@
         </ng-lottie>
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input type="text" (ngModelChange)="this.searchFiltres()" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" [(ngModel)]="searchText">
+            <input type="text" [(ngModel)]="searchText" (ngModelChange)="this.searchFiltres()" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" >
         </span>
         <div class="toolbar-container">
-            <div class="filter-container" *ngIf="!showFilters" (click)="showFilters = true">
-                <img src="./assets/filter-search.svg" alt="Filtre icône" class="filter-icon"/>
+            <div class="filter-container" [ngClass]="this.checkIfIsFiltred() ? 'filter-selected' : ''" *ngIf="!showFilters" (click)="showFilters = true" >
+                <img *ngIf="!this.checkIfIsFiltred()" src="./assets/filter-search.svg" alt="Filtre icône" class="filter-icon"/>
+                <img  *ngIf="this.checkIfIsFiltred()" src="./assets/filter-tick.svg" alt="Filtre icône" class="filter-icon"/>
                 <p class="filter-label">Filtrer</p>
             </div>
             <div class="filter-container" *ngIf="showFilters" (click)="showFilters = false">
                 <img src="./assets/close.svg" alt="Fermer icône" class="filter-icon"/>
                 <p class="filter-label">Fermer</p>
+            </div>
+            <div class="filter-container" [ngClass]="this.currentPriceFiltrerState != PriceFilter.NONE ? 'filter-selected' : ''" (click)="changePriceFilter()">
+                <img *ngIf="this.currentPriceFiltrerState !== PriceFilter.PRICE_DSC" src="./assets/trend-up.svg" alt="Trier prix croissant icône" class="filter-icon"/>
+                <img *ngIf="this.currentPriceFiltrerState === PriceFilter.PRICE_DSC" src="./assets/trend-down.svg" alt="Trier prix décroissant icône" class="filter-icon"/>
+                <p class="filter-label">{{this.currentPriceFiltrerState === PriceFilter.PRICE_DSC ?'Trier par prix décroissant': 'Trier par prix croissant'}}</p>
             </div>
         </div>
         <div class="filter-wrap" *ngIf="showFilters">

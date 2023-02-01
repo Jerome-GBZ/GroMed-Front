@@ -26,12 +26,12 @@ export class ShopComponent implements OnInit{
   originalSelected = false;
   searchState = false;
   searchText = "";
-
+  currentPriceFiltrerState = PriceFilter.NONE;
+  PriceFilter: typeof PriceFilter = PriceFilter;
 
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-shop.json'  
   };  
-
 
   constructor(
     private presentationService: PresentationControllerService,
@@ -44,17 +44,6 @@ export class ShopComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    /**this.presentationService.getPresentations({page: 0, size:24}, {presentationName: ''}).subscribe(
-      (data: PagePresentationCardModel)=>{
-        this.isLoading = false;
-        if(data !== undefined){
-          console.log(data)
-          this.numberOfPages = data.totalPages!!;
-          this.medicamentCards = data.content!!;
-        }
-      }
-    )**/
-
     this.filterService.getFiltres().subscribe(
       (data: Filtres) => {
         if(data !== undefined){
@@ -66,8 +55,11 @@ export class ShopComponent implements OnInit{
   }
 
   searchFiltres(): void{
+    console.log("search text: "+this.searchText);
+    console.log("current price filter: "+ this.currentPriceFiltrerState.toString());
+    this.showFilters = false;
     this.presentationService.getPresentations(
-      {page: 0, size:24}, { 
+      {page: 0, size: 24, sort: [this.currentPriceFiltrerState.toString()]}, { 
       presentationName: this.searchText,
       titulaires: this.selectedTitulaire,
       substancesDenomitations: this.selectedComposition,
@@ -79,6 +71,7 @@ export class ShopComponent implements OnInit{
         this.isLoading = false;
         if(data !== undefined){
           this.numberOfPages = data.totalPages!!;
+          console.log("nb pages:"+this.numberOfPages);
           this.medicamentCards = data.content!!;
         }
       }
@@ -109,7 +102,6 @@ export class ShopComponent implements OnInit{
     this.filteredTitulaire = filtered;
   }
 
-
   paginate(page: number){
     this.isLoading = true;
     this.presentationService.getPresentations(
@@ -131,4 +123,28 @@ export class ShopComponent implements OnInit{
     )
   }
 
+  checkIfIsFiltred(): boolean{
+    return this.filteredTitulaire.length > 0 || this.filteredComposition.length > 0 || this.disponibleSelected || this.originalSelected || this.generiqueSelected
+  }
+
+  changePriceFilter() {
+    switch(this.currentPriceFiltrerState){
+      case PriceFilter.NONE:
+        this.currentPriceFiltrerState =  PriceFilter.PRICE_ASC;
+        break;
+      case PriceFilter.PRICE_ASC:
+          this.currentPriceFiltrerState =  PriceFilter.PRICE_DSC;
+          break;
+      case PriceFilter.PRICE_DSC:
+        this.currentPriceFiltrerState =  PriceFilter.NONE;
+        break;
+    }
+    this.searchFiltres();
+  }
+}
+
+export enum PriceFilter {
+  PRICE_ASC = "prix,asc",
+  PRICE_DSC  = "prix,desc",
+  NONE = ""
 }
