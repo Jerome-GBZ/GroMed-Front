@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { PagePresentationCardModel } from 'src/libs/model/pagePresentationCardModel';
 import { FiltreControllerService, Filtres, PresentationCardModel, PresentationControllerService } from "../../../libs";
 import { AnimationOptions } from "ngx-lottie";
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-shop',
@@ -12,7 +13,7 @@ export class ShopComponent implements OnInit{
   width: number = window.innerWidth;
   numberOfPages: number = 0;
   isLoading = true;
-  medicamentCards : Array<PresentationCardModel> = new Array()
+  medicamentCards : Subject<Array<PresentationCardModel>> = new Subject();
   showFilters = false;
   compositions = Array();
   titulaireFilter = Array();
@@ -28,6 +29,7 @@ export class ShopComponent implements OnInit{
   searchText = "";
   currentPriceFiltrerState = PriceFilter.NONE;
   PriceFilter: typeof PriceFilter = PriceFilter;
+  totalNumberOfPage : Subject<number> = new Subject();
 
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-shop.json'  
@@ -52,14 +54,18 @@ export class ShopComponent implements OnInit{
         }
       }
     )
+
+    this.totalNumberOfPage.subscribe(ob => console.log("Le nombre page à changé:  "+ob))
   }
 
-  searchFiltres(): void{
+  async searchFiltres(page: number){
+    this.numberOfPages = 0;
     console.log("search text: "+this.searchText);
     console.log("current price filter: "+ this.currentPriceFiltrerState.toString());
     this.showFilters = false;
+    this.isLoading = true;
     this.presentationService.getPresentations(
-      {page: 0, size: 24, sort: [this.currentPriceFiltrerState.toString()]}, { 
+      {page: page, size: 24, sort: [this.currentPriceFiltrerState.toString()]}, { 
       presentationName: this.searchText,
       titulaires: this.selectedTitulaire,
       substancesDenomitations: this.selectedComposition,
@@ -69,11 +75,10 @@ export class ShopComponent implements OnInit{
     }).subscribe(
       (data: PagePresentationCardModel)=>{
         this.isLoading = false;
-        if(data !== undefined){
-          this.numberOfPages = data.totalPages!!;
-          console.log("nb pages:"+this.numberOfPages);
-          this.medicamentCards = data.content!!;
-        }
+        this.totalNumberOfPage.next(data.totalPages!!)
+        this.medicamentCards.next(data.content!!)
+        console.log("nombre de pages: "+data.totalPages!!)
+    
       }
     )
   }
@@ -102,27 +107,6 @@ export class ShopComponent implements OnInit{
     this.filteredTitulaire = filtered;
   }
 
-  paginate(page: number){
-    this.isLoading = true;
-    this.presentationService.getPresentations(
-      {page: page, size:24}, { 
-      presentationName: this.searchText,
-      titulaires: this.selectedTitulaire,
-      substancesDenomitations: this.selectedComposition,
-      original: this.originalSelected,
-      generique: this.generiqueSelected,
-      available: this.disponibleSelected
-    }).subscribe(
-      (data: PagePresentationCardModel)=>{
-        this.isLoading = false;
-        if(data !== undefined){
-          this.numberOfPages = data.totalPages!!;
-          this.medicamentCards = data.content!!;
-        }
-      }
-    )
-  }
-
   checkIfIsFiltred(): boolean{
     return this.filteredTitulaire.length > 0 || this.filteredComposition.length > 0 || this.disponibleSelected || this.originalSelected || this.generiqueSelected
   }
@@ -139,7 +123,7 @@ export class ShopComponent implements OnInit{
         this.currentPriceFiltrerState =  PriceFilter.NONE;
         break;
     }
-    this.searchFiltres();
+    this.searchFiltres(0);
   }
 }
 
