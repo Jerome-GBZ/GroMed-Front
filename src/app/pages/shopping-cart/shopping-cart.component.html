@@ -8,7 +8,7 @@
     </div>
 
     <div class="content" *ngIf="this.stepShop">
-        <img class="arrow-back" src="./assets/arrow-left.svg" alt="go back" *ngIf="this.stepShop > 1" (click)="onStepChange(this.stepShop - 1)" />
+        <img class="arrow-back" src="./assets/arrow-left.svg" alt="go back" *ngIf="this.stepShop == 2" (click)="onStepChange(this.stepShop - 1)" />
 
         <h1 class="title"> PASSER COMMANDE </h1>
 
