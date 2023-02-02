@@ -67,26 +67,31 @@ export class ShopComponent implements OnInit{
     });
   }
 
-  async searchFiltres(page: number){
+  async searchFiltres(page: number) {
     this.medicamentCards.next([]);
     this.numberOfPages = 0;
     this.showFilters = false;
     this.isLoading = true;
-    this.presentationService.getPresentations(
-      {page: page, size: 24, sort: [this.currentPriceFiltrerState.toString()]}, { 
-      presentationName: this.searchText,
-      titulaires: this.selectedTitulaire,
-      substancesDenomitations: this.selectedComposition,
-      original: this.originalSelected,
-      generique: this.generiqueSelected,
-      available: this.disponibleSelected
-    }).subscribe(
-      (data: PagePresentationCardModel)=>{
-        this.isLoading = false;
-        this.totalNumberOfPage.next(data.totalPages!!)
-        this.medicamentCards.next(data.content!!)    
-      }
-    )
+
+    if(this.searchText.trim().length > 0) {
+      this.presentationService.getPresentations(
+        {page: page, size: 24, sort: [this.currentPriceFiltrerState.toString()]},
+        {
+          presentationName: this.searchText,
+          titulaires: this.selectedTitulaire,
+          substancesDenomitations: this.selectedComposition,
+          original: this.originalSelected,
+          generique: this.generiqueSelected,
+          available: this.disponibleSelected
+        }
+      ).subscribe(
+        (data: PagePresentationCardModel)=>{
+          this.isLoading = false;
+          this.totalNumberOfPage.next(data.totalPages!!)
+          this.medicamentCards.next(data.content!!)
+        }
+      );
+    }
   }
 
   filterComposition(event: any) {
