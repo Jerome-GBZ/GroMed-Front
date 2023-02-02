@@ -30,7 +30,6 @@
     </div>
 
     <span class="p-input-icon-left" *ngIf="isCommandType">
-        <!-- <i class="pi pi-heart"></i> -->
         <input type="text" pInputText #search class="p-inputtext-lg"  placeholder="Nom de ma commande type" [(ngModel)]="commandeName" (ngModelChange)="commandTypeName.emit(commandeName)">
     </span>
 

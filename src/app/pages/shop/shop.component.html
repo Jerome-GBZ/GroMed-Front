@@ -8,7 +8,8 @@
     <div class="content">
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input type="text" [(ngModel)]="searchText" (keydown.enter)="this.searchFiltres(0)" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" >
+            <input type="text" [(ngModel)]="searchText" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" >
+            <!--(keydown.enter) -->
         </span>
         <div class="toolbar-container">
             <div class="filter-container" [ngClass]="this.checkIfIsFiltred() ? 'filter-selected' : ''" *ngIf="!showFilters" (click)="showFilters = true" >

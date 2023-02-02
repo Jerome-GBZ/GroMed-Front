@@ -19,7 +19,7 @@
         <app-step3 *ngIf="this.stepShop == 3" (stepItemEvent)="onStepChange($event)" [livraison]="livraison"></app-step3>
 
         <div class="lottie-container">
-            <ng-lottie class="lottie" width="500px" [options]="options" *ngIf="loadingValidation"></ng-lottie>
+            <ng-lottie class="lottie" [options]="options" *ngIf="loadingValidation"></ng-lottie>
         </div>
     </div>
 </div>

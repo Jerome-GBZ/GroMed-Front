@@ -1,70 +1,4 @@
-<!-- <div class="container">
-    <div class="hamburger">
-        <app-hamburger-menu></app-hamburger-menu>
-    </div>
-
-    <div class="sidebar" [ngClass]="width < 1000 ? 'hide' : 'show'">
-        <app-sidebar-menu [currentItem]="3"></app-sidebar-menu>
-    </div>
-
-    <div class="content">
-        <div class="card">
-            <p-table dataKey="id" [value]="commandes" [tableStyle]="{'min-width': '50rem'}"
-                [rows]="10" [paginator]="true" stateStorage="local" stateKey="statedemo-local">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th pSortableColumn="numeroCommande" style="width:25%"> Numéro commande <p-sortIcon field="numeroCommande"></p-sortIcon></th>
-                        <th pSortableColumn="date" style="width:25%"> Date <p-sortIcon field="date"></p-sortIcon></th>
-                        <th pSortableColumn="facture" style="width:25%"> Facture <p-sortIcon field="facture"></p-sortIcon></th>
-                        <th pSortableColumn="status" style="width:25%">Status <p-sortIcon field="status"></p-sortIcon></th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <input pInputText type="text" placeholder="Recherche par numéro de commande" class="w-full">
-                        </th>
-                        <th>
-                            <input pInputText type="text" placeholder="Recherche par date" class="w-full">
-                        </th>
-                        <th>
-                            <input pInputText type="text" placeholder="Recherche par nom de facture" class="w-full">
-                        </th>
-                        <th>
-                            <input pInputText type="text" placeholder="Recherche par status" class="w-full">
-                        </th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-commande>
-                    <tr [pSelectableRow]="commande">
-                        <td>
-                            <span class="p-column-title"> Numéro commande </span>
-                            {{commande.numeroCommande}}
-                        </td>
-                        <td>
-                            <span class="p-column-title"> Date </span>
-                            {{parseDate(commande.dateCommande)}} 
-                        </td>
-                        <td>
-                            <span class="p-column-title"> Facture </span>
-                            {{commande?.numFacture}}
-                        </td>
-                        <td>
-                            <span class="p-column-title"> Status </span>
-                            <p-button label="{{commande.status}}" icon="pi pi-box" styleClass="p-button-info" badgeClass="p-badge-danger"></p-button>
-                        </td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="emptymessage">
-                    <tr>
-                        <td colspan="4">Aucune commande trouvé.</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </div>
-    </div>
-</div>
- -->
-
- <div class="container">
+<div class="container">
     <div class="hamburger">
         <app-hamburger-menu></app-hamburger-menu>
     </div>
@@ -76,7 +10,7 @@
     <div class="content">
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input (keyup)="searchCommand($event)" type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher une commande type">
+            <input (keyup)="searchCommand($event)" type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher une commande">
         </span>
 
         <div *ngIf="!isLoading" style="width: 95%;">

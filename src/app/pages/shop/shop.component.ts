@@ -1,8 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { PagePresentationCardModel } from 'src/libs/model/pagePresentationCardModel';
 import { FiltreControllerService, Filtres, PresentationCardModel, PresentationControllerService } from "../../../libs";
 import { AnimationOptions } from "ngx-lottie";
-import { Observable, Subject } from 'rxjs';
+import { async, debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-shop',
@@ -30,7 +30,7 @@ export class ShopComponent implements OnInit{
   currentPriceFiltrerState = PriceFilter.NONE;
   PriceFilter: typeof PriceFilter = PriceFilter;
   totalNumberOfPage : Subject<number> = new Subject();
-
+  @ViewChild('search', { static: true }) search?: ElementRef;
   options: AnimationOptions = {
     path: '/assets/lottie/lottie-shop.json'  
   };  
@@ -59,13 +59,17 @@ export class ShopComponent implements OnInit{
       }
     )
 
-    this.totalNumberOfPage.subscribe(ob => console.log("Le nombre page à changé:  "+ob))
+    fromEvent(this.search!!.nativeElement, 'keyup').pipe(
+       debounceTime(800)
+      , distinctUntilChanged()
+    ).subscribe( _ => {
+      this.searchFiltres(0);
+    });
   }
 
   async searchFiltres(page: number){
+    this.medicamentCards.next([]);
     this.numberOfPages = 0;
-    console.log("search text: "+this.searchText);
-    console.log("current price filter: "+ this.currentPriceFiltrerState.toString());
     this.showFilters = false;
     this.isLoading = true;
     this.presentationService.getPresentations(
@@ -80,9 +84,7 @@ export class ShopComponent implements OnInit{
       (data: PagePresentationCardModel)=>{
         this.isLoading = false;
         this.totalNumberOfPage.next(data.totalPages!!)
-        this.medicamentCards.next(data.content!!)
-        console.log("nombre de pages: "+data.totalPages!!)
-    
+        this.medicamentCards.next(data.content!!)    
       }
     )
   }
