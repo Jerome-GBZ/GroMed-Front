@@ -93,7 +93,6 @@ export class InvoiceComponent implements OnInit {
     this.commandeService.getDetailCommande(this.email, numeroCommande).subscribe(
       (details: CommandeDetailDTO) => {
         this.commandeDetails = details;
-        console.log(this.commandeDetails);
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération des détails d'une commande"});
       }

@@ -1,5 +1,5 @@
 import { CommandeTypeControllerService, CommandeTypeInfoModel, PresentationRecapCommandeDTO, UtilisateurModel } from 'src/libs';
-import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MessageService } from 'primeng/api';
 
@@ -76,7 +76,9 @@ export class CommandeTypeComponent implements OnInit {
     this.commandeTypeService.addCommandeTypeToUserCart(this.email, name).subscribe(
       (utilisateur: UtilisateurModel) => {
         this.loadingButton = false;
+
         this.authService.updatePanier(utilisateur);
+
         this.messageService.add({severity:'success', summary: 'Success', detail: "La commande type a été ajouté au panier"});
       }, (error: any) => {
         this.loadingButton = false;

@@ -91,7 +91,7 @@ export class ShoppingCartComponent implements OnInit {
   resetTotals() {
     this.total = 0;
     this.medicamentsLine.forEach((medicament) => {
-      this.total += medicament.prixUnitaire!!;
+      this.total += medicament.prixUnitaire!! * medicament.quantite!!;
     });
   }
 
