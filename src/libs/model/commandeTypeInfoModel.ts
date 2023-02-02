@@ -12,12 +12,20 @@
 
 
 /**
- * Condition Prescription DTO
+ * Les informations générale d\'une commande type
  */
-export interface ConditionPrescriptionDTO { 
+export interface CommandeTypeInfoModel { 
     /**
-     * Condition de prescription
+     * Le nom de la commande type
      */
-    condition?: string;
+    nom?: string;
+    /**
+     * le nombre de presentation dans la commande type
+     */
+    nbProduit?: number;
+    /**
+     * le montant total de la commande type
+     */
+    prixTotal?: number;
 }
 

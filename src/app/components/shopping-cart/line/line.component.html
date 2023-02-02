@@ -4,7 +4,6 @@
     </div>
 
     <div class="group-action">
-        <img class="icon trash" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(presentationLine.codeCIP7!!)">
 
         <div class="container-card validate icon" *ngIf="variant == VariantType.UNAVAILABLE" (click)="acceptPresentation(presentationLine.codeCIP7!!)" pTooltip="Accepter le delai de 7j" tooltipPosition="top">
             <img src="./assets/validate.svg" alt="validate">
@@ -14,9 +13,11 @@
             <img src="./assets/delete.svg" alt="delete">
         </div>
 
-        <div class="container-card warning icon" pTooltip="Ce produit contient certains risque pour la santé" tooltipPosition="top">
+        <div class="container-card warning icon" *ngIf="presentationLine.infoImportantes!!.length > 0" pTooltip="Ce produit contient certains risque pour la santé" tooltipPosition="top">
             <img src="./assets/warning.svg" alt="warning">
         </div>
+
+        <img class="icon trash" *ngIf="variant == VariantType.EDIT" src="./assets/trash.svg" alt="trash" (click)="deleteMedicament(presentationLine.codeCIP7!!)">
 
         <div class="container-button mt0 icon" *ngIf="variant == VariantType.UNAVAILABLE">
             <button class="button substitution" (click)="deleteMedicament(presentationLine.codeCIP7!!)" routerLink="/">
@@ -26,6 +27,6 @@
 
         <input class="quantity icon" *ngIf="variant == VariantType.EDIT" type="text" [value]="presentationLine.quantite" disabled>
 
-        <span class="icon prixU"> {{ presentationLine.prixUnitaire }}€ </span>
+        <span class="icon prixU"> {{ getPrixTot(presentationLine.prixUnitaire!!, presentationLine.quantite!!).toFixed(2) }}€ </span>
     </div>
 </div>

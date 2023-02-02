@@ -132,7 +132,7 @@ export class FiltreControllerService {
         }
 
         let localVarPath = `/filtre/all`;
-        return this.httpClient.request<Filtres>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Filtres>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

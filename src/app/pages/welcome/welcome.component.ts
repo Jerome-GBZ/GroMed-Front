@@ -23,7 +23,7 @@ export class WelcomeComponent {
 
         setTimeout(() => {
           this.router.navigate(['/']);
-       }, 2000);
+       }, 800);
       } else {
         this.messageService.add({severity:'error', summary: 'Error', detail: result.message});
       }

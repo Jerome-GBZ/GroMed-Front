@@ -4,6 +4,7 @@ README.md
 api.module.ts
 api/api.ts
 api/commandeController.service.ts
+api/commandeTypeController.service.ts
 api/filtreController.service.ts
 api/presentationController.service.ts
 api/testController.service.ts
@@ -13,9 +14,14 @@ encoder.ts
 git_push.sh
 index.ts
 model/alerteIndisponibilitePresentationDTO.ts
+model/commandeDetailDTO.ts
+model/commandeModel.ts
+model/commandeTypeInfoModel.ts
+model/compositionDTOModel.ts
 model/conditionPrescriptionDTO.ts
 model/filtres.ts
 model/infoImportanteModel.ts
+model/livraisonDetailDTO.ts
 model/livraisonModel.ts
 model/models.ts
 model/pagePresentationCardModel.ts
@@ -24,6 +30,7 @@ model/pageableObject.ts
 model/presentationCardModel.ts
 model/presentationDetailModel.ts
 model/presentationPanierModel.ts
+model/presentationRecapCommandeDTO.ts
 model/sortObject.ts
 model/utilisateurModel.ts
 param.ts

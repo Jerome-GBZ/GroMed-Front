@@ -10,23 +10,13 @@
         <h2 class="noMedicament"> Il n'y a aucun médicament dans votre panier. </h2>
     </div>
 
-    <div class="container-total"  *ngIf="medicamentsLine.length > 0">
-        <span class="subtotal"> Sous-Total </span>
-        <span class="subtotal"> {{ subTotal.toFixed(2) }}€ </span>
-    </div>
-
-    <div class="container-total mt0"  *ngIf="medicamentsLine.length > 0">
-        <span class="subtotal"> Réduction </span>
-        <span class="subtotal"> {{ reducTotal.toFixed(2) }}€ </span>
-    </div>
-
     <div class="container-total mt0"  *ngIf="medicamentsLine.length > 0">
         <span class="total-text"> Total </span>
         <span class="total"> {{ total.toFixed(2) }}€ </span>
     </div>
 
     <div class="container-button">
-        <button class="button">
+        <button class="button" routerLink="/commande-type">
             Ajouter une commande type
         </button>
 

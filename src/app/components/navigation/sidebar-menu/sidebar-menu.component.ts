@@ -15,6 +15,7 @@ export class SidebarMenuComponent {
 
   constructor(public authService: AuthService) {
     this.utilisateur = this.authService.getUtilisateur()!!;
+
     this.authService.utilisateurObservable.subscribe(
       (value: UtilisateurModel) => {
         this.utilisateur = value;
@@ -36,7 +37,6 @@ export enum SidebarItem {
   SHOP = 0,
   COMMANDE_TYPE = 1,
   PANIER = 2,
-  FACTURE = 3,
-  COMPTE = 4,
-  DECONECTE = 5
+  COMMANDE = 3,
+  DECONECTE = 4
 }

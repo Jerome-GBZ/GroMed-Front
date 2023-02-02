@@ -13,6 +13,7 @@
 
 .p-input-icon-left{
     width: 95%;
+    margin-bottom: 30px;
 }
 
 .p-inputtext-lg{
@@ -50,5 +51,89 @@
     width: 100%;
     min-height: 200px;
     background-color: red;
+}
 
+.commande-container {
+    width: 95%;
+    margin-bottom: 10px;
+
+    .display {
+        display: block;
+        border-bottom: 1px solid $line;
+    }
+    .hide {
+        display: none;
+    }
+}
+.commande-line {
+    width: 100%;
+    padding: 0px 15px;
+    border-bottom: 1px solid $line;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .button-line {
+        display: flex;
+        padding-bottom: 10px;
+
+        .buttonAddCart {
+            background-color: #266AF6 !important;
+            border: 1px solid #266AF6 !important;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px !important;
+            padding: 10px 20px !important;
+            cursor: pointer;
+
+            &:disabled {
+                background-color: rgba($primary, 0.3) !important;
+                border: 1px solid rgba($primary, 0.3) !important;
+                cursor: not-allowed !important;
+            }
+        }
+
+        .buttonDetail {
+            cursor: pointer;
+            padding-left: 45px;
+        }
+    }
+}
+
+.line-selected{
+    border-bottom: 0px;
+}
+
+li {
+    display: flex;
+
+    .quantity {
+        width: 40px;
+    }
+
+    p {
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+
+
+.skeleton-container {
+    width: 95%;
+
+    .skeleton-group {
+        margin-bottom: 15px !important;
+
+        .skeleton {
+            margin-bottom: 7px !important;
+        }
+    }
 }

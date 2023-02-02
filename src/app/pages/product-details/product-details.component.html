@@ -10,14 +10,8 @@
     </div>
 
     <div class="content" *ngIf="this.medicamentDetails">
-
-        <span class="p-input-icon-left">
-            <i class="pi pi-search"></i>
-            <input type="text" pInputText  class="p-inputtext-lg"  placeholder="Rechercher un médicament">
-        </span>
-
         <div class="toolbar">
-            <img src="./assets/arrow-left.svg" (click)="location.back()" class="back"/>
+            <img src="./assets/arrow-left.svg" alt="retour image.png" (click)="location.back()" class="back"/>
             <p class="path">MAGASIN/</p>
             <p class="current-product">{{this.medicamentDetails.titre}}</p>
         </div>
@@ -25,10 +19,10 @@
         <div class="product-container">
             <div class="product">
                 <h2 class="title">{{this.medicamentDetails.titre}}</h2>
-                <h3>{{this.medicamentDetails.titulaire}}</h3>
-                <p>
+                <p style="font-weight: 500; font-size: 16px; color: black">
                     {{this.medicamentDetails.description}}
                 </p>
+
                 <div class="label-row">
                     <div class="label-container">
                         <p class="label">
@@ -41,10 +35,29 @@
                             {{medicamentDetails.formePharmaceutique}}
                         </p>
                     </div>
+
+                    <div class="label-container orange" *ngFor="let voiesAdmin of this.voiesAdministration">
+                        <p class="label">
+                            {{voiesAdmin}}
+                        </p>
+                    </div>
                 </div>
+
+                <div class="composition" *ngFor="let compo of this.medicamentDetails.compositions">
+                    <p style="font-weight: 500; margin-top: 0px;">Contient du {{compo.denominationSubstance}}:</p>
+                    <ul>
+                        <li>Element pharmaceutique: {{compo.designationElementPharmaceutique}}</li>
+                        <li>dosage: {{compo.dosage}}</li>
+                        <li>referenceDosage: {{compo.referenceDosage}}</li>
+                        <li>natureComposant: {{compo.natureComposant}}</li>
+                    </ul>
+
+                    <br/>
+                </div>
+                
                 <div class="avertissement" *ngIf="this.medicamentDetails.informationsImportantes?.length">
                     <div class="container-avertissement">
-                        <img src="./assets/warning-2.svg"/>
+                        <img alt="danger icone" src="./assets/warning-2.svg"/>
                         <p class="warning"> Ce produit contient certains risque pour la santé une prescription est associé à celui-ci: </p>
                     </div>
                     <ul>
@@ -55,6 +68,7 @@
                         </li>
                     </ul>
                 </div>
+                <p>Fabriqué par: {{this.medicamentDetails.titulaire}}</p>
             </div>
             <div class="buy">
                 <h1>{{this.medicamentDetails.prix}} €</h1>
@@ -68,7 +82,11 @@
                     <p class="soustot-name">{{quantity.value}}x {{this.medicamentDetails.titre }}  <br>Remboursement: {{this.medicamentDetails.tauxRemboursement}}%</p>
                     <p>{{ this.subtotal }} €</p>
                 </div>
-                <p-button class="buy-button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="loading"/>
+                <div class="group-radio" *ngIf="this.medicamentDetails.informationsImportantes?.length! > 0">
+                    <p-checkbox type="checkbox" inputId="acceptCondition" id="acceptCondition" name="radio" value="1" [(ngModel)]="disabledButton" [binary]="true"></p-checkbox>
+                    <label for="acceptCondition"> Je confirme avoir prit connaissance des indications de prévention et d’en informer mon patient des potentielles risques </label>
+                </div>
+                <p-button class="button" label="Ajouter au panier" (onClick)="addToCart(quantity.value)" [disabled]="!disabledButton || loading"/>
             </div>
         </div>
     </div>

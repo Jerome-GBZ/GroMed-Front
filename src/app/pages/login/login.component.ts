@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.email, this.password).subscribe(
       (data: any) => {
-        console.log(data);
         this.dialogRef.close(data);
       }
     );

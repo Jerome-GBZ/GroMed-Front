@@ -8,14 +8,18 @@
     </div>
 
     <div class="content" *ngIf="this.stepShop">
-        <img class="arrow-back" src="./assets/arrow-left.svg" alt="go back" *ngIf="this.stepShop > 1" (click)="onStepChange(this.stepShop - 1)" />
+        <img class="arrow-back" src="./assets/arrow-left.svg" alt="go back" *ngIf="this.stepShop == 2" (click)="onStepChange(this.stepShop - 1)" />
 
         <h1 class="title"> PASSER COMMANDE </h1>
 
         <app-steps [step]="this.stepShop"></app-steps>
 
-        <app-step1 *ngIf="this.stepShop == 1" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [subTotal]="subTotal" [reducTotal]="reducTotal" [total]="total"></app-step1>
-        <app-step2 *ngIf="this.stepShop == 2" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [subTotal]="subTotal" [reducTotal]="reducTotal" [total]="total"></app-step2>
+        <app-step1 *ngIf="this.stepShop == 1" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [total]="total"></app-step1>
+        <app-step2 *ngIf="this.stepShop == 2" (stepItemEvent)="onStepChange($event)" (deleteItemEvent)="deleteItem($event)" [medicamentsLine]="medicamentsLine" [total]="total" (commandTypeName)="commandeName = $event"></app-step2>
         <app-step3 *ngIf="this.stepShop == 3" (stepItemEvent)="onStepChange($event)" [livraison]="livraison"></app-step3>
+
+        <div class="lottie-container">
+            <ng-lottie class="lottie" [options]="options" *ngIf="loadingValidation"></ng-lottie>
+        </div>
     </div>
 </div>

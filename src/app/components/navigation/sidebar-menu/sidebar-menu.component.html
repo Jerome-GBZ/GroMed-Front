@@ -13,31 +13,29 @@
             <p class="label">Magasin</p>
             <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.SHOP ? 'display' : 'hide'" alt="Flèche droite">
         </div>
+
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE_TYPE}" routerLink="/commande-type">
             <img class="icon" src="./assets/heart.svg" alt="Coeur icône"/>
             <p class="label">Mes commandes types</p>
             <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE_TYPE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
+
         <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.PANIER}" routerLink="/panier">
             <img class="icon" src="./assets/bag-happy.svg" alt="Panier icône"/>
             <p class="label">Panier</p>
             <p-badge *ngIf="utilisateur.nbMedicamentsPanier! > 0" value="{{ utilisateur.nbMedicamentsPanier }}"  severity="info"></p-badge>
             <img class="nav-icon arrow-shopping" src="./assets/arrow-right.svg" [ngClass]="{'ml50p': utilisateur.nbMedicamentsPanier!! <= 0} && (currentItem === sideBarItem.PANIER ? 'display' : 'hide')" alt="Flèche droite">
         </div>
-        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.FACTURE}" routerLink="/facture">
-            <img class="icon" src="./assets/folder-open.svg" alt="Dossier icône"/>
-            <p class="label">Mes factures</p>
-            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.FACTURE ? 'display' : 'hide'" alt="Flèche droite">
-        </div>
-        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMPTE}" routerLink="/compte">
-            <img class="icon" src="./assets/user.svg" alt="Utilisateur icône"/>
-            <p class="label">Mon compte</p>
-            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMPTE ? 'display' : 'hide'" alt="Flèche droite">
+
+        <div class="navbar-item" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.COMMANDE}" routerLink="/facture">
+            <img class="icon" src="./assets/box.svg" alt="Dossier icône"/>
+            <p class="label">Mes commandes</p>
+            <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.COMMANDE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
 
         <div class="navbar-item" (click)="logout()" [ngClass]="{'navbar-item-selected' : currentItem === sideBarItem.DECONECTE}">
             <img class="icon" src="./assets/logout.svg" alt="Utilisateur icône"/>
-            <p class="label">Déconnecter</p>
+            <p class="label">Se déconnecter</p>
             <img class="nav-icon" src="./assets/arrow-right.svg" [ngClass]="currentItem === sideBarItem.DECONECTE ? 'display' : 'hide'" alt="Flèche droite">
         </div>
     </div>

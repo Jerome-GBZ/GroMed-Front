@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CompositionDTOModel } from './compositionDTOModel';
 import { InfoImportanteModel } from './infoImportanteModel';
 
 
@@ -57,8 +58,16 @@ export interface PresentationDetailModel {
      */
     tauxRemboursement?: number;
     /**
+     * Indique les voies d\'administrations du médicament
+     */
+    voiesAdministration?: string;
+    /**
      * Indique la liste des informations importantes du médicament
      */
     informationsImportantes?: Array<InfoImportanteModel>;
+    /**
+     * Indique la liste des compositions du médicament
+     */
+    compositions?: Array<CompositionDTOModel>;
 }
 

@@ -9,15 +9,20 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { PresentationRecapCommandeDTO } from './presentationRecapCommandeDTO';
 
 
 /**
- * Condition Prescription DTO
+ * détail d\'une livraison
  */
-export interface ConditionPrescriptionDTO { 
+export interface LivraisonDetailDTO { 
     /**
-     * Condition de prescription
+     * Date d\'envoie de la livraison
      */
-    condition?: string;
+    dateLivraison?: string;
+    /**
+     * recap des presentations de la livraison
+     */
+    recapLivraison?: Array<PresentationRecapCommandeDTO>;
 }
 

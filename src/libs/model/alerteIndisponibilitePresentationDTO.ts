@@ -11,7 +11,13 @@
  */
 
 
+/**
+ * Alerte Indisponibilite Presentation DTO
+ */
 export interface AlerteIndisponibilitePresentationDTO { 
+    /**
+     * Map des codeCIS avec le stock restant
+     */
     alertesIndisponibilites?: { [key: string]: number; };
 }
 

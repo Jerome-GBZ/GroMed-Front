@@ -6,21 +6,25 @@
         <app-sidebar-menu [currentItem]="0"></app-sidebar-menu>
     </div>
     <div class="content">
-        <ng-lottie class="animation"
-            [options]="options" *ngIf="searchText==''">
-        </ng-lottie>
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input type="text" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" [(ngModel)]="searchText">
+            <input type="text" [(ngModel)]="searchText" pInputText #search class="p-inputtext-lg"  placeholder="Rechercher un médicament" >
+            <!--(keydown.enter) -->
         </span>
         <div class="toolbar-container">
-            <div class="filter-container" *ngIf="!showFilters" (click)="showFilters = true">
-                <img src="./assets/filter-search.svg" class="filter-icon"/>
+            <div class="filter-container" [ngClass]="this.checkIfIsFiltred() ? 'filter-selected' : ''" *ngIf="!showFilters" (click)="showFilters = true" >
+                <img *ngIf="!this.checkIfIsFiltred()" src="./assets/filter-search.svg" alt="Filtre icône" class="filter-icon"/>
+                <img  *ngIf="this.checkIfIsFiltred()" src="./assets/filter-tick.svg" alt="Filtre icône" class="filter-icon"/>
                 <p class="filter-label">Filtrer</p>
             </div>
             <div class="filter-container" *ngIf="showFilters" (click)="showFilters = false">
-                <img src="./assets/close.svg" class="filter-icon"/>
+                <img src="./assets/close.svg" alt="Fermer icône" class="filter-icon"/>
                 <p class="filter-label">Fermer</p>
+            </div>
+            <div class="filter-container" [ngClass]="this.currentPriceFiltrerState != PriceFilter.NONE ? 'filter-selected' : ''" (click)="changePriceFilter()">
+                <img *ngIf="this.currentPriceFiltrerState !== PriceFilter.PRICE_DSC" src="./assets/trend-up.svg" alt="Trier prix croissant icône" class="filter-icon"/>
+                <img *ngIf="this.currentPriceFiltrerState === PriceFilter.PRICE_DSC" src="./assets/trend-down.svg" alt="Trier prix décroissant icône" class="filter-icon"/>
+                <p class="filter-label">{{this.currentPriceFiltrerState === PriceFilter.PRICE_DSC ?'Trier par prix décroissant': 'Trier par prix croissant'}}</p>
             </div>
         </div>
         <div class="filter-wrap" *ngIf="showFilters">
@@ -46,12 +50,23 @@
                 <p-checkbox [(ngModel)]="generiqueSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
                 <label >Générique</label>
             </div>
-            <p-button label="Sauvegarder" [routerLink]="['/']" [queryParams]="{search: search.value, filterCompositon: selectedComposition, filterTitulaire: selectedTitulaire, disponible: disponibleSelected, generique: generiqueSelected}" ></p-button>
+            <div class="field-checkbox">
+                <p-checkbox [(ngModel)]="originalSelected" name="group1" [binary]="true" inputId="ny"></p-checkbox>
+                <label >Original</label>
+            </div>
+            <p-button label="Sauvegarder" (onClick)="this.searchFiltres(0)"></p-button>
+
         </div>
-        <div class="card-grid" *ngIf="!isLoading && searchText!=''" >
-            <app-shop-card class="purple" *ngFor="let medCard of medicamentCards" [presentationCard]="medCard" ></app-shop-card>
+        <div *ngIf=" this.medicamentCards| async as medicaments" class="card-container">
+            <div class="card-grid" *ngIf="!isLoading && medicaments.length > 0" >
+                <app-shop-card class="purple" *ngFor="let medCard of medicaments" [presentationCard]="medCard" ></app-shop-card>
+            </div>
+            <div *ngIf="medicaments.length === 0 && !isLoading" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <ng-lottie width="350px" [options]="this.optionsNotFound"></ng-lottie>
+                <h3 style="font-weight: 500;">Pas de résultats pour cette recherche "{{this.searchText}}"</h3>
+            </div>
         </div>
-        <div class="card-grid" *ngIf="isLoading && searchText!=''">
+        <div class="card-grid" *ngIf="isLoading">
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
@@ -65,7 +80,7 @@
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
             <p-skeleton width="100%" height="300px" borderRadius="18px"></p-skeleton>
         </div>
-        <p-paginator *ngIf="searchText!=''" [rows]="24" [totalRecords]="this.numberOfPages" (onPageChange)="paginate($event.page)"></p-paginator>
+        <p-paginator *ngIf="this.totalNumberOfPage | async as total" [ngClass]="this.searchText !== '' ? 'display': 'hide'" [rows]="24" [totalRecords]="total*24" (onPageChange)="searchFiltres($event.page)"></p-paginator> 
     </div>
 </div>
 

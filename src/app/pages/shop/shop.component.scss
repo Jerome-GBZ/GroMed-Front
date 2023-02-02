@@ -12,7 +12,13 @@
 .p-input-icon-left{
     width: 95%;
 }
+.diplay{
+    display: block;
+}
 
+.hide{
+    display: none;
+}
 .p-inputtext-lg{
     width: 100%;
     height: 60px;
@@ -59,6 +65,11 @@ p-paginator{
     margin-top: 12px;
 }
 
+.card-container{
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 1387px) {
     .card-grid{
         grid-template-columns: repeat(3, minmax(250px, 1fr));
@@ -92,6 +103,7 @@ p-paginator{
     width: 95%;
     display: flex;
     flex-direction: row;
+    gap: 12px;
 }
 
 .filter-wrap{
@@ -124,4 +136,8 @@ label{
     border-radius: 28px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.filter-selected {
+    border-color: $primary;
 }

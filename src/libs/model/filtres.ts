@@ -16,12 +16,19 @@
  */
 export interface Filtres { 
     /**
+     * Le nom de la présentation du médicament
+     */
+    presentationName?: string;
+    /**
      * Liste de tous les titulaires de médicaments
      */
     titulaires?: Array<string>;
     /**
-     * Liste de toutes les dénomations de substances de médicaments
+     * Liste de toutes les dénominations de substances de médicaments
      */
     substancesDenomitations?: Array<string>;
+    generique?: boolean;
+    available?: boolean;
+    original?: boolean;
 }
 

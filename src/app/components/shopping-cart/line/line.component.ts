@@ -23,6 +23,10 @@ export class LineComponent {
   acceptPresentation(value: string) {
     this.acceptItemEvent.emit(value);
   }
+
+  getPrixTot(prixU: number, quantity: number) {
+    return prixU * quantity;
+  }
 }
 
 export enum VariantType {

@@ -12,12 +12,16 @@
 
 
 /**
- * Condition Prescription DTO
+ * recap des presentations de la livraison
  */
-export interface ConditionPrescriptionDTO { 
+export interface PresentationRecapCommandeDTO { 
     /**
-     * Condition de prescription
+     * nom de la presentation
      */
-    condition?: string;
+    nomPresentation?: string;
+    /**
+     * quantité de la presentation
+     */
+    quantite?: number;
 }
 

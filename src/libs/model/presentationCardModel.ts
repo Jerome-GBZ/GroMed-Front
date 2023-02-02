@@ -24,7 +24,7 @@ export interface PresentationCardModel {
      */
     codeCIP7?: string;
     /**
-     * Titre de la présent
+     * Dénomination du médicament
      */
     titre?: string;
     /**
@@ -36,7 +36,7 @@ export interface PresentationCardModel {
      */
     prix?: number;
     /**
-     * Description de la présentation
+     * Dénomination de la présentation
      */
     description?: string;
     /**

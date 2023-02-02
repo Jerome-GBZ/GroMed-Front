@@ -54,3 +54,30 @@
     cursor: not-allowed !important;
 }
 
+.p-input-icon-left {
+    width: 95%;
+    margin-top: 20px;
+}
+
+.p-inputtext-lg {
+    width: 60%;
+    // height: 60px;
+    padding-top: 20px;
+    border-radius: 8px;
+    border-color: $line;
+    &::placeholder{
+        color: $placeholder
+    }
+}
+
+.p-inputtext.p-inputtext-lg {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    font-size: 16px !important;
+}
+
+.pi-search {
+    padding-left: 20px;
+    color: $placeholder;
+}
+

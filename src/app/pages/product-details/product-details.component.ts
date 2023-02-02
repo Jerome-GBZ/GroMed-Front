@@ -16,8 +16,10 @@ export class ProductDetailsComponent {
   width: number = window.innerWidth;
   subtotal: number = 0;
   loading: boolean = false;
-
+  public disabledButton = false;
   medicamentDetails? : PresentationDetailModel
+  voiesAdministration: string[] = [] 
+
 
   public constructor(
     private authService: AuthService,
@@ -29,11 +31,14 @@ export class ProductDetailsComponent {
   ) {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
-      this.presentationService.getDetailPresentation(id).subscribe( (data: PresentationDetailModel) => {
-        console.log(data)
+      this.presentationService.getDetailPresentation(id).subscribe(
+        (data: PresentationDetailModel) => {
           if(data !== undefined){
             this.medicamentDetails = data;
             this.subtotal = data.prix!!;
+            this.voiesAdministration = data.voiesAdministration!!.split(";")
+            if(data.informationsImportantes?.length! === 0)
+              this.disabledButton = true;
           }
         }
       )
@@ -51,6 +56,11 @@ export class ProductDetailsComponent {
 
   getSubtotal(quantity: string) {
     this.subtotal = Number((Number(quantity) * this.medicamentDetails!!.prix!).toFixed(2))
+  }
+
+
+  acceptCondition() {
+    this.disabledButton = !this.disabledButton;
   }
 
   addToCart(quantity: string) {
@@ -76,4 +86,5 @@ export class ProductDetailsComponent {
       }
     );
   }
+  
 }

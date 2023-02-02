@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
 import { MessageService } from 'primeng/api';
-import { Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CommandeControllerService, PresentationPanierModel, UtilisateurModel, LivraisonModel } from 'src/libs';
 
@@ -12,12 +12,12 @@ import { CommandeControllerService, PresentationPanierModel, UtilisateurModel, L
 })
 export class ShoppingCartComponent implements OnInit {
   public total: number = 0;
-  public subTotal: number = 0;
-  public reducTotal: number = 0;
   public stepShop: number = 1;
   public width: number = window.innerWidth;
   public medicamentsLine: Array<PresentationPanierModel> = new Array();
   public livraison: LivraisonModel | undefined;
+  public commandeName: string = '';
+  public loadingValidation: boolean = false;
 
   constructor(private authService: AuthService,
     private commandeService: CommandeControllerService,
@@ -35,8 +35,6 @@ export class ShoppingCartComponent implements OnInit {
    this.commandeService.getUserCart(email).subscribe(
      (data: Array<PresentationPanierModel>) => {
         this.medicamentsLine = data;
-        console.log(data);
-
         this.resetTotals();
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de récupération du panier"});
@@ -75,9 +73,13 @@ export class ShoppingCartComponent implements OnInit {
       return;
     }
 
-    this.commandeService.validateCart(email).subscribe(
+    this.loadingValidation = true;
+
+    this.commandeService.validateCart(email,this.commandeName).subscribe(
       (livraison: LivraisonModel) => {
         this.livraison = livraison;
+        this.loadingValidation = false;
+
         this.messageService.add({severity:'success', summary: 'Success', detail: "Commande validée"});
       }, (error: Error) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: "Problème de validation de la commande"});
@@ -86,15 +88,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   resetTotals() {
-    this.subTotal = 0;
-    this.reducTotal = 0;
-
+    this.total = 0;
     this.medicamentsLine.forEach((medicament) => {
-      this.subTotal += medicament.prixUnitaire!!;
-      this.reducTotal += medicament.prixUnitaire!! * (medicament.tauxRemboursement!! / 100);
+      this.total += medicament.prixUnitaire!! * medicament.quantite!!;
     });
-
-    this.total = this.subTotal - this.reducTotal;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -109,4 +106,8 @@ export class ShoppingCartComponent implements OnInit {
       this.validateCommand();
     }
   }
+
+  options: AnimationOptions = {
+    path: '/assets/lottie/loading.json'
+  };
 }
