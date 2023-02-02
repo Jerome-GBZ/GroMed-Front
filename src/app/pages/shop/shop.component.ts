@@ -60,7 +60,7 @@ export class ShopComponent implements OnInit{
     )
 
     fromEvent(this.search!!.nativeElement, 'keyup').pipe(
-       debounceTime(800)
+       debounceTime(1000)
       , distinctUntilChanged()
     ).subscribe( _ => {
       this.searchFiltres(0);

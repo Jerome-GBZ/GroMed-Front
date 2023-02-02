@@ -1,7 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
 import { MessageService } from 'primeng/api';
-import { Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CommandeControllerService, PresentationPanierModel, UtilisateurModel, LivraisonModel } from 'src/libs';
 

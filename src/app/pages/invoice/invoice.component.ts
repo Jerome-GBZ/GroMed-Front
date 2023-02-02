@@ -1,7 +1,7 @@
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { CommandeControllerService, CommandeDetailDTO, CommandeModel } from 'src/libs';
 import { MessageService } from 'primeng/api';
+import { CommandeControllerService, CommandeDetailDTO, CommandeModel } from 'src/libs';
 
 @Component({
   selector: 'app-invoice',
