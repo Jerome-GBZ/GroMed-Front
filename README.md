@@ -28,5 +28,9 @@ npm update
 **Lancez le projet**
 ```
 npm run
+
 ```
+
+### Modèle de tache
+<img width="1644" alt="Capture d’écran 2023-02-02 à 18 02 21" src="https://user-images.githubusercontent.com/58702474/216392381-2d9ed553-1a50-4865-8684-657bb039b000.png">
 
