@@ -52,6 +52,7 @@
     grid-template-columns: repeat(4, minmax(250px, 1fr));
     grid-auto-rows: auto;
     gap: 15px;
+    margin: auto;
     margin-top: 15px;
 }
 
@@ -63,11 +64,6 @@
 
 p-paginator{
     margin-top: 12px;
-}
-
-.card-container{
-    display: flex;
-    justify-content: center;
 }
 
 @media (max-width: 1387px) {
